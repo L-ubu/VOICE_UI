@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goose VUI - System Usability Scale (SUS)</title>
+    <style>
+        @page { size: A4; margin: 2cm; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 11pt; line-height: 1.5; color: #333; max-width: 21cm; margin: 0 auto; padding: 20px; }
+        h1 { font-size: 18pt; color: #2c3e50; border-bottom: 3px solid #8b5cf6; padding-bottom: 10px; margin-bottom: 15px; }
+        h2 { font-size: 14pt; color: #8b5cf6; margin-top: 25px; margin-bottom: 15px; text-align: center; }
+        .header-info { display: flex; justify-content: space-between; background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 25px; }
+        .sus-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+        .sus-table th { background: #8b5cf6; color: white; padding: 10px; font-size: 9pt; }
+        .sus-table td { padding: 12px 8px; border: 1px solid #ddd; vertical-align: middle; }
+        .sus-table td:first-child { width: 50%; font-size: 10pt; }
+        .sus-table td:not(:first-child) { text-align: center; width: 10%; }
+        .sus-table tr:nth-child(even) { background: #f9f9f9; }
+        .scale-circle { width: 22px; height: 22px; border: 2px solid #8b5cf6; border-radius: 50%; margin: 0 auto; }
+        .score-box { display: inline-block; width: 60px; height: 30px; border: 2px solid #8b5cf6; border-radius: 4px; margin-left: 10px; vertical-align: middle; }
+        .instructions { background: #f0f4ff; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #8b5cf6; }
+        .calculation { background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 20px; }
+        .calculation h3 { margin-top: 0; color: #8b5cf6; }
+        .page-break { page-break-before: always; }
+        .footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd; font-size: 9pt; color: #666; text-align: center; }
+        .logo { font-size: 24pt; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <div class="logo">🪿</div>
+    <h1>System Usability Scale (SUS) - Goose VUI</h1>
+    
+    <div class="header-info">
+        <div><strong>Deelnemer ID:</strong> _______________</div>
+        <div><strong>Datum:</strong> _______________</div>
+    </div>
+
+    <div class="instructions">
+        <strong>Instructies:</strong> Geef voor elke stelling aan in hoeverre u het eens bent door één cirkel aan te kruisen. 
+        Denk niet te lang na over elke stelling; geef uw eerste indruk.
+    </div>
+
+    <h2>SPRAAKINTERFACE (VUI)</h2>
+    
+    <table class="sus-table">
+        <tr>
+            <th>Stelling</th>
+            <th>Helemaal oneens<br>(1)</th>
+            <th>Oneens<br>(2)</th>
+            <th>Neutraal<br>(3)</th>
+            <th>Eens<br>(4)</th>
+            <th>Helemaal eens<br>(5)</th>
+        </tr>
+        <tr>
+            <td>1. Ik denk dat ik dit systeem graag regelmatig zou gebruiken</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>2. Ik vond het systeem onnodig complex</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>3. Ik vond het systeem gemakkelijk te gebruiken</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>4. Ik denk dat ik technische ondersteuning nodig zou hebben om dit systeem te kunnen gebruiken</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>5. Ik vond de verschillende functies in dit systeem goed geïntegreerd</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>6. Ik vond dat er te veel inconsistenties in dit systeem zaten</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>7. Ik kan me voorstellen dat de meeste mensen dit systeem snel zouden leren gebruiken</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>8. Ik vond het systeem erg omslachtig in gebruik</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>9. Ik voelde me zeer zeker tijdens het gebruik van het systeem</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>10. Ik moest veel leren voordat ik dit systeem kon gebruiken</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+    </table>
+
+    <p><strong>SUS Score VUI:</strong> <span class="score-box"></span> / 100</p>
+
+    <div class="page-break"></div>
+
+    <h2>GRAFISCHE INTERFACE (GUI - Typen)</h2>
+    
+    <table class="sus-table">
+        <tr>
+            <th>Stelling</th>
+            <th>Helemaal oneens<br>(1)</th>
+            <th>Oneens<br>(2)</th>
+            <th>Neutraal<br>(3)</th>
+            <th>Eens<br>(4)</th>
+            <th>Helemaal eens<br>(5)</th>
+        </tr>
+        <tr>
+            <td>1. Ik denk dat ik dit systeem graag regelmatig zou gebruiken</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>2. Ik vond het systeem onnodig complex</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>3. Ik vond het systeem gemakkelijk te gebruiken</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>4. Ik denk dat ik technische ondersteuning nodig zou hebben om dit systeem te kunnen gebruiken</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>5. Ik vond de verschillende functies in dit systeem goed geïntegreerd</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>6. Ik vond dat er te veel inconsistenties in dit systeem zaten</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>7. Ik kan me voorstellen dat de meeste mensen dit systeem snel zouden leren gebruiken</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>8. Ik vond het systeem erg omslachtig in gebruik</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>9. Ik voelde me zeer zeker tijdens het gebruik van het systeem</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+        <tr>
+            <td>10. Ik moest veel leren voordat ik dit systeem kon gebruiken</td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+            <td><div class="scale-circle"></div></td>
+        </tr>
+    </table>
+
+    <p><strong>SUS Score GUI:</strong> <span class="score-box"></span> / 100</p>
+
+    <div class="calculation">
+        <h3>Score Berekening (voor onderzoeker)</h3>
+        <p><strong>Stap 1:</strong> Voor oneven items (1, 3, 5, 7, 9): Trek 1 af van de score</p>
+        <p><strong>Stap 2:</strong> Voor even items (2, 4, 6, 8, 10): Trek de score af van 5</p>
+        <p><strong>Stap 3:</strong> Tel alle aangepaste scores op</p>
+        <p><strong>Stap 4:</strong> Vermenigvuldig het totaal met 2.5</p>
+        <br>
+        <p><strong>Score Interpretatie:</strong></p>
+        <ul>
+            <li>< 50: Niet acceptabel</li>
+            <li>50-70: Marginaal acceptabel</li>
+            <li>70-80: Goed</li>
+            <li>80-90: Uitstekend</li>
+            <li>> 90: Best denkbaar</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        Goose VUI Onderzoek - Odisee Hogeschool - SUS Vragenlijst v1.0
+    </div>
+</body>
+</html>
+
+
+
+

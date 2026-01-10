@@ -1,0 +1,1348 @@
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Bachelorproef
+1.1.1.1.1	CLUSTER (BIO)TECHNOLOGIE
+
+Vandenweghe Luca
+Professionele Bachelor Elektronica-ICT, afstudeerrichting ICT Academiejaar 2025/2026
+
+
+
+
+
+
+Wat zijn de belangrijkste voordelen en beperkingen van Voice-User Interfaces 
+in vergelijking met grafische interfaces 
+bij het uitvoeren van digitale taken
+
+
+
+
+
+Odisee
+Gebroeders De Smetstraat 1
+9000 Gent
+
+
+
+
+
+
+
+
+Auteur
+Luca Vandenweghe
+
+Opleiding
+Elektronica-ICT, afstudeerrichting ICT
+
+Academiejaar
+2025/2026
+
+Interne promotor
+Rutger De Wilde
+
+In samenwerking met
+Odisee
+Gebroeders de Smetstraat 1
+9000 Gent
+
+Externe promotor(en)
+Rutger De Wilde
+
+ 
+Abstract
+
+Voorwoord
+
+Inhoud
+Inhoud	5
+Codefragmentenlijst	7
+Figurenlijst	8
+Begrippenlijst	9
+Afkortingenlijst	10
+Inleiding	11
+1.2	Voorstudie: Literatuuronderzoek naar Voice-User Interfaces	12
+1.2.1	Definitie en Belang van VUI’s	12
+1.2.2	Kerncomponenten van VUI-ontwerp	12
+1.2.3	Conversational Design	12
+1.2.4	Voordelen van VUI’s	13
+1.2.5	Beperkingen en Uitdagingen van VUI’s	13
+1.2.6	Vergelijking van VUI versus GUI	13
+1.2.7	Toekomstige ontwikkelingen	14
+1.2.8	Methodologische inzichten voor VUI-onderzoek	14
+1.3	Relevantie en Praktische toepassingen	14
+2	Oplossingsvoorstel	15
+2.1	Doelstelling	15
+2.2	Verwachte resultaten en deliverables	15
+2.3	Relevantie en toepasbaarheid	15
+3	Onderzoeksaanpak en methodologie	15
+3.1	Onderzoeksdesign	15
+3.2	Literatuurstudie	15
+3.3	Testomgeving en prototyping	16
+3.4	Dataverzameling	16
+3.5	Analyse en vergelijking	16
+3.6	Ethische overwegingen	17
+4	Conceptuele oplossing	18
+4.1	Overzicht van de Testomgeving	18
+4.2	Architectuur van de Testomgeving	18
+4.3	Taakselectie	18
+4.4	Testscenario’s	18
+5	Praktische Uitwerking	19
+6	Resultaten en analyse	20
+6.1	Kwantitatieve resulaten	20
+6.2	Kwalitatieve resultaten	20
+6.3	Vergelijken analyse	20
+6.4	Discussie	20
+7	Conclusie	21
+7.1	Samenvatting van bevindingen	21
+7.2	Aanbevelingen	21
+7.3	Beperkingen van het onderzoek	21
+7.4	Suggesties voor toekomstig onderzoek	21
+8	Nawoord	22
+9	Literatuurlijst	23
+10	Gebruik van Generatieve AI	24
+11	Bijlagen	25
+
+
+
+Codefragmentenlijst
+
+Codefragment 5.1: Initialisatie van de VUIService met Nederlandse spraakherkenning
+Codefragment 5.2: Timeout-mechanisme voor het herstarten van de spraakherkenning
+Codefragment 5.3: Selectie van Nederlandse stem voor text-to-speech
+Codefragment 5.4: Coördinatie tussen spraakherkenning en text-to-speech
+Codefragment 5.5: Mapping van Nederlandse getalwoorden naar cijfers
+Codefragment 5.6: Mapping van Nederlandse maandnamen en gespelde letters
+Codefragment 5.7: Definitie van veldvolgorde per formulierstap
+Codefragment 5.8: Focuslogica voor dropdown-velden
+Codefragment 5.9: EditService met OpenAI integratie en lokale fallback
+Codefragment 5.10: Berekening van sequentiële nummering voor dropdown-opties
+Codefragment 5.11: Filtering van systeemuitingen om feedback loops te voorkomen
+Codefragment 5.12: Debouncing van spraakcommando's
+Codefragment 5.13: DataLogger service voor het registreren van interacties
+Codefragment 5.14: VUIService initialisatie met event-gebaseerde architectuur (Goose)
+Codefragment 5.15: Multimodale emotie-analyse met Hume AI
+Codefragment 5.16: Lokale Nederlandse emotie-analyse als fallback
+Codefragment 5.17: Veiligheidscontrole met gegradueerde interventie
+Codefragment 5.18: VoiceUIComponent met inline panel design
+Codefragment 5.19: Parallelle audio-opname naast spraakherkenning
+Codefragment 5.20: Dynamische emotie-context voor ChatGPT
+Codefragment 5.21: Research data logging met emotie-tekst koppeling
+Codefragment 5.22: Automatisch herstarten van spraakherkenning na TTS
+Codefragment 5.23: Graceful handling van stilte-periodes
+Codefragment 5.24: Voorkomen van dubbele berichten
+
+Figurenlijst
+
+Figuur 5.1: Architectuurdiagram van de VUI-componenten in VAIA
+Figuur 5.2: Overzicht van spraakcommando categorieën en voorbeelden
+Figuur 5.3: Sequentiediagram van AI-gestuurde tekstbewerking flow
+Figuur 5.4: Screenshot van dropdown met genummerde opties
+Figuur 5.5: Architectuurdiagram van Goose emotie-analyse integratie
+Figuur 5.6: Technologie-stack diagram
+Figuur 5.7: Screenshot van VoiceUIComponent inline panel in Goose
+Figuur 5.8: Flowdiagram van multimodale emotie-analyse (audio + tekst)
+Figuur 5.9: Screenshot van crisisdetectie en veiligheidsinterventie interface
+Figuur 5.10: Sequentiediagram van emotie-context integratie met ChatGPT
+
+Begrippenlijst
+
+Arousal: De intensiteit of activatiegraad van een emotie, variërend van laag (kalm, ontspannen) tot hoog (opgewonden, gespannen) tot kritiek (overweldigend).
+ASR: Automated Speech Recognition, ook wel voice recognition of speech-to-text genoemd. Het proces waarbij audio-input van de gebruiker wordt omgezet in woorden zonder dat het systeem betekenis hecht aan de uitingen.
+Conversational Design: Het ontwerpen van dialogen tussen gebruikers en systemen die natuurlijk en intuïtief aanvoelen, met focus op menselijke conversatie-ervaring.
+Crisisdetectie: Het automatisch detecteren van signalen die wijzen op een crisis of noodsituatie, zoals suïcidale gedachten of ernstige emotionele nood.
+Discovery-taken: Taken waarbij gebruikers dooe informatie bladeren en verkennen, zoals het doorzoeken van een winkelwebsite.
+Emotie-analyse: Het proces waarbij de emotionele staat van een persoon wordt gedetecteerd en gekwantificeerd op basis van spraak, tekst of gezichtsuitdrukkingen.
+Form-input taken: Taken waarbij gebruikers informatie invoeren via formulieren, zoals het aanmaken van een afspraak of het invullen van gegevens.
+GUI: Een gragische gebruikersinterface waarbij gebruikers interageren via visuele elementen zoals knoppen, menu's en aanraakschermen.
+Intent: De taak die de gebruiker wil voltooien, zoals bepaald door het VUI-systeem op basis van de uiting van de gebruiker.
+Lookup-taken: Taken waarbij gebruikers snel specifieke informatie opvragen, zoals het opzoeken van een telefoonnummer of het controleren van het weer.
+Multimodale analyse: Het combineren van meerdere analysemethoden (zoals audio en tekst) om een completer beeld te krijgen van de emotionele staat van een gebruiker.
+Multimodale interface: Een gebruikersinterface die meerdere input- en outputmodaliteiten combineert, zoals voice en visuele displays, waarbij voice vaak de primaire maar niet de enige interface is.
+NLU: Natural Language Understanding, het proces waarbij de computer herkende woorden verwerkt en de betekenis van de gebruiker eruit haalt.
+NLP: Natuurllijke taalverwerking, de technologie die computers in staat stelt menselijke taal te begrijpen en te verwerken.
+Prompt: De reactie van de voice assistant die de conversatie voortzet en de gebruiker begeleidt naar de voltooiing van de taak.
+Prosodische analyse: Het analyseren van stemkenmerken zoals toon, tempo, volume en ritme om emoties of intenties te detecteren.
+Sample dialog: Een voorbeeldconversatie die mogelijke paden tussen systeem en gebruiker weergeeft, gebruikt als VUI-ontwerpdeliverable in plaats van wireframes.
+Sentiment: De algemene emotionele toon van een uiting, geclassificeerd als positief, negatief of neutraal.
+Slot: Specifieke informatie die nodig is om een taak te voltooien, zoals een datum, locatie of aantal.
+System Usability Scale: Een gestandaardiseerde vragenlijst voor het meten van de gebruiksvriendelijkheid van een systeem.
+Task Completion Time: De tijd die nodig is om een specifieke taak succesvol te voltooien.
+TTS: Text-to-Speech, technologie die geschreven tekst omzet in gesproken spraak.
+Utterance: De woorden die de gebruiker spreekt en die als input door het VUI-systeem worden ontvangen.
+Valence: De positieve of negatieve richting van een emotie, op een schaal van negatief (-1) via neutraal (0) naar positief (+1).
+VUI: Een spraakgestuurde gebruikersinterface waarbij gebruikers interageren via gesproken commando's in plaats van visuele navigatie. 
+Wizard of Oz-methode: Onderzoeksopzet waarbij een mens stiekem een (nog niet werkend) systeem simuleert voor testdoeleinden.
+
+Afkortingenlijst
+
+API: Application Programming Interface
+ASR: Automated Speech Recognition
+CAGR: Compund Annual Growth Rate
+GUI: Graphical User Interface
+LLM: Large Language Model
+NLU: Natural Language Understanding
+NLP: Natural Language Processing
+SUS: System Usability Scale
+TTS: Text-to-Speech
+UCE: User and Customer Experience (onderzoeksgroep Odisee)
+VUI: Voice-User Interface
+
+Inleiding
+
+Digitale interactie tussen mens en computer heeft de afgelopen decennia een sterke evolutie doorgemaakt. Waar gebruikers vroeger vooral vertrouwden op grafische gebruikersinterfaces, zoals knoppen, menu’s en aanraakschermen, wordt vandaag steeds vaker geëxperimenteerd met spraakgestuurde interactie. Voice-User Interfaces, zoals Siri, Alexa of Google Assistant, laten gebruikers toe om opdrachten te geven via gesproken taal in plaats van via visuele navigatie.
+Hoewel deze technologie al enkele jaren bestaat, blijft het gebruik in de praktijk relatief beperkt. Veel mensen kiezen nog steeds voor klassieke, visuele interfaces om digitale taken uit te voeren, zoals informatie opzoeken, afspraken maken of producten bestellen. Dat roept vragen op over de bruikbaarheid, efficiëntie en algemene gebruikerservaring van Voice-User Interfaces in vergelijking met traditionele interfaces.
+Om die reden richt deze bachelorproef zich op een vergelijking tussen beide vormen van interactie. Door te onderzoeken hoe gebruikers dezelfde taken uitvoeren via een Voice-User Interface en via een grafische interface, kan worden nagegaan in welke mate deze systemen verschillen op het vlak van gebruiksgemak, efficiëntie en tevredenheid. Het onderzoek bestaat uit drie fasen. Eerst wordt een literatuurstudie uitgevoerd om bestaande inzichten rond Voice-UI en GUI te analyseren. Vervolgens wordt een testomgeving ontwikkeld of geselecteerd waarin deelnemers opdrachten uitvoeren met beide interfacevormen. Tot slot worden de resultaten geanalyseerd en vergeleken om te bepalen welke interface in welke context de beste gebruikerservaring biedt.
+Met deze aanpak wil de bachelorproef bijdragen aan een beter begrip van de rol en het potentieel van spraakgestuurde interactie in vergelijking met traditionele visuele interfaces, en zo inzichten bieden voor toekomstig ontwerp en ontwikkeling van gebruiksvriendelijke digitale toepassingen. 
+1.2	Voorstudie: Literatuuronderzoek naar Voice-User Interfaces
+1.2.1	Definitie en Belang van VUI’s
+Een Voice-User Interface (VUI) is een systeem dat gebruikers toelaat om via gesproken commando’s te interageren met een apparaat of software (Smiljkovic, 2025). VUI’s maken het mogelijk om zonder visuele navigatie of fysieke input te communiceren met technologie, wat leidt tot een meer natuurlijke en intuïtieve gebruikerservaring. De technologie achter VUI’s wordt aangedreven door natuurlijke taalverwerking (Natural Language Procesing, NLP) en maakt gebruik van geavanceerde spraakassistenten zoals Amazon Alexa, Apple Siri, Google Assistant en Microsoft Cortana
+Het belang van VUI’s wrodt benadrukt door de groeiende markt en gebruik. Volgens Smiljkovic (2025) worden er wereldwijd 8,4 miljard spraakassistenten verwacht in gebruik. De globale VUI-markt werd in 2022 gewaardeerd op 19,73 miljard dollar en wordt verwacht te groeien met een CAGR van 21,3% van 2023 tot 2030 (Grand View Research, geciteerd in Smiljkovic, 2025). Deze cijfers tonen aan dat voice technologie niet langer een trend is, maar een fundamenteel onderdeel van de toekomst van digitale interactie.
+1.2.2	Kerncomponenten van VUI-ontwerp
+Er bestaan verschillende frameworks voor het ontwerpen van Voice-User Interfaces, elk met hun eigen benadering en terminologie. Het Amazon Alexa Skills Kit (ASK) framework, zoals beschreven door Bittner, is een van de meest gebruikte en invloedrijke frameworks in de industrie. Dit framework wordt hier als uitgangspunt genomen omdat het een gestructureerde en breed toegepaste methodologie biedt die ook wordt gebruikt door andere platforms zoals Google Dialogflow en Microsoft Bot Framework, hoewel deze platforms hun eigen terminologie kunnen gebruiken (Pearl, 2018). Het ASK framework definieert vier essentiële elementen in voice design die de basis vormen voor het begrijpen van hoe VUI's functioneren.
+
+Het eerste element is de Utterance (uiting), wat verwijst naar de woorden die de gebruiker spreekt en die als input door het systeem worden ontvangen. Bijvoorbeeld: "Wat is het weer vandaag?", "Zet een timer voor 10 minuten" of "Zoek een restaurant in de buurt". Het tweede element is de Intent (intentie), wat de taak vertegenwoordigt die de gebruiker wil voltooien. Het systeem moet de intentie achter de uiting kunnen begrijpen om de juiste actie te ondernemen. Zo kan de uiting "Wat is het weer vandaag?" de intentie "GetWeather" hebben, terwijl "Hoe warm wordt het?" dezelfde intentie kan hebben maar met een andere uiting. Het derde element is de Slot (Veld), wat verwijst naar de specifieke informatie die nodig is om de taak te voltooien, zoals bijvoorbeeld een datum, locatie of aantal. In het voorbeeld "Zoek een restaurant in Gent" is "Gent" de slotwaarde voor de locatie. Het vierde en laatste element is de Prompt, wat de reactie van de voice assistent is die de conversatie voortzet en de gebruiker begeleidt naar het voltooien van de taak. Een voorbeeld van een prompt is: "Voor welke datum wil je een afspraak maken?" wanneer het systeem nog niet alle benodigde informatie heeft verzameld.
+
+Naast het Amazon ASK framework bestaan er andere belangrijke frameworks voor VUI-ontwerp. Google Dialogflow gebruikt een vergelijkbare structuur met intents, entities (equivalent aan slots) en responses (equivalent aan prompts). Microsoft Bot Framework werkt met dialogs, intents en entities. Ondanks de verschillende terminologie delen deze frameworks dezelfde fundamentele concepten: het herkennen van wat de gebruiker zegt (utterance), het begrijpen van wat de gebruiker wil (intent), het extraheren van specifieke informatie (slots/entities), en het geven van passende reacties (prompts/responses).
+
+Een belangrijk inzicht uit de literatuur is dat natuurlijke taalverwerkingstechnologieën zeer goed zijn geworden in het verstaan van de woorden die een gebruiker spreekt, maar minder goed in het begrijpen van de betekenis erachter (Bittner). Dit betekent dat VUI-ontwerpers verantwoordelijk zijn voor het schrijven van een uitgebreide lijst van mogelijke uitingen die gebruikers zouden kunnen spreken, zodat het systeem deze kan herkennen en de juiste intentie kan toewijzen. Bijvoorbeeld, voor de intentie "SetTimer" moeten ontwerpers verschillende variaties van uitingen definiëren zoals "Zet een timer", "Start een timer", "Timer voor 5 minuten", "Ik wil een timer van 10 minuten", enzovoort, om ervoor te zorgen dat het systeem de gebruiker begrijpt ongeacht hoe deze de vraag formuleert.
+
+Het proces van het verwerken van spraakinput kan worden opgedeeld in twee belangrijke componenten (Pearl, 2018). Ten eerste is er Automated Speech Recognition (ASR), ook wel bekend als voice recognition of speech-to-text, wat verwijst naar het proces waarbij audio-input van de gebruiker wordt omgezet in woorden. Op dit punt hecht het systeem nog geen betekenis aan de uitingen, maar transcribeert het simpelweg de woorden die de gebruiker heeft gezegd. Ten tweede is er Natural Language Understanding (NLU), wat verwijst naar hoe de computer de herkende woorden verwerkt en de betekenis van de gebruiker eruit haalt. In tegenstelling tot GUI's, waar gebruikers doorgaans slechts een beperkt aantal acties kunnen uitvoeren (zoals klikken, swipen of scrollen), kunnen gebruikers in VUI's op talloze verschillende manieren hetzelfde bedoelen, wat het begrijpen van user intent complexer maakt (Pearl, 2018).
+1.2.3	Conversational Design
+Conversational design is het ontwerpen van dialogen tussen gebruikers en systemen die natuurlijk en intuïtief aanvoelen (Smiljkovic, 2025). Het gaat niet alleen om technische functionaliteit, maar om het creëren van menselijke conversaties die gebruikers begrijpen en waar ze zich comfortabel bij voelen. In tegenstelling tot traditionele interface-ontwerp, waarbij ontwerpers visuele elementen zoals knoppen en menu's creëren, richt conversational design zich op het ontwerpen van gesproken dialogen die natuurlijk klinken en effectief communiceren (Pearl, 2018).
+
+Wat conversational design precies omvat, kan worden opgedeeld in verschillende dimensies. Ten eerste omvat het het ontwerpen van de structuur van gesprekken: hoe het systeem begroet, hoe het vragen stelt, hoe het informatie presenteert, en hoe het de conversatie afsluit. Ten tweede omvat het het bepalen van de toon en persoonlijkheid van het systeem: is het formeel of informeel, vriendelijk of zakelijk, kort of uitgebreid? Ten derde omvat het het ontwerpen van error handling: hoe het systeem omgaat met misverstanden, onduidelijke input of technische problemen. Ten vierde omvat het het creëren van contextbewustzijn: het systeem moet de context van het gesprek begrijpen en daarop kunnen reageren. Ten slotte omvat het het ontwerpen van conversatieflows: verschillende paden die gebruikers kunnen volgen afhankelijk van hun behoeften en voorkeuren.
+
+De pijlers van conversational design zijn gebaseerd op principes die zijn afgeleid van menselijke communicatie. De eerste pijler is duidelijkheid: het systeem moet duidelijk communiceren wat het kan doen en wat het van de gebruiker verwacht. Dit betekent dat prompts kort, specifiek en actiegericht moeten zijn. Bijvoorbeeld, in plaats van "Wat wil je doen?" is "Wil je een afspraak maken, een patiënt opzoeken of notities toevoegen?" duidelijker. De tweede pijler is natuurlijkheid: de dialogen moeten klinken alsof ze door een mens worden gevoerd, niet door een robot. Dit betekent het gebruik van natuurlijke taalpatronen, het vermijden van technisch jargon waar mogelijk, en het toepassen van variatie in formuleringen om repetitie te voorkomen. De derde pijler is empathie: het systeem moet begrip tonen voor de gebruiker en zijn situatie. Dit kan worden bereikt door bevestigingen te geven ("Ik begrijp het"), door empathische reacties te gebruiken bij fouten ("Dat is vervelend, laten we het opnieuw proberen"), en door de gebruiker te erkennen wanneer hij frustratie toont. De vierde pijler is efficiëntie: het systeem moet gebruikers helpen hun doelen zo snel mogelijk te bereiken zonder onnodige stappen of herhalingen. Dit betekent het minimaliseren van het aantal interacties dat nodig is om een taak te voltooien en het vermijden van overbodige informatie. De vijfde pijler is consistentie: het systeem moet consistent zijn in zijn taalgebruik, toon en gedrag, zodat gebruikers weten wat ze kunnen verwachten en vertrouwen kunnen opbouwen.
+
+De elementen van conversational design omvatten verschillende componenten die samen een effectieve conversatie vormen. Het eerste element is de begroeting en onboarding: hoe het systeem de gebruiker verwelkomt en uitlegt wat het kan doen. Een goede begroeting is kort, vriendelijk en informatief, zoals "Hallo, ik kan je helpen met het beheren van patiëntgegevens. Wat wil je doen?" Het tweede element is de prompt design: hoe het systeem vragen stelt en informatie vraagt. Goede prompts zijn specifiek, bieden opties waar mogelijk, en maken duidelijk wat het systeem verwacht. Bijvoorbeeld, "Voor welke datum wil je een afspraak? Je kunt zeggen: vandaag, morgen, of een specifieke datum zoals 15 maart" is beter dan alleen "Wanneer?" Het derde element is de error handling: hoe het systeem omgaat met situaties waarin het de gebruiker niet begrijpt of wanneer er iets misgaat. Effectieve error handling omvat het erkennen van de fout, het bieden van duidelijke feedback, en het geven van suggesties voor hoe verder te gaan. Bijvoorbeeld, "Sorry, ik begrijp dat niet helemaal. Je kunt zeggen: 'maak een afspraak', 'zoek een patiënt', of 'voeg notities toe'" is beter dan alleen "Ik begrijp het niet." Het vierde element is de confirmatie en feedback: hoe het systeem bevestigt dat het de gebruiker heeft begrepen en feedback geeft over acties. Dit helpt gebruikers te weten dat het systeem correct heeft gehandeld en vermindert onzekerheid. Bijvoorbeeld, "Ik heb een afspraak gemaakt voor 15 maart om 14:00 uur met dokter Janssens. Is dat correct?" Het vijfde element is de contextbehoud: het systeem moet de context van het gesprek onthouden en daarop kunnen refereren. Dit maakt conversaties natuurlijker en efficiënter, zoals wanneer een gebruiker zegt "Verander dat naar morgen" en het systeem begrijpt dat "dat" verwijst naar de eerder besproken afspraak.
+
+Best practices voor conversational design zijn gebaseerd op jarenlange ervaring en onderzoek. Ten eerste moeten ontwerpers beginnen met user research: begrijpen wie de gebruikers zijn, wat hun behoeften zijn, en hoe ze natuurlijk communiceren. Dit helpt bij het creëren van dialogen die aansluiten bij de doelgroep. Ten tweede moeten ontwerpers sample dialogs creëren: uitgewerkte voorbeeldconversaties die zowel succesvolle paden (happy paths) als foutpaden (error paths) omvatten. Deze dialogs dienen als blauwdruk voor de implementatie en helpen bij het identificeren van potentiële problemen vroeg in het ontwerpproces (Pearl, 2018). Ten derde moeten ontwerpers iteratief testen: regelmatig testen met echte gebruikers en het ontwerp aanpassen op basis van feedback. Dit is cruciaal omdat gebruikers vaak op manieren reageren die niet waren voorzien (Pearl, 2018). Ten vierde moeten ontwerpers de persoonlijkheid van het systeem definiëren: een consistente persoonlijkheid helpt gebruikers te begrijpen wat ze kunnen verwachten en maakt de interactie aangenamer. Ten vijfde moeten ontwerpers korte, actiegerichte prompts gebruiken: lange, complexe zinnen zijn moeilijker te begrijpen en te onthouden. Ten zesde moeten ontwerpers opties bieden waar mogelijk: in plaats van open vragen te stellen, kunnen ontwerpers suggesties geven die gebruikers kunnen bevestigen of verwerpen. Bijvoorbeeld, "Wil je een afspraak maken voor vandaag of morgen?" is beter dan "Wanneer wil je een afspraak maken?" Ten zevende moeten ontwerpers progressieve disclosure toepassen: complexe informatie in kleinere, behapbare stukken presenteren in plaats van alles in één keer te geven. Ten achtste moeten ontwerpers altijd een uitweg bieden: gebruikers moeten altijd kunnen stoppen, annuleren, of hulp kunnen vragen. Ten negende moeten ontwerpers natuurlijke taalvariatie gebruiken: verschillende manieren om hetzelfde te zeggen om repetitie te voorkomen en de conversatie natuurlijker te laten klinken. Ten slotte moeten ontwerpers rekening houden met de context: het systeem moet zich aanpassen aan de situatie, zoals het tijdstip van de dag, de locatie, of eerdere interacties.
+
+Goed conversational design leidt tot verbeterde user experience, omdat gebruikers duidelijke en behulpzame reacties verwachten. Ook zorgt een natuurlijkere conversatie voor een verhoogde betrokkenheid, waarbij gebruikers meer interageren met het systeem. Daarnaast biedt conversational design betere toegankelijkheid, aangezien VUI's voor mensen met beperkingen nieuwe manieren openen om met technologie te interageren. Volgens Smiljkovic (2025) hebben bedrijven die conversational design hebben toegepast een toename van 7% tot 25% in jaarlijkse verkoop gerapporteerd, wat het belang van conversational design benadrukt in de zakelijke omgang.
+ 
+1.2.4	Voordelen van VUI’s
+Uit de literatuur komen verschillende belangrijke voorden van VUI’s naar voren. Ten eerste maken VUI’s handsfee en mobiele interatie mogelijk, wat vooral tijdens activiteiten zoals autorijden, koken of wanneer de handen bezet zijn (Deshmukh & Chalmeta, 2024). Dit voordeel maakt VUI’s bijzonder geschikt voor contexten waarin tradionele inputmethoden niet praktisch zijn. Ten tweede bieden VUI’s verbeterde toegankelijkheid voor mensen met visuele beperkingen, motorische beperkingen of andere beperkingen (Smiljkovic, 2025). Ten derde is de spraak een natuurlijke vorm van communicatie voor mensen, wat kan leiden tot een meer intuïtieve gebruikerservaring in vergelijking met het leren van nieuwe grafische interfaces (Bittner). Ten slotte kunnen VUI’s voor specifieke taken, zoals lookup-taken en eenvadige transacties, sneller zijn dan grafische interfaces, wat de efficiëntie verhoogt voor bepaalde gebruiksscenario’s (Smiljkovic, 2025).
+1.2.5	Beperkingen en Uitdagingen van VUI’s
+Ondanks de voordelen zijn er ook siginificante beperkingen die het gebruik en effectiviteit van VUI’s beïnvloeden. Ten eerste hebben VUI’s een beperkte geschiktheid voor discovery-taken. Ze zijn vooral geschikt voor lookup- en form-input taken, maar minder voor discovery-taken zoals het bladeren door een winkelwebsite (Bittner, Smiljkovic, 2025). Ten tweede kunnen voice assistants informatie alleen sequentieel presenteren, wat problematisch kan zijn voor complexe informatie te verwerken of wanneer gebruikers verschillende opties willen vergelijken (Bittner). Ten derde blijven er uitdaginen bestaan op het gebied van spraakherkenning en contextbegrip. 
+Hoewel spraakherkenning duidelijk is verbeterd, blijven er problemen met verschillende accenten,dialecten en het begrijpen van contextuele nuances (Deshmukh & Chalmeta, 2024). Ten vierde roept het opnemen en opslaan van spraakgegevens vragen op over privacy en beveiliging, wat kan leiden tot onzekerheid en frustratie (Tangivel). Ten slotte kunnen omgevingsfactoren zoals achtergrondgeluid, akoestiek en andere omgevingsomstandigheden de prestaties van VUI’s negatief beïnvloeden (Deshmukh & Chalmeta, 2024).
+1.2.6	Vergelijking van VUI versus GUI
+Uit de literatuur blijkt dat VUI's en GUI's verschillende sterke punten hebben, wat suggereert 
+dat elke interfacevorm geschikt is voor specifieke contexten en taken. GUI's zijn beter geschikt 
+voor visuele exploratie en vergelijking, waarbij gebruikers verschillende opties naast elkaar 
+kunnen bekijken en evalueren. Bovendien excelleren GUI's bij complexe taken met meerdere 
+stappen, omdat zij gebruikers in staat stellen om visuele feedback te ontvangen en de voortgang 
+te volgen. GUI's zijn vooral beter geschikt voor taken waarbij visuele terugkoppeling essentieel is en wanneer gebruikers hun voortgang overzichtelijk willen bijhouden. Daarnaast zijn GUI's de voorkeur in situaties waar privacy vereist is of waar hardop spreken niet gepast of mogelijk is, zoals in openbare ruimtes of bibliotheken.
+Aan de andere kant zijn VUI's beter geschikt voor handsfree operaties, waarbij gebruikers hun 
+handen niet vrij hebben of niet naar een scherm kunnen kijken. VUI's excelleren ook bij 
+eenvoudige lookup-taken, waarbij gebruikers snel specifieke informatie willen opvragen zonder 
+door menu's te navigeren. Daarnaast zijn VUI's effectief voor snelle commando's en shortcuts, 
+wat de efficiëntie kan verhogen voor routine taken. VUI's bieden ook belangrijke voordelen voor 
+toegankelijkheid, vooral voor gebruikers met beperkingen die moeite hebben met traditionele 
+inputmethoden. Ten slotte zijn VUI's bijzonder waardevol in mobiele contexten waar handen 
+bezet zijn, zoals tijdens het autorijden of koken.
+
+Een fundamenteel verschil tussen GUI- en VUI-ontwerp ligt in het begrijpen van user intent (Pearl, 2018). In een mobiele app is het duidelijk wanneer een gebruiker op een knop heeft getikt of een menu-optie heeft geselecteerd. In een VUI kan het bedoelen van de gebruiker echter moeilijker te achterhalen zijn, omdat gebruikers op talloze verschillende manieren hetzelfde kunnen bedoelen. Dit vereist dat VUI-ontwerpers uitgebreide lijsten van mogelijke uitingen ontwikkelen en robuuste error handling implementeren voor situaties waarin het systeem de intentie niet begrijpt (Pearl, 2018). Daarnaast verschillen de deliverables voor VUI-ontwerp van die voor GUI-ontwerp: in plaats van wireframes en mockups creëren VUI-ontwerpers sample dialogs en flow diagrams die de mogelijke conversatiepaden tussen systeem en gebruiker weergeven (Pearl, 2018).
+ 
+1.2.7	Toekomstige ontwikkelingen
+De toekomst van VUI's wordt gekenmerkt door verschillende belangrijke ontwikkelingen die de technologie verder zullen verbeteren en uitbreiden. Ten eerste wordt verwacht dat natuurlijke taalverwerking en contextbewustzijn aanzienlijk zullen verbeteren, waardoor VUI's beter in staat zullen zijn om de intentie en context van gebruikers te begrijpen. Ten tweede zal multilinguale ondersteuning worden uitgebreid, samen met emotionele toonherkenning, wat VUI's in staat stelt om niet alleen wat gebruikers zeggen te begrijpen, maar ook hoe zij het zeggen. Ten derde zal er sprake zijn van diepere personalisatie op basis van gebruikersgedrag, waardoor VUI's kunnen leren van eerdere interacties en hun reacties kunnen aanpassen aan individuele gebruikersvoorkeuren. Ten vierde zal de integratie van VUI's in meer industrieën toenemen, waaronder gezondheidszorg, retail en automotive, wat nieuwe toepassingsmogelijkheden creëert. Ten slotte zullen AI-gedreven systemen evolueren om niet alleen woorden maar ook context te begrijpen, wat leidt tot meer intelligente en responsieve interacties (Smiljkovic, 2025; UXmatters, 2024).
+
+Een belangrijke ontwikkeling is de opkomst van multimodale interfaces, waarbij voice wordt gecombineerd met visuele displays (Pearl, 2018). Deze voice-forward devices, zoals de Echo Show en Google Smart Display, gebruiken voice als primaire interface maar niet als enige interface. Dit biedt voordelen voor situaties die baat hebben bij meer visuele elementen, zoals browsen, winkelen, het bekijken van video's of het presenteren van grotere hoeveelheden informatie. Error handling en turn-taking werken anders voor multimodale VUI's: als het systeem de gebruiker niet begrijpt, kan het terugvallen op visuele opties zoals knoppen of carousels, in plaats van te blijven reprompteren (Pearl, 2018). Deze ontwikkeling naar mixed modal interaction vertegenwoordigt een belangrijke verschuiving in interface design, waarbij de sterke punten van zowel voice als visuele interfaces worden gecombineerd (Dasgupta, 2018).
+1.2.8	Methodologische inzichten voor VUI-onderzoek
+Bittner (z.d.) benadrukt dat het ontwerpen van een VUI dezelfde fundamentele vaardigheden vereist als het ontwerpen van een visuele interface: formatief gebruikersonderzoek, snelle prototyping en regelmatige tests. Voor het testen van VUI's wordt een "Wizard of Oz" studie-ontwerp aanbevolen, waarbij de onderzoeker de rol van de voice assistant simuleert achter een scherm, wat authenticiteit waarborgt door gebruik te maken van text-to-speech applicaties.
+
+Wizard of Oz testing is een effectieve methode om VUI's te testen voordat ze volledig zijn gebouwd (Pearl, 2018). In tegenstelling tot usability testing voor GUI's, waar gebruikers vaak worden gevraagd om hardop te denken terwijl ze taken uitvoeren, is dit voor VUI's meestal niet mogelijk omdat het systeem ook luistert naar wat de gebruiker zegt. Daarom is het beter om gebruikersreacties te observeren terwijl ze taken voltooien en vervolgens follow-up vragen te stellen na elke taak (Pearl, 2018). Het verzamelen van user-research data vroeg in het ontwerpproces en het iteratief verbeteren van designs is cruciaal, omdat gebruikers op verschillende manieren kunnen reageren op prompts, inclusief manieren die niet waren verwacht (Pearl, 2018).
+1.3	Relevantie en Praktische toepassingen
+Het onderzoek naar Voice-User Interfaces heeft praktische relevantie in verschillende domeinen. Recent onderzoek in de zorgsector toont bijvoorbeeld aan dat spraakgestuurd rapporteren zorgprofessionals tot drie keer sneller laat rapporteren dan traditionele typmethoden, zonder verlies van kwaliteit (Vilans, HAN University of Applied Sciences & AWIZ, 2025). Dergelijke bevindingen onderstrepen het belang van een grondig begrip van wanneer en hoe VUI's effectief kunnen worden ingezet. Hoewel dit onderzoek zich richt op algemene digitale taken, kunnen de bevindingen ook inzichten bieden voor specifieke toepassingsdomeinen zoals zorgadministratie, onderwijs (bijvoorbeeld voor vergaderingen en lesopnames), en andere contexten waar handsfree of efficiënte interactie waardevol is. 
+2	Oplossingsvoorstel
+
+Om de verschillen tussen een Voice-User Interface (VUI) en een grafische gebruikersinterface (GUI) op een objectieve manier te onderzoeken, zal dit onderzoek een vergelijkende studie uitvoeren waarbij gebruikers dezelfde taken uitvoeren via beide interfaces binnen verschillende praktische contexten. In plaats van één generieke testomgeving, zal het onderzoek zich richten op meerdere specifieke use cases uit verschillende beroepsdomeinen en toepassingsgebieden. Deze aanpak maakt het mogelijk om context-specifieke inzichten te verkrijgen over wanneer en waarom VUI's of GUI's beter presteren in verschillende praktijksituaties.
+
+Het doel van deze opzet is om gebruikers in gecontroleerde omgevingen te laten ervaren hoe beide interfacevormen werken binnen realistische scenario's uit verschillende domeinen, zodat hun gedrag en reacties vergeleken kunnen worden. Tijdens de tests worden meetbare gegevens verzameld volgens gestandaardiseerde benchmarks, zoals de tijd die nodig is om een taak uit te voeren, het aantal fouten, de nauwkeurigheid en de tevredenheid van de gebruiker. Daarnaast worden ook kwalitatieve gegevens verzameld via observatie en interviews om inzicht te krijgen in de positieve en negatieve ervaringen van de deelnemers per use case.
+
+De analyse van deze resultaten zal duidelijk maken welke sterke en zwakke punten beide interfaces hebben op het vlak van gebruiksgemak, efficiëntie en gebruikerservaring binnen verschillende contexten. Op basis van de bevindingen kunnen context-specifieke aanbevelingen worden geformuleerd voor het ontwerp en gebruik van Voice-User Interfaces in vergelijking met traditionele grafische interfaces.
+
+2.1	Doelstelling
+
+De primaire doelstelling van dit onderzoek is het uitvoeren van een systematische vergelijkende studie tussen Voice-User Interfaces (VUI's) en grafische gebruikersinterfaces (GUI's) door middel van meerdere praktische use cases uit verschillende beroepsdomeinen en toepassingsgebieden. Deze aanpak maakt het mogelijk om context-specifieke inzichten te verkrijgen over wanneer en waarom VUI's of GUI's beter presteren in verschillende praktijksituaties.
+
+Het onderzoek heeft als doel een systematische vergelijkende evaluatie uit te v
+oeren van VUI's en GUI's op basis van gestandaardiseerde benchmarks, waarbij efficiëntie, 
+nauwkeurigheid en gebruikerservaring centraal staan. Door meerdere use cases te onderzoeken, 
+kunnen specifieke contexten, taken en beroepsdomeinen worden geïdentificeerd waarin de ene 
+interfacevorm significant beter presteert dan de andere. 
+Volgens Bittner (z.d.) vereist het ontwerpen van een VUI dezelfde fundamentele vaardigheden 
+als het ontwerpen van een visuele interface, wat suggereert dat een vergelijkende benadering 
+waardevolle inzichten kan opleveren.
+
+Het onderzoek omvat de selectie, ontwikkeling en testen van representatieve use cases uit verschillende domeinen, zoals zorgadministratie, retail, onderwijs en kantoorwerk. Deze use cases omvatten verschillende taaktypen, waaronder lookup-taken, form-input taken en navigatietaken, zoals beschreven in de literatuur (Bittner, z.d.; Smiljkovic, 2025). Door deze diversiteit aan taken en contexten te onderzoeken, kan worden bepaald welke interfacevorm het meest geschikt is voor specifieke scenario's.
+
+Voor de vergelijking worden duidelijke benchmarks en meetcriteria vastgesteld, waaronder taakvoltooiingstijd (Task Completion Time), foutpercentages en nauwkeurigheid, gebruikerservaring gemeten via de System Usability Scale (SUS), gebruikerstevredenheid en voorkeuren, en leercurve en gebruiksvriendelijkheid. Deze benchmarks zijn gebaseerd op best practices uit de literatuur voor VUI-onderzoek (Deshmukh & Chalmeta, 2024).
+
+Op basis van de empirische bevindingen worden concrete, context-specifieke aanbevelingen ontwikkeld voor wanneer VUI's versus GUI's het meest geschikt zijn. Deze aanbevelingen dragen bij aan de bestaande literatuur door praktische, empirische data te verzamelen over de effectiviteit van beide interfacevormen in verschillende contexten, wat een waardevolle aanvulling vormt op de theoretische inzichten die reeds beschikbaar zijn.
+
+2.2	Verwachte resultaten en deliverables
+
+Dit onderzoek zal empirische data opleveren die de theoretische inzichten uit de literatuur valideert of nuanceert. De verwachte resultaten omvatten kwantitatieve vergelijkingsdata die duidelijk maken welke interface sneller, accurater en gebruiksvriendelijker is voor specifieke taaktypen en contexten, evenals kwalitatieve inzichten over gebruikerservaringen, voorkeuren en contextuele factoren die deze beïnvloeden.
+
+De deliverables bestaan uit een uitgebreide vergelijkingsstudie met gedetailleerde resultaten per use case en taaktype, context-specifieke aanbevelingen voor wanneer VUI's versus GUI's het meest geschikt zijn, en praktische richtlijnen voor implementatie in verschillende beroepsdomeinen. Deze deliverables dragen bij aan de bestaande literatuur door praktische, context-specifieke richtlijnen te ontwikkelen die direct toepasbaar zijn voor ontwerpers en ontwikkelaars van gebruikersinterfaces.
+
+2.3	Relevantie en toepasbaarheid
+3	Onderzoeksaanpak en methodologie
+3.1	Onderzoeksdesign
+Dit onderzoek volgt een vergelijkende benadering waarbij gebruikers dezelfde taken uitvoeren via zowel een Voice-User Interface (VUI) als een grafische gebruikersinterface (GUI). De methodologie is gebaseerd op best practices uit de literatuur voor VUI-onderzoek en volgt een drie-fasen aanpak: literatuurstudie (zoals beschreven in hoofdstuk 1.2), praktische testen en analyse.
+3.2	Literatuurstudie
+De eerste fase bestaat uit een uitgebreide literatuurstudie om de huidige stand van zaken rond VUI's en GUI's te analyseren. De resultaten van deze literatuurstudie zijn beschreven in hoofdstuk 1.2, waar de definitie en kerncomponenten van VUI's, voordelen en beperkingen, best practices voor VUI-ontwerp, uitdagingen en toekomstige ontwikkelingen worden behandeld.
+3.3	Testomgeving en prototyping
+In de tweede fase worden meerdere testomgevingen ontwikkeld, elk gericht op een specifieke use case uit een verschillend beroepsdomein of toepassingsgebied. Smiljkovic (2025) benadrukt dat VUI's vooral geschikt zijn voor lookup- en form-input taken, maar minder voor discovery-taken. Elke use case zal daarom verschillende soorten taken bevatten die representatief zijn voor dat specifieke domein, waarbij rekening wordt gehouden met de beperkingen en mogelijkheden van beide interfacevormen zoals beschreven in de literatuur.
+
+De selectie van use cases gebeurt op basis van verschillende criteria. Ten eerste wordt gestreefd naar diversiteit in beroepsdomeinen, zoals zorg, retail, onderwijs en kantoorwerk, om een breed spectrum aan praktijksituaties te dekken. Ten tweede worden verschillende taaktypen per use case opgenomen, waaronder lookup-taken, form-input taken en navigatietaken, zoals geclassificeerd door Bittner (z.d.). Ten derde worden alleen realistische en praktisch relevante scenario's geselecteerd die representatief zijn voor werkelijke gebruikssituaties. Ten slotte wordt rekening gehouden met de haalbaarheid voor implementatie en testen, om ervoor te zorgen dat de use cases binnen de beschikbare tijd en middelen kunnen worden ontwikkeld en getest.
+
+Voorbeelden van use cases die in aanmerking komen voor dit onderzoek zijn zorgadministratie, waarbij taken zoals patiëntgegevens invoeren, medicatie opzoeken en afspraken plannen worden uitgevoerd. Recent onderzoek in de zorgsector toont aan dat spraakgestuurd rapporteren zorgprofessionals tot drie keer sneller laat rapporteren dan traditionele typmethoden (Vilans, HAN University of Applied Sciences & AWIZ, 2025), wat deze use case bijzonder relevant maakt. Een tweede use case betreft retail en e-commerce, waarbij productinformatie wordt opgezocht, bestellingen worden geplaatst en voorraad wordt gecontroleerd. Een derde use case richt zich op onderwijs, met taken zoals lesmateriaal opzoeken, notities maken en roosters raadplegen. Daarnaast kunnen use cases worden ontwikkeld voor kantoorwerk, waarbij e-mails worden opgezocht, agenda's worden beheerd en documenten worden gevonden, en voor klantenservice, waarbij klantgegevens worden opgezocht, tickets worden aangemaakt en informatie wordt verstrekt.
+
+Elke use case wordt geïmplementeerd met zowel een VUI- als een GUI-versie, waarbij de functionaliteit identiek blijft om een eerlijke vergelijking mogelijk te maken.
+3.4	Dataverzameling en Benchmarks
+Tijdens de tests worden zowel kwantitatieve als kwalitatieve gegevens verzameld om een uitgebreid beeld te krijgen van de gebruikerservaring met beide interfacevormen. De kwantitatieve metingen omvatten de tijd die nodig is om een taak te voltooien, ook wel task completion time genoemd, wat een belangrijke indicator is voor de efficiëntie van een interface. Deze meting wordt uitgevoerd per use case en per taak, waarbij gemiddelde, mediaan, minimum en maximum waarden worden geregistreerd voor zowel VUI als GUI. Daarnaast wordt het aantal fouten tijdens taakuitvoering geregistreerd, evenals het aantal herhalingen of correcties dat nodig is om een taak succesvol te voltooien. Het succespercentage van taakvoltooiing wordt gemeten om te bepalen in hoeverre gebruikers in staat zijn om taken succesvol af te ronden met elke interfacevorm, waarbij onderscheid wordt gemaakt tussen volledige voltooiing, gedeeltelijke voltooiing en mislukking.
+
+De kwalitatieve metingen omvatten observatie van gebruikersgedrag tijdens de taakuitvoering, wat inzicht geeft in hoe gebruikers omgaan met de verschillende interfaces en waar zij problemen ondervinden. Volgens Deshmukh & Chalmeta (2024) zijn belangrijke factoren die de acceptatie en effectiviteit van VUI's beïnvloeden: spraakherkenningsnauwkeurigheid, systeemresponsiviteit en gebruikersvertrouwen. Deze factoren worden meegenomen in de observaties en analyses. Na elke taak worden korte interviews afgenomen om directe feedback te verzamelen over de ervaring van de gebruiker, waarbij specifiek wordt gevraagd naar frustraties, positieve ervaringen en strategieën die gebruikers ontwikkelen. Daarnaast worden gebruikerstevredenheidsscores verzameld met behulp van de System Usability Scale (SUS), wat een gestandaardiseerde manier biedt om de gebruikerservaring te meten met scores van 0 tot 100. Ten slotte worden subjectieve ervaringen en voorkeuren van gebruikers gedocumenteerd om te begrijpen welke interfacevorm gebruikers prefereren en waarom, waarbij contextuele factoren die de voorkeur beïnvloeden worden geïdentificeerd.
+3.5	Analyse en vergelijking
+De derde fase bestaat uit een vergelijkende analyse van de resultaten tussen VUI en GUI. De analyse richt zich op verschillende aspecten van gebruikerservaring. Ten eerste wordt de efficiëntie onderzocht door te bepalen welke interface sneller is voor specifieke taken, wat wordt gemeten aan de hand van de task completion time en het aantal stappen dat nodig is om een taak te voltooien. Ten tweede wordt het gebruiksgemak geëvalueerd door te onderzoeken welke interface intuïtiever is en gemakkelijker te leren, wat wordt bepaald aan de hand van observaties en gebruikersfeedback. Ten derde wordt de gebruikerstevredenheid gemeten om te bepalen welke interface door gebruikers wordt geprefereerd en welke aspecten van elke interface als positief of negatief worden ervaren. Ten slotte wordt de contextafhankelijkheid onderzocht om te bepalen in welke situaties elke interface beter presteert, wat belangrijke inzichten kan opleveren voor het ontwerp en de implementatie van interfaces in verschillende contexten.
+3.6	Ethische overwegingen
+Bij het testen van VUI's moet rekening worden gehouden met privacykwesties, zoals het opnemen en opslaan van spraakgegevens. Alle deelnemers zullen geïnformeerde toestemming geven en de mogelijkheid hebben om hun gegevens te verwijderen. 
+
+3.7	Testprotocol Goose Applicatie
+
+Voor de Goose applicatie werd een specifiek testprotocol ontwikkeld dat rekening houdt met de unieke eigenschappen van een emotie-bewuste conversatie-interface. Het protocol omvat een within-subjects design waarbij elke deelnemer zowel de GUI- als de VUI-versie test.
+
+3.7.1	Testprocedure en Stappenplan
+
+De testprocedure per deelnemer duurt ongeveer 60 minuten en bestaat uit twaalf stappen. De eerste stap omvat het welkom heten van de deelnemer en het verkrijgen van informed consent, wat ongeveer 5 minuten duurt. De tweede stap betreft het afnemen van de pre-test vragenlijst met demografische gegevens en eerdere VUI-ervaring. De derde stap is een korte introductie van de Goose interface. 
+
+De vierde stap is de eerste testtaak, waarbij de deelnemer een conversatie voert met Goose via de GUI (typen) gedurende 10 minuten. De vijfde stap is het direct afnemen van de System Usability Scale (SUS) vragenlijst voor de GUI. Na een korte pauze volgt de zesde stap, een introductie van de VUI-functionaliteit en de beschikbare spraakcommando's.
+
+De zevende stap is de tweede testtaak, waarbij dezelfde conversatie wordt gevoerd via de VUI (spreken) gedurende 10 minuten. De achtste stap is het afnemen van de SUS vragenlijst voor de VUI. De negende stap is de post-test vergelijkingsvragenlijst. De tiende stap is een semi-gestructureerd interview van ongeveer 10 minuten. De elfde stap is de debriefing en de twaalfde stap is het bedanken van de deelnemer.
+
+Om volgorde-effecten te voorkomen wordt counterbalancing toegepast: oneven deelnemers starten met de GUI, even deelnemers starten met de VUI.
+
+3.7.2	Dataverzameling via de Applicatie
+
+De Goose applicatie verzamelt automatisch onderzoeksdata via de ResearchDataLogger service. Deze service registreert alle VUI-interacties inclusief transcripties, spraakcommando's en foutmeldingen. Daarnaast worden alle Hume AI emotie-analyses gelogd, waarbij voor elke uiting de gedetecteerde emoties, sentiment, arousal en risico-niveau worden vastgelegd, gekoppeld aan de specifieke tekst die werd geanalyseerd.
+
+De gelogde data omvat VUI-interacties zoals commando-type, transcript en succes/foutindicatie. De Hume-analyses bevatten het type analyse (audio, tekst of gecombineerd), de gedetecteerde emoties met scores, de dominante emotie, sentiment, arousal-niveau, risico-niveau, en de brontekst. Performance-metrics omvatten responstijden van de Hume API en succespercentages van spraakherkenning.
+
+Na afloop van elke testsessie kan de verzamelde data worden geëxporteerd als JSON-bestand voor verdere analyse. De data bevat een unieke sessie-identifier, timestamps, en een samenvatting met statistieken over het aantal interacties en gedetecteerde emoties.
+
+3.7.3	Dataverzameling via Observatie
+
+Naast de automatische logging wordt een observatieformulier ingevuld door de onderzoeker. Dit formulier registreert kwalitatieve observaties zoals gedrag tijdens het typen versus spreken, aarzeling of frustratie, aanpassingen in spreekstijl na mislukte herkenningen, en non-verbale signalen zoals gezichtsuitdrukkingen en lichaamstaal.
+
+Het observatieformulier bevat specifieke checkboxes voor veelvoorkomende gedragingen en ruimte voor open notities. Per taak worden de starttijd, eindtijd, aantal berichten, aantal geselecteerde opties, aantal ingevulde blanks en aantal fouten genoteerd.
+
+3.7.4	Vragenlijsten
+
+De pre-test vragenlijst verzamelt demografische gegevens en eerdere ervaring met spraakassistenten en AI-chatbots. Specifieke vragen betreffen de frequentie van VUI-gebruik, comfort-niveau bij hardop spreken tegen apparaten, en situaties waarin de deelnemer liever niet hardop zou spreken.
+
+De post-test vragenlijst vergelijkt de VUI- en GUI-ervaring op basis van gebruiksgemak, snelheid en prettigheid. VUI-specifieke vragen betreffen de kwaliteit van de spraakherkenning, natuurlijkheid van het spreken, duidelijkheid van de spraakcommando's en perceptie van de emotie-analyse.
+
+De System Usability Scale wordt tweemaal afgenomen, eenmaal na elke conditie, om een directe vergelijking mogelijk te maken. Het semi-gestructureerd interview biedt ruimte voor diepgaande doorvragen over de ervaring, specifiek gericht op de emotie-analyse perceptie en vergelijking tussen beide interfaces.
+
+4	Conceptuele oplossing
+
+De conceptuele oplossing voor dit onderzoek bestaat uit de ontwikkeling van meerdere geïntegreerde testomgevingen, elk gericht op een specifieke use case uit een verschillend beroepsdomein. Binnen elke testomgeving kunnen gebruikers dezelfde digitale taken uitvoeren via zowel een Voice-User Interface als een grafische gebruikersinterface. Deze aanpak is ontworpen om een eerlijke en objectieve vergelijking mogelijk te maken tussen beide interfacevormen binnen verschillende praktische contexten.
+
+4.1	Overzicht van de Testomgeving
+
+Het onderzoek omvat de ontwikkeling van twee concrete use cases, elk met een eigen testomgeving. Elke use case vertegenwoordigt een specifiek toepassingsgebied en bevat meerdere taken die representatief zijn voor dat domein. De use cases worden ontwikkeld in samenwerking met externe partners om realistische, praktische scenario's te creëren waarin VUI's en GUI's worden vergeleken. De use cases worden geselecteerd op basis van praktische relevantie, haalbaarheid, en de mogelijkheid tot realistische implementatie binnen bestaande applicaties. Deze aanpak zorgt ervoor dat de use cases representatief zijn voor werkelijke gebruikssituaties en binnen de beschikbare tijd en middelen kunnen worden ontwikkeld en getest.
+
+4.2	Architectuur van de Testomgeving
+
+Elke testomgeving bestaat uit drie hoofdcomponenten. De eerste component is de GUI-component, die bestaat uit een grafische interface met traditionele visuele elementen zoals knoppen, menu's en formulieren. De functionaliteit wordt aangepast aan de specifieke use case, terwijl een consistente gebruikerservaring wordt behouden over alle use cases om een eerlijke vergelijking mogelijk te maken.
+
+De tweede component is de VUI-component, die bestaat uit een voice interface. Voor de eerste use case (Goose applicatie) wordt een volledig functionerend VUI-systeem geïmplementeerd dat gebruik maakt van verschillende technologieën. De VUI-component maakt gebruik van spraakherkenning voor gebruikersinput en text-to-speech voor systeemresponsen. Een belangrijk aspect van deze implementatie is de integratie van emotie-analyse technologie, waarbij de emotie in de stem van de gebruiker wordt geanalyseerd en deze informatie wordt doorgegeven aan het conversatie-systeem. Voor deze emotie-analyse wordt primair gebruik gemaakt van Hume AI (https://platform.hume.ai/playground/webcam), waarbij tijdens het onderzoek ook alternatieve emotie-analyse technologieën worden geëvalueerd om de beste oplossing te identificeren. De geanalyseerde emotionele context wordt samen met de transcriptie van de gebruiker doorgegeven aan de ChatGPT API, die vervolgens een gepaste reactie genereert op basis van zowel de inhoud als de emotionele staat van de gebruiker.
+
+Voor de tweede use case (VAIA applicatie) wordt eveneens een volledig functionerend VUI-systeem geïmplementeerd. Deze implementatie omvat een web scraping component die cursusinformatie extraheert van opgegeven links, een AI-suggestie component die gebruik maakt van Large Language Models (zoals ChatGPT API) om formuliervelden voor te vullen op basis van de gescrapete informatie, en een VUI-component die gebruikers in staat stelt om formulieren in te vullen via spraak. De VUI-component maakt gebruik van spraakherkenning (bijvoorbeeld Web Speech API, Google Cloud Speech-to-Text, of Amazon Transcribe) om gesproken input te transcriberen en in formuliervelden te plaatsen. Daarnaast wordt text-to-speech technologie (zoals Google Text-to-Speech of Amazon Polly) gebruikt om AI-suggesties voor te lezen aan gebruikers, die vervolgens via spraakcommando's kunnen aangeven of suggesties worden geaccepteerd, gewijzigd of verworpen. De exacte toolkeuze voor elke component wordt tijdens de ontwikkeling bepaald op basis van technische haalbaarheid, nauwkeurigheid en gebruikerservaring.
+
+Voor het ontwerp van beide VUI-componenten worden sample dialogs ontwikkeld die zowel blue-sky paths (wanneer alles goed gaat) als error paths (wanneer dingen misgaan) omvatten, wat essentieel is voor een robuust VUI-ontwerp (Pearl, 2018).
+
+De derde component is de dataverzamelingscomponent, die automatische logging van alle interacties verzorgt, tijdmeting per taak en per stap uitvoert, foutregistratie en categorisering biedt, en exportmogelijkheden voor analyse bevat. Deze component maakt het mogelijk om zowel kwantitatieve als kwalitatieve gegevens te verzamelen tijdens de tests, wat essentieel is voor een grondige vergelijking tussen beide interfacevormen.
+
+4.3	Use Case Selectie en Taakdefinitie
+
+Dit onderzoek omvat twee concrete use cases die worden ontwikkeld in samenwerking met externe partners. Deze aanpak maakt het mogelijk om realistische, praktische scenario's te testen waarin VUI's en GUI's worden vergeleken binnen bestaande applicaties.
+
+De eerste use case betreft de "Goose" applicatie, ontwikkeld door het UCE Odisee research team. Goose is een applicatie die families en vrienden helpt bij communicatie en het bespreken van problemen door middel van een conversatie-interface. De applicatie maakt gebruik van de ChatGPT API met een specifieke prompt die is ontworpen om gebruikers te helpen bij het bespreken van persoonlijke problemen en het verbeteren van communicatie. 
+
+Voor dit onderzoek wordt een geavanceerde emotie-analyse component geïntegreerd in de Goose applicatie. Deze component analyseert de emotie in de stem van de gebruiker tijdens het spreken en geeft deze informatie door aan ChatGPT samen met de transcriptie van wat de gebruiker heeft gezegd. Dit maakt het mogelijk voor ChatGPT om meer context te hebben over de emotionele staat van de gebruiker, wat kan leiden tot meer gepaste en empathische reacties. De emotie-analyse wordt geïmplementeerd met behulp van Hume AI (https://platform.hume.ai/playground/webcam) of alternatieve emotie-analyse technologieën die tijdens het onderzoek worden geëvalueerd.
+
+Deze use case omvat verschillende taken die representatief zijn voor het gebruik van een emotioneel intelligente VUI. Ten eerste zijn er form-input taken waarbij gebruikers hun problemen of zorgen verbaal uiten, wat door het systeem wordt getranscribeerd en geanalyseerd. Ten tweede zijn er lookup-taken waarbij gebruikers informatie opvragen over communicatiestrategieën of advies zoeken. Ten derde zijn er conversatie-taken waarbij gebruikers een dialoog voeren met het systeem, waarbij de emotie-analyse continu wordt toegepast om de context te verrijken. Deze use case is bijzonder relevant omdat het de waarde onderzoekt van emotionele intelligentie in VUI's en hoe dit de gebruikerservaring kan verbeteren in vergelijking met een traditionele tekstgebaseerde interface.
+
+De tweede use case betreft een applicatie voor VAIA, eveneens ontwikkeld in samenwerking met het UCE Odisee research team. Deze applicatie stelt gebruikers in staat om hun eigen opleiding of leermateriaal toe te voegen aan een website door een link te verstrekken naar de cursusinformatie. Het systeem scrapet vervolgens de informatie van de opgegeven link en gebruikt kunstmatige intelligentie om automatisch suggesties te genereren voor het invullen van formulieren. Deze AI-suggesties worden gepresenteerd op de juiste plaatsen in het formulier, waardoor gebruikers tijd besparen en de kwaliteit van de ingevulde informatie wordt verbeterd.
+
+Voor dit onderzoek wordt een Voice-User Interface component geïntegreerd in de VAIA applicatie, waardoor gebruikers formulieren kunnen invullen via spraak in plaats van handmatige tekstinvoer. Deze implementatie omvat zowel het invullen van formulieren met spraak als het gebruik van AI-suggesties via voice interactie. De VUI-component moet in staat zijn om gesproken input te ontvangen, te transcriberen, en deze te plaatsen in de juiste formuliervelden. Daarnaast moet het systeem AI-suggesties kunnen voorlezen en gebruikers in staat stellen om deze suggesties te accepteren, te wijzigen of te verwerpen via spraakcommando's.
+
+Deze use case omvat verschillende taken die representatief zijn voor form-input taken met AI-ondersteuning. Ten eerste zijn er form-input taken waarbij gebruikers formuliervelden invullen via spraak, waarbij het systeem de gesproken input transcribeert en in de juiste velden plaatst. Ten tweede zijn er AI-suggestie taken waarbij het systeem suggesties genereert op basis van gescrapete cursusinformatie en deze voorleest aan de gebruiker, die vervolgens via spraak kan aangeven of de suggestie wordt geaccepteerd. Ten derde zijn er navigatie- en correctietaken waarbij gebruikers door het formulier navigeren, velden corrigeren of wijzigen via spraakcommando's. Deze use case is bijzonder relevant omdat het onderzoekt hoe VUI's presteren bij complexe form-input taken waarbij AI-ondersteuning wordt gecombineerd met voice interactie, wat een uitdagend scenario is gezien de sequentiële aard van spraak en de behoefte aan precisie bij formulierinvoer.
+
+De technische implementatie van deze use case vereist verschillende componenten. Voor web scraping kunnen tools zoals Beautiful Soup (Python), Puppeteer (JavaScript), of Scrapy worden gebruikt om cursusinformatie te extraheren van de opgegeven links. Voor AI-suggestie generatie kan gebruik worden gemaakt van Large Language Models zoals de ChatGPT API of andere LLM's die in staat zijn om gestructureerde informatie uit de gescrapete data te halen en deze te transformeren naar formuliervelden. Voor de Voice-User Interface component zijn verschillende opties beschikbaar: Web Speech API voor browser-gebaseerde spraakherkenning, Google Cloud Speech-to-Text of Amazon Transcribe voor meer geavanceerde spraakherkenning, en text-to-speech services zoals Google Text-to-Speech of Amazon Polly voor het voorlezen van AI-suggesties. De exacte toolkeuze en implementatie-aanpak zullen tijdens de ontwikkeling worden bepaald op basis van technische haalbaarheid, nauwkeurigheid en gebruikerservaring.
+
+4.4	Benchmarks en Vergelijkingscriteria
+
+Voor de vergelijking tussen VUI's en GUI's worden primaire benchmarks vastgesteld per use case en per taak. De eerste primaire benchmark betreft efficiëntie, waarbij de taakvoltooiingstijd in seconden wordt gemeten. De vergelijking wordt gemaakt op basis van de gemiddelde tijd tussen VUI en GUI, met als doelwaarde het identificeren van welke interface sneller is per taaktype. Voor de statistische analyse wordt gebruik gemaakt van een paired t-test of Wilcoxon signed-rank test, afhankelijk van de verdeling van de data.
+
+De tweede primaire benchmark betreft nauwkeurigheid, waarbij het percentage correcte voltooiingen en het aantal fouten worden gemeten. De vergelijking wordt gemaakt op basis van het foutpercentage tussen VUI en GUI, met als doelwaarde het identificeren van welke interface accurater is. Voor de statistische analyse wordt gebruik gemaakt van een chi-square test of Fisher's exact test, afhankelijk van de steekproefgrootte.
+
+De derde primaire benchmark betreft gebruikerservaring, waarbij de System Usability Scale (SUS) score wordt gemeten op een schaal van 0 tot 100. De vergelijking wordt gemaakt op basis van de gemiddelde SUS-score tussen VUI en GUI, met als doelwaarde het identificeren van welke interface gebruiksvriendelijker is. Voor de statistische analyse wordt gebruik gemaakt van een paired t-test, wat geschikt is voor het vergelijken van gepaarde observaties.
+
+De vierde primaire benchmark betreft effectiviteit, waarbij het succespercentage wordt gemeten, gedefinieerd als de volledige voltooiing van een taak zonder hulp. De vergelijking wordt gemaakt op basis van het succespercentage tussen VUI en GUI, met als doelwaarde het identificeren van welke interface betrouwbaarder is. Voor de statistische analyse wordt gebruik gemaakt van een chi-square test om significante verschillen te identificeren.
+
+Naast de primaire benchmarks worden secundaire benchmarks gemeten. De eerste secundaire benchmark betreft interactie-efficiëntie, waarbij het aantal stappen of interacties nodig per taak wordt gemeten, met een vergelijking tussen het gemiddeld aantal klikken voor GUI en het aantal spraakcommando's voor VUI. De tweede secundaire benchmark betreft de leercurve, waarbij de verbetering in prestaties over meerdere pogingen wordt gemeten, met een vergelijking van de leersnelheid tussen VUI en GUI. De derde secundaire benchmark betreft gebruikerstevredenheid, waarbij de subjectieve voorkeur per use case wordt gemeten, inclusief contextuele factoren die de voorkeur beïnvloeden. De vierde secundaire benchmark betreft wenselijkheid en acceptatie, waarbij wordt gemeten in hoeverre gebruikers bereid zijn om tegen een apparaat te spreken en hoe comfortabel zij zich voelen bij het gebruik van een VUI. Deze benchmark is belangrijk omdat een van de belangrijkste barrières voor VUI-adoptie de bereidheid is om hardop tegen een apparaat te spreken, vooral in openbare of professionele omgevingen. De meting omvat vragen over comfortniveau bij het spreken tegen een apparaat, gevoelens van gêne of ongemak, privacyzorgen, en de bereidheid om VUI's te gebruiken in verschillende contexten (zoals alleen thuis versus in een kantooromgeving). Deze meting wordt uitgevoerd via vragenlijsten en interviews na het gebruik van beide interfaces, waarbij gebruikers worden gevraagd naar hun ervaringen en gevoelens tijdens het gebruik van de VUI. De vergelijking wordt gemaakt op basis van de gemiddelde acceptatiescores tussen verschillende contexten en use cases, met als doelwaarde het identificeren van factoren die de wenselijkheid van VUI-gebruik beïnvloeden. Uit de literatuur blijkt dat GUI's de voorkeur hebben in situaties waar privacy vereist is of waar hardop spreken niet gepast of mogelijk is, zoals in openbare ruimtes of bibliotheken (Bittner, z.d.), wat deze benchmark relevant maakt voor het begrijpen van wanneer en waar VUI's acceptabel zijn voor gebruikers.
+
+Tenslotte wordt een cross-use case analyse uitgevoerd, waarbij prestaties per taaktype worden vergeleken over alle use cases. Deze analyse identificeert patronen in wanneer VUI beter presteert en wanneer GUI beter presteert, waarbij contextuele factoren die prestaties beïnvloeden worden geïdentificeerd. Op basis van deze analyse worden domein-specifieke aanbevelingen geformuleerd, zoals beschreven in de literatuur (Bittner, z.d.; Smiljkovic, 2025).
+
+4.5	Testscenario's en Procedure
+
+Voor elke use case worden gestandaardiseerde testscenario's ontwikkeld die gelijkwaardig zijn in complexiteit voor beide interfaces, realistische gebruikssituaties representeren, meetbare resultaten opleveren, en verschillende moeilijkheidsgraden bevatten, variërend van eenvoudig tot gemiddeld tot complex. Deze gestandaardiseerde aanpak zorgt ervoor dat de vergelijking tussen beide interfacevormen eerlijk en objectief is, zoals aanbevolen door Bittner (z.d.) voor vergelijkend gebruikersonderzoek.
+
+De testprocedure per use case volgt een gestructureerde aanpak. Eerst wordt een introductie gegeven met instructies voor de deelnemer, waarbij wordt uitgelegd wat er van hen wordt verwacht en hoe de test zal verlopen. Vervolgens wordt een korte oefensessie gehouden met beide interfaces, zodat deelnemers vertrouwd raken met beide interfacevormen voordat de daadwerkelijke test begint. Daarna worden de testtaken uitgevoerd, waarbij gebruik wordt gemaakt van counterbalancing: de helft van de deelnemers start met de VUI, terwijl de andere helft start met de GUI, om te voorkomen dat de volgorde van invloed is op de resultaten. Na het voltooien van de taken met elke interface wordt de System Usability Scale (SUS) vragenlijst afgenomen om de gebruikerservaring te meten. Na elke use case wordt een kort interview afgenomen om directe feedback te verzamelen over de ervaring van de gebruiker. Ten slotte wordt een eindinterview gehouden met een algemene vergelijking tussen beide interfacevormen, waarbij deelnemers worden gevraagd naar hun voorkeuren en de redenen daarvoor.
+
+
+ 
+
+5	Praktische Uitwerking
+
+Dit hoofdstuk beschrijft de praktische implementatie van de Voice-User Interface componenten voor beide use cases: de VAIA applicatie en de Goose applicatie. Voor elke implementatie worden de technologische keuzes, architectuur, uitdagingen en oplossingen besproken.
+
+5.1	VAIA Applicatie: Voice-gestuurde Formulierinvulling
+
+De VAIA applicatie stelt gebruikers in staat om opleidingen en leermateriaal toe te voegen aan de VAIA-website. De bestaande applicatie bevatte reeds AI-suggesties voor formuliervelden op basis van web scraping. Voor dit onderzoek werd een volledige Voice-User Interface component geïntegreerd die gebruikers in staat stelt om het volledige formulier via spraak in te vullen.
+
+5.1.1	Technologische Keuzes en Architectuur
+
+Voor de spraakherkenning en text-to-speech functionaliteit werd gekozen voor de Web Speech API, een browser-native oplossing die beschikbaar is in moderne browsers zoals Chrome en Edge. Deze keuze werd gemaakt om verschillende redenen. Ten eerste vereist de Web Speech API geen externe API-sleutels of cloudservices, wat de implementatie vereenvoudigt en privacyvriendelijker maakt. Ten tweede biedt de API ondersteuning voor Nederlandse spraakherkenning via de taalinstelling 'nl-BE', wat essentieel is voor dit Nederlandstalig onderzoek. Ten derde is de API direct beschikbaar in de browser zonder extra dependencies, wat de laadtijd en complexiteit vermindert.
+
+[hier figuur met architectuurdiagram van de VUI-componenten in VAIA]
+
+De architectuur van de VUI-implementatie bestaat uit vier hoofdcomponenten. De eerste component is de VUIService, een singleton service die de Web Speech API encapsuleert en een event-gebaseerde interface biedt voor spraakherkenning en text-to-speech. De tweede component is de VUIControlComponent, een Vue.js component die de gebruikersinterface voor de VUI beheert en spraakcommando's parseert. De derde component is de voiceCommandHandlers module, die alle spraakcommando's verwerkt en de bijbehorende acties uitvoert. De vierde component is de formFieldNavigator, die verantwoordelijk is voor de navigatie tussen formuliervelden via spraak.
+
+5.1.2	VUIService: Spraakherkenning en Text-to-Speech
+
+De VUIService vormt het hart van de spraakinteractie en beheert zowel de spraakherkenning (ASR) als de text-to-speech (TTS) functionaliteit. De service is geïmplementeerd als een singleton class die de Web Speech API abstraheert en een consistente interface biedt voor de rest van de applicatie.
+
+Codefragment 5.1: Initialisatie van de VUIService met Nederlandse spraakherkenning
+
+class VUIService {
+  private recognition: SpeechRecognition | null = null;
+  private synth: SpeechSynthesis | null = null;
+
+  constructor() {
+    if (typeof window === 'undefined') return;
+    
+    const SpeechRecognition = (window as any).SpeechRecognition 
+      || (window as any).webkitSpeechRecognition;
+    this.synth = window.speechSynthesis;
+
+    if (SpeechRecognition) {
+      this.recognition = new SpeechRecognition();
+      this.setupRecognition();
+    }
+
+    if (this.synth) this.findDutchVoice();
+  }
+
+  private setupRecognition(): void {
+    if (!this.recognition) return;
+
+    this.recognition.continuous = true;
+    this.recognition.interimResults = true;
+    this.recognition.lang = 'nl-BE';
+    // ... event handlers
+  }
+}
+
+Een belangrijke ontwerpbeslissing was het gebruik van continuous mode voor de spraakherkenning, wat betekent dat de herkenning actief blijft totdat de gebruiker deze expliciet stopt. Dit verschilt van de standaard single-shot mode waarbij de herkenning stopt na één uiting. De continuous mode werd gekozen omdat formulierinvulling via spraak meerdere opeenvolgende commando's vereist, en het herhaaldelijk moeten activeren van de spraakherkenning de gebruikerservaring zou verslechteren.
+
+Een uitdaging bij het gebruik van continuous mode was dat de Web Speech API soms vastloopt wanneer er geen spraak wordt gedetecteerd. Om dit op te lossen werd een timeout-mechanisme geïmplementeerd dat de herkenning automatisch herstart na vijf seconden inactiviteit.
+
+Codefragment 5.2: Timeout-mechanisme voor het herstarten van de spraakherkenning
+
+this.recognition.onresult = (event: SpeechRecognitionEvent) => {
+  const lastResult = event.results[event.results.length - 1];
+  const transcript = lastResult[0].transcript;
+
+  if (this.restartTimeout) {
+    clearTimeout(this.restartTimeout);
+    this.restartTimeout = null;
+  }
+
+  if (!lastResult.isFinal) {
+    this.restartTimeout = setTimeout(() => {
+      if (this.isListening && this.recognition) {
+        try {
+          this.recognition.stop();
+          setTimeout(() => {
+            if (this.isListening && this.recognition) 
+              this.recognition.start();
+          }, 100);
+        } catch (e) {}
+      }
+    }, 5000);
+  }
+};
+
+Voor de text-to-speech functionaliteit werd specifiek gezocht naar Nederlandse stemmen, met een voorkeur voor Belgisch-Nederlandse stemmen (nl-BE). Dit werd geïmplementeerd via een voice selection algoritme dat de beschikbare stemmen filtert op taalcode.
+
+Codefragment 5.3: Selectie van Nederlandse stem voor text-to-speech
+
+private findDutchVoice(): void {
+  if (!this.synth) return;
+
+  const loadVoices = () => {
+    const voices = this.synth!.getVoices();
+    const dutchVoices = voices.filter(v => 
+      v.lang.startsWith('nl') || 
+      v.name.toLowerCase().includes('dutch') || 
+      v.name.toLowerCase().includes('nederlands')
+    );
+
+    if (dutchVoices.length > 0) {
+      this.selectedVoice = dutchVoices.find(v => v.lang === 'nl-BE') 
+        || dutchVoices[0];
+    } else {
+      this.selectedVoice = voices.find(v => v.default) || voices[0] || null;
+    }
+  };
+
+  if (this.synth.getVoices().length > 0) loadVoices();
+  else this.synth.onvoiceschanged = loadVoices;
+}
+
+Een belangrijk probleem dat werd ondervonden is dat spraakherkenning en text-to-speech niet gelijktijdig kunnen werken. Wanneer het systeem spreekt via text-to-speech, hoort de spraakherkenning deze output en interpreteert deze als gebruikersinput, wat leidt tot een feedback loop. Om dit op te lossen werd een mechanisme geïmplementeerd dat de spraakherkenning automatisch pauzeert tijdens text-to-speech en deze hervat na afloop.
+
+Codefragment 5.4: Coördinatie tussen spraakherkenning en text-to-speech
+
+speak(text: string): Promise<void> {
+  return new Promise((resolve) => {
+    if (!this.synth) { resolve(); return; }
+
+    this.synth.cancel();
+    this.wasListeningBeforeSpeech = this.isListening;
+    if (this.isListening && this.recognition) this.recognition.stop();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'nl-BE';
+    if (this.selectedVoice) utterance.voice = this.selectedVoice;
+
+    const handleEnd = () => {
+      this.isSpeaking = false;
+      if (this.wasListeningBeforeSpeech && this.recognition) {
+        setTimeout(() => {
+          try { 
+            if (!this.isListening) this.recognition!.start(); 
+          } catch (e) {}
+        }, 300);
+      }
+      resolve();
+    };
+
+    utterance.onend = handleEnd;
+    utterance.onerror = handleEnd;
+    this.synth.speak(utterance);
+  });
+}
+
+5.1.3	Spraakcommando Parsing en Verwerking
+
+Een van de grootste uitdagingen bij het ontwikkelen van een VUI is het correct interpreteren van gebruikersuitingen. In tegenstelling tot een GUI, waar gebruikersacties beperkt zijn tot voorgedefinieerde interacties zoals klikken en typen, kunnen gebruikers in een VUI op talloze manieren dezelfde intentie uitdrukken. Dit vereist robuuste parsing van spraakcommando's.
+
+Voor de VAIA applicatie werden verschillende categorieën spraakcommando's geïmplementeerd. De eerste categorie betreft navigatiecommando's, zoals "ga naar titel", "volgende veld" en "vorige veld". De tweede categorie betreft invoercommando's, zoals "schrijf [tekst]" en "vul [veld] in met [tekst]". De derde categorie betreft selectiecommando's, zoals "selecteer nummer 3" en "accepteer suggestie". De vierde categorie betreft bewerkingscommando's, zoals "verbeter maak korter" voor AI-gestuurde tekstbewerking. De vijfde categorie betreft hulpcommando's, zoals "lees veld", "wis veld" en "stop".
+
+[hier figuur met overzicht van spraakcommando categorieën en voorbeelden]
+
+Een specifieke uitdaging was het ondersteunen van Nederlandse getalwoorden in spraakcommando's. Gebruikers kunnen zowel "selecteer 3" als "selecteer drie" zeggen, en beide moeten correct worden geïnterpreteerd. Hiervoor werd een mapping geïmplementeerd van Nederlandse getalwoorden naar numerieke waarden.
+
+Codefragment 5.5: Mapping van Nederlandse getalwoorden naar cijfers
+
+const NUMBER_WORDS: Record<string, number> = {
+  'een': 1, 'één': 1, 'twee': 2, 'drie': 3, 'vier': 4, 'vijf': 5,
+  'zes': 6, 'zeven': 7, 'acht': 8, 'negen': 9, 'tien': 10, 
+  'elf': 11, 'twaalf': 12, 'dertien': 13, 'veertien': 14, 
+  'vijftien': 15, 'zestien': 16, 'zeventien': 17, 'achttien': 18, 
+  'negentien': 19, 'twintig': 20, 'eenentwintig': 21,
+  // ... tot en met 31 voor datumselectie
+  'nul': 0
+};
+
+export const parseNumber = (text: string): number | null => {
+  const num = NUMBER_WORDS[text] ?? parseInt(text, 10);
+  return isNaN(num) ? null : num;
+};
+
+Evenzo werd ondersteuning geïmplementeerd voor Nederlandse maandnamen en gespelde letters, wat nodig is voor datum-invoer en het spellen van URLs.
+
+Codefragment 5.6: Mapping van Nederlandse maandnamen en gespelde letters
+
+const MONTH_MAP: Record<string, number> = {
+  'januari': 1, 'january': 1, 'jan': 1, 
+  'februari': 2, 'february': 2, 'feb': 2,
+  'maart': 3, 'march': 3, 'mrt': 3, 
+  'april': 4, 'apr': 4, 
+  'mei': 5, 'may': 5,
+  // ... alle maanden
+};
+
+const SPELLED_LETTERS: Record<string, string> = {
+  'aa': 'A', 'bee': 'B', 'cee': 'C', 'dee': 'D', 'ee': 'E', 'ef': 'F',
+  'gee': 'G', 'ha': 'H', 'ie': 'I', 'jee': 'J', 'ka': 'K', 'el': 'L',
+  'em': 'M', 'en': 'N', 'oh': 'O', 'pee': 'P', 'que': 'Q', 'er': 'R',
+  'es': 'S', 'tee': 'T', 'uu': 'U', 'vee': 'V', 'wee': 'W', 'ix': 'X',
+  'ij': 'Y', 'zet': 'Z'
+};
+
+Een belangrijke les die werd geleerd tijdens de ontwikkeling is dat Engelse woorden in Nederlandse spraakherkenning vaak slecht worden herkend. Het woord "edit" werd bijvoorbeeld inconsistent herkend, wat leidde tot de beslissing om Nederlandse triggerwoorden te gebruiken zoals "verbeter", "bewerk" en "wijzig" voor de bewerkingsfunctionaliteit.
+
+5.1.4	Formuliernavigatie via Spraak
+
+Een essentieel onderdeel van de VUI is de mogelijkheid om door het formulier te navigeren via spraakcommando's. Dit vereist het bijhouden van de veldvolgorde per formulierstap en het correct focussen van verschillende veldtypen, waaronder tekstvelden, dropdowns, radio buttons en checkboxes.
+
+De formuliernavigatie werd geïmplementeerd via de formFieldNavigator module, die de veldvolgorde definieert en functies biedt voor navigatie naar specifieke velden of naar het volgende/vorige veld.
+
+Codefragment 5.7: Definitie van veldvolgorde per formulierstap
+
+export type FormStep = 1 | 2;
+
+const STEP_1_ORDER: FieldKey[] = [
+  'title', 'introduction', 'subtitle', 'description', 
+  'courseLink', 'courseType', 'startDate', 'endDate', 
+  'startTime', 'endTime'
+];
+
+const STEP_2_ORDER: FieldKey[] = [
+  'organisers', 'PrimaryTargetGroup', 'targetGroup', 
+  'knowledgeLevel', 'requirements', 'priceLevel', 'exactPrice', 
+  'afterCourseGoals', 'scopeOfApplication', 'ethicDomains',
+  'certificate', 'language', 'totalHours', 'locationZone', 
+  'locationAddress', 'firstName', 'lastName', 'email', 
+  'organisationName'
+];
+
+Een significante uitdaging was het correct focussen van dropdown-velden. In tegenstelling tot standaard input-velden, zijn dropdowns complexe componenten met meerdere interactieve elementen. De navigatie moest niet alleen het veld focussen, maar ook de dropdown automatisch openen zodat de gebruiker direct opties kan selecteren via spraak.
+
+Codefragment 5.8: Focuslogica voor dropdown-velden
+
+const focusFieldElement = (key: FieldKey, el: HTMLElement): void => {
+  // Eerst alle open dropdowns sluiten
+  closeAllDropdowns();
+  
+  setTimeout(() => {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    const dropdownContainer = el.closest('.dropdown-container');
+    
+    if (dropdownContainer) {
+      // Focus de filter input indien beschikbaar
+      const filterInput = dropdownContainer.querySelector('input.filter');
+      if (filterInput) {
+        filterInput.focus();
+      } else {
+        el.focus?.();
+      }
+      
+      // Open de dropdown automatisch
+      const header = dropdownContainer.querySelector('.dropdown-header');
+      const isOpen = header?.classList.contains('open');
+      if (header && !isOpen) {
+        setTimeout(() => header.click(), 100);
+      }
+    } else {
+      el.focus?.();
+    }
+  }, 50);
+};
+
+Een probleem dat tijdens het testen werd ontdekt was dat dropdowns open bleven staan bij navigatie naar een volgend veld, wat verwarrend was voor gebruikers. Dit werd opgelost door een closeAllDropdowns functie toe te voegen die wordt aangeroepen voordat naar een nieuw veld wordt genavigeerd.
+
+5.1.5	AI-gestuurde Tekstbewerking via Spraak
+
+Een innovatieve functionaliteit die werd toegevoegd is de mogelijkheid om tekst te bewerken via spraakcommando's met behulp van ChatGPT. Gebruikers kunnen bijvoorbeeld zeggen "verbeter maak korter" of "verbeter maak professioneler", waarna de huidige veldinhoud naar ChatGPT wordt gestuurd met de bewerkingsinstructie en het resultaat automatisch wordt ingevuld.
+
+[hier figuur met sequentiediagram van AI-gestuurde tekstbewerking flow]
+
+De implementatie maakt gebruik van de OpenAI API via een dedicated EditService. Een belangrijke ontwerpbeslissing was het implementeren van zowel een AI-gestuurde als een lokale fallback voor bewerkingen. De lokale fallback zorgt ervoor dat basisbewerkingen zoals hoofdletters, vervanging en inkorten ook werken zonder API-verbinding.
+
+Codefragment 5.9: EditService met OpenAI integratie en lokale fallback
+
+async editText(originalText: string, instruction: string, 
+               fieldType: string = 'text'): Promise<EditResponse> {
+  // Cache check
+  const cacheKey = `${originalText}|${instruction}|${fieldType}`.toLowerCase();
+  if (this.cache.has(cacheKey)) {
+    return { editedText: this.cache.get(cacheKey)!, success: true };
+  }
+
+  // Probeer OpenAI eerst
+  const aiResult = await this.callOpenAI([
+    {
+      role: 'system',
+      content: `Je bent een tekstbewerker. De gebruiker geeft je een tekst 
+        en een instructie. Pas de tekst aan volgens de instructie en geef 
+        ALLEEN de aangepaste tekst terug, geen uitleg.`
+    },
+    {
+      role: 'user',
+      content: `Originele tekst: "${originalText}"
+                Instructie: ${instruction}
+                Geef alleen de aangepaste tekst terug:`
+    }
+  ]);
+
+  if (aiResult) {
+    let cleanResult = aiResult.replace(/^["']|["']$/g, '').trim();
+    this.cache.set(cacheKey, cleanResult);
+    return { editedText: cleanResult, success: true };
+  }
+
+  // Fallback naar lokale verwerking
+  const fallbackResult = this.applyLocalEdit(originalText, instruction);
+  return { editedText: fallbackResult, success: true };
+}
+
+Een initieel probleem was dat de Firebase Cloud Functions die oorspronkelijk waren gepland voor de OpenAI-integratie CORS-fouten veroorzaakten tijdens lokale ontwikkeling. Dit werd opgelost door direct de OpenAI API aan te roepen vanuit de frontend met een API-sleutel opgeslagen in een environment variabele. Hoewel dit niet ideaal is voor productie-omgevingen vanwege de blootstelling van de API-sleutel, was het voldoende voor het onderzoeksdoel.
+
+5.1.6	Dropdown-selectie via Spraak
+
+Een specifieke uitdaging was het selecteren van opties in dropdown-menu's via spraak. De VAIA-applicatie bevat meerdere dropdowns met soms tientallen opties, zoals de organisatoren-selector met meer dan 100 opties.
+
+De oplossing was het toewijzen van nummers aan elke dropdown-optie, zodat gebruikers kunnen zeggen "selecteer 3" om de derde optie te selecteren. Dit vereiste aanpassingen aan de dropdown-componenten om nummers te tonen en te reageren op spraakcommando's.
+
+[hier figuur met screenshot van dropdown met genummerde opties]
+
+Codefragment 5.10: Berekening van sequentiële nummering voor dropdown-opties
+
+// In InputFieldDropdownSelectComponent.vue
+const getDisplayNumber = (groupIndex: number, optionIndex: number): number => {
+  let number = 1;
+  for (let g = 0; g < groupIndex; g++) {
+    number += filteredOptions.value[g]?.options.length || 0;
+  }
+  return number + optionIndex;
+};
+
+Een bug die werd ontdekt tijdens het testen was dat de nummering niet correct was wanneer dezelfde optienaam in meerdere groepen voorkwam (bijvoorbeeld "met AI aan de slag" verscheen tweemaal). De oorspronkelijke implementatie gebruikte de optienaam als identifier, wat resulteerde in dubbele nummers. Dit werd opgelost door de nummering te baseren op de positie in de gefilterde lijst in plaats van de optienaam.
+
+5.1.7	Ondervonden Problemen en Oplossingen
+
+Tijdens de ontwikkeling van de VAIA VUI-component werden verschillende significante problemen ondervonden. Het eerste probleem betrof de spraakherkenning van Engelse woorden. De Web Speech API geconfigureerd voor Nederlands (nl-BE) herkent Engelse woorden inconsistent. Het woord "edit" werd soms herkend als "edith", "edit", of helemaal niet. De oplossing was het gebruik van Nederlandse equivalenten zoals "verbeter", "bewerk" en "wijzig".
+
+Het tweede probleem betrof de feedback loop tussen TTS en ASR. Wanneer het systeem spreekt, hoort de spraakherkenning dit en probeert het te interpreteren als een commando. Dit leidde tot onverwacht gedrag. De oplossing was het implementeren van een mechanisme dat de spraakherkenning pauzeert tijdens text-to-speech output en een filter die bekende systeemuitingen negeert.
+
+Codefragment 5.11: Filtering van systeemuitingen om feedback loops te voorkomen
+
+const systemPhrases = [
+  'genavigeerd naar', 'ingevuld', 'geaccepteerd', 'afgewezen', 
+  'commando niet herkend', 'ai suggestie', 'geen veld', 
+  'geen suggestie', 'type opleiding geselecteerd'
+];
+
+if (systemPhrases.some(p => transcript.toLowerCase().includes(p))) {
+  return; // Negeer systeem-gegenereerde uitingen
+}
+
+Het derde probleem betrof de dropdown-focus bij navigatie. Bij het navigeren naar een dropdown-veld werd de dropdown niet automatisch geopend, wat betekende dat gebruikers een extra commando nodig hadden om de dropdown te openen voordat ze een optie konden selecteren. De oplossing was het automatisch openen van dropdowns bij focus en het automatisch sluiten bij navigatie naar een ander veld.
+
+Het vierde probleem betrof commando-debouncing. Soms werd hetzelfde commando meerdere keren uitgevoerd omdat de spraakherkenning meerdere "final" resultaten rapporteerde voor dezelfde uiting. De oplossing was het implementeren van debouncing met een tijdsvenster van 500 milliseconden.
+
+Codefragment 5.12: Debouncing van spraakcommando's
+
+let lastCommandTime = 0;
+let lastCommandType = '';
+const DEBOUNCE_MS = 500;
+
+const handleCommand = (command: string, transcript: string) => {
+  const now = Date.now();
+  if (command === lastCommandType && (now - lastCommandTime) < DEBOUNCE_MS) {
+    return; // Negeer duplicaat commando
+  }
+  lastCommandTime = now;
+  lastCommandType = command;
+  // ... verwerk commando
+};
+
+5.2	Goose Applicatie: Emotie-bewuste Conversatie-interface
+
+De Goose applicatie is een conversatie-interface ontwikkeld door het UCE Odisee research team die families en vrienden helpt bij communicatie en het bespreken van problemen. De bestaande applicatie maakte gebruik van ChatGPT voor het genereren van gepaste reacties. Voor dit onderzoek werd een geavanceerde Voice-User Interface met emotie-analyse geïntegreerd, zodat de emotionele staat van de gebruiker mee in rekening wordt gebracht bij het formuleren van antwoorden.
+
+5.2.1	Technologische Keuzes en Architectuur
+
+Voor de spraakherkenning en text-to-speech werd, net als bij de VAIA applicatie, gekozen voor de Web Speech API. Deze keuze werd consistent gehouden over beide projecten om vergelijkbaarheid te waarborgen en omdat de API voldoende ondersteuning biedt voor Nederlandse spraak.
+
+Voor de emotie-analyse werd gekozen voor het Hume AI platform (https://platform.hume.ai/), specifiek de Expression Measurement API. Hume AI werd gekozen om verschillende redenen. Ten eerste biedt het platform gespecialiseerde modellen voor zowel prosodische analyse (stemkenmerken zoals toon, tempo en intensiteit) als taalkundige analyse (emotie in tekst). Ten tweede ondersteunt Hume AI meerdere talen, waaronder Nederlands en Vlaams, wat essentieel is voor dit onderzoek. Ten derde biedt de API een uitgebreide set van meer dan 40 emotiecategorieën, wat veel gedetailleerder is dan simpele sentiment-analyse.
+
+[hier figuur met architectuurdiagram van Goose emotie-analyse integratie]
+
+De architectuur van de Goose VUI-implementatie bestaat uit vijf hoofdcomponenten. De eerste component is de VUIService, die de Web Speech API encapsuleert voor spraakherkenning en text-to-speech. De tweede component is de HumeExpressionService, die verantwoordelijk is voor alle emotie-analyse via de Hume AI API. De derde component is de EnhancedSafetyService, die crisisdetectie en veiligheidscontroles uitvoert op basis van zowel trefwoorden als emotie-analyse. De vierde component is de VoiceCommandParser, die spraakcommando's interpreteert voor navigatie en acties. De vijfde component is de ResearchDataLogger, die alle interacties en emotie-analyses registreert voor onderzoeksdoeleinden.
+
+5.2.2	VUIService: Spraakherkenning en Spraaksynthese
+
+De VUIService in Goose werd anders geïmplementeerd dan in VAIA. Waar VAIA een complexer systeem met continuous listening en timeout-mechanismen vereiste vanwege de formuliernavigatie, vereiste Goose een eenvoudiger maar robuuster systeem dat naadloos integreert met de conversatie-interface.
+
+Codefragment 5.14: VUIService initialisatie met event-gebaseerde architectuur
+
+class VUIService {
+  private recognition: any = null;
+  private synth: SpeechSynthesis | null = null;
+  private isListening = false;
+  private isSpeaking = false;
+  private eventHandlers: VUIEventHandler[] = [];
+  private selectedVoice: SpeechSynthesisVoice | null = null;
+
+  constructor() {
+    if (typeof window === 'undefined') return;
+    
+    const SpeechRecognition = (window as any).SpeechRecognition 
+      || (window as any).webkitSpeechRecognition;
+    this.synth = window.speechSynthesis;
+
+    if (SpeechRecognition) {
+      this.recognition = new SpeechRecognition();
+      this.setupRecognition();
+    }
+
+    if (this.synth) this.findDutchVoice();
+  }
+
+  private setupRecognition() {
+    if (!this.recognition) return;
+
+    this.recognition.continuous = true;
+    this.recognition.interimResults = true;
+    this.recognition.lang = 'nl-BE';
+
+    this.recognition.onresult = (event: any) => {
+      const transcript = Array.from(event.results)
+        .map((result: any) => result[0].transcript)
+        .join(' ');
+
+      this.emitEvent({
+        type: 'recognition-result',
+        data: { transcript, isFinal: event.results[event.results.length - 1].isFinal },
+        timestamp: Date.now()
+      });
+    };
+  }
+}
+
+Een belangrijk verschil met de VAIA implementatie is het event-gebaseerde systeem. In plaats van directe callbacks gebruikt de Goose VUIService een publisher-subscriber patroon, waarbij componenten zich kunnen abonneren op VUI-events. Dit maakt een losse koppeling mogelijk tussen de spraakherkenning en de verschillende componenten die hierop moeten reageren, zoals de emotie-analyse en de conversatie-logica.
+
+5.2.3	Hume AI Integratie voor Emotie-analyse
+
+De kern van de Goose VUI-integratie is de HumeExpressionService, die verantwoordelijk is voor het analyseren van zowel audio (prosody model) als tekst (language model) via de Hume AI API.
+
+Codefragment 5.15: Multimodale emotie-analyse met Hume AI
+
+class HumeExpressionService {
+  private apiKey: string | null = null;
+  private baseUrl = 'https://api.hume.ai/v0/batch';
+  private emotionHistory: ExpressionAnalysisResult[] = [];
+
+  async analyzeAudio(audioBlob: Blob): Promise<ExpressionAnalysisResult> {
+    if (!this.apiKey) return this.createNeutralResult('audio');
+
+    const base64Audio = await this.blobToBase64(audioBlob);
+    
+    const jobId = await this.createJob({
+      models: { prosody: { granularity: 'utterance' } },
+      files: [{ content: base64Audio, content_type: audioBlob.type || 'audio/webm' }]
+    });
+
+    if (!jobId) return this.createNeutralResult('audio');
+
+    const humeResult = await this.pollJobResults(jobId);
+    if (humeResult) {
+      const parsed = this.parseProsodyResponse(humeResult);
+      parsed.source = 'audio';
+      this.addToHistory(parsed);
+      return parsed;
+    }
+
+    return this.createNeutralResult('audio');
+  }
+
+  combineAnalyses(audio: ExpressionAnalysisResult, text: ExpressionAnalysisResult): 
+      ExpressionAnalysisResult {
+    const emotionMap = new Map<string, number>();
+
+    // 70% weight for audio, 30% for text
+    audio.emotions.forEach(e => emotionMap.set(e.name, e.score * 0.7));
+    text.emotions.forEach(e => {
+      const existing = emotionMap.get(e.name) || 0;
+      emotionMap.set(e.name, existing + (e.score * 0.3));
+    });
+
+    const combined = Array.from(emotionMap.entries())
+      .map(([name, score]) => ({ name, score: Math.min(score, 1) }))
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 10);
+
+    return this.createResultFromEmotions(combined, 'combined');
+  }
+}
+
+Een belangrijke ontwerpbeslissing was de weging tussen audio- en tekstanalyse bij het combineren van de resultaten. Na experimenteren werd gekozen voor een verhouding van 70% audio en 30% tekst. Deze weging werd gekozen omdat stemkenmerken zoals toon en tempo vaak een betrouwbaardere indicator zijn van de werkelijke emotionele staat dan de gekozen woorden alleen. Iemand kan bijvoorbeeld "het gaat goed" zeggen met een trillende stem, waarbij de audio-analyse de onderliggende spanning detecteert.
+
+5.2.4	Lokale Fallback voor Nederlandse Trefwoorden
+
+Een uitdaging bij het gebruik van de Hume AI API is dat deze een externe service is die soms latentie kan hebben. Om de responsiviteit te verbeteren en als fallback te dienen wanneer de API niet beschikbaar is, werd een lokaal analyse-systeem geïmplementeerd dat Nederlandse emotie-trefwoorden herkent.
+
+Codefragment 5.16: Lokale Nederlandse emotie-analyse als fallback
+
+const DUTCH_EMOTION_KEYWORDS: Record<string, string[]> = {
+  'sadness': ['verdrietig', 'triest', 'somber', 'depressief', 'wanhopig', 
+              'hopeloos', 'eenzaam', 'pijn', 'huilen'],
+  'anger': ['boos', 'woedend', 'gefrustreerd', 'kwaad', 'woede'],
+  'fear': ['bang', 'angst', 'angstig', 'bezorgd', 'paniek', 'doodsbang'],
+  'anxiety': ['gestrest', 'stress', 'onrustig', 'gespannen', 'zenuwachtig'],
+  'joy': ['blij', 'gelukkig', 'vrolijk', 'tevreden', 'fijn', 'leuk'],
+  'distress': ['overstuur', 'van streek', 'kapot', 'overweldigd']
+};
+
+const DUTCH_CRISIS_KEYWORDS = [
+  'zelfmoord', 'suicide', 'zelfdoding', 'dood', 'sterven', 'eind maken',
+  'niet meer willen leven', 'hopeloos', 'wanhopig', 'geen uitweg'
+];
+
+private analyzeTextLocally(text: string): ExpressionAnalysisResult {
+  const lowerText = text.toLowerCase();
+  const detectedEmotions: EmotionScore[] = [];
+  const hasCrisisKeyword = DUTCH_CRISIS_KEYWORDS.some(kw => lowerText.includes(kw));
+
+  for (const [emotion, keywords] of Object.entries(DUTCH_EMOTION_KEYWORDS)) {
+    const matches = keywords.filter(kw => lowerText.includes(kw)).length;
+    if (matches > 0) {
+      detectedEmotions.push({ 
+        name: emotion, 
+        score: Math.min(0.3 + (matches * 0.15), 0.85) 
+      });
+    }
+  }
+
+  if (hasCrisisKeyword) {
+    detectedEmotions.push({ name: 'distress', score: 0.75 });
+    return { ...this.createResultFromEmotions(detectedEmotions, 'text'),
+             riskLevel: 'critical', requiresIntervention: true };
+  }
+
+  return this.createResultFromEmotions(detectedEmotions, 'text');
+}
+
+Dit lokale systeem wordt altijd als eerste uitgevoerd. Als er crisis-trefwoorden worden gedetecteerd, wordt onmiddellijk een hoog risico-niveau geretourneerd zonder te wachten op de API. Dit zorgt ervoor dat kritieke situaties direct worden gedetecteerd, zelfs als de API traag of onbeschikbaar is.
+
+5.2.5	Crisisdetectie en Veiligheidsinterventie
+
+Gezien de gevoelige aard van de gesprekken in de Goose applicatie werd een uitgebreid veiligheidssysteem geïmplementeerd via de EnhancedSafetyService. Dit systeem combineert trefwoorddetectie met emotie-analyse om een risico-score te berekenen en passende interventies te triggeren.
+
+Codefragment 5.17: Veiligheidscontrole met gegradueerde interventie
+
+class EnhancedSafetyService {
+  private negativeMessageCount = 0;
+  private emotionalTrend: 'improving' | 'stable' | 'declining' = 'stable';
+
+  checkSafety(text: string, emotionResult?: ExpressionAnalysisResult): SafetyCheckResult {
+    const indicators = this.detectIndicators(text);
+    const emotionIndicators = emotionResult 
+      ? humeExpressionService.getCrisisIndicators(emotionResult) : null;
+    const riskScore = this.calculateRiskScore(indicators, emotionIndicators);
+    const riskLevel = this.getRiskLevel(riskScore);
+    const interventionType = this.getInterventionType(riskLevel, indicators);
+
+    if (riskLevel !== 'safe') this.negativeMessageCount++;
+    this.emotionalTrend = humeExpressionService.getEmotionalTrend();
+
+    return {
+      riskLevel,
+      interventionType,
+      shouldPause: interventionType === 'offer-resources',
+      shouldStop: interventionType === 'stop-conversation',
+      shouldRefer: interventionType === 'immediate-referral',
+      message: this.getMessages(interventionType).written,
+      referralInfo: this.getReferralInfo(riskLevel)
+    };
+  }
+
+  private calculateRiskScore(indicators: DetectedIndicators, 
+                             emotionIndicators: CrisisIndicators | null): number {
+    let score = 0;
+
+    // Keyword-based scoring
+    const criticalCount = indicators.crisisKeywordsFound
+      .filter(k => k.includes('critical')).length;
+    score += criticalCount * 0.4;
+
+    // Emotion-based scoring
+    if (emotionIndicators) {
+      score += emotionIndicators.riskScore * 0.3;
+      if (emotionIndicators.hasDespair) score += 0.2;
+      if (emotionIndicators.emotionalDistress) score += 0.15;
+    }
+
+    // Pattern-based scoring (escalation indicators)
+    if (this.negativeMessageCount >= 5) score += 0.1;
+    if (this.emotionalTrend === 'declining') score += 0.1;
+
+    return Math.max(0, Math.min(1, score));
+  }
+}
+
+Het veiligheidssysteem implementeert een gegradueerde interventie-aanpak met vijf niveaus. Het eerste niveau is 'none' voor veilige situaties zonder interventie. Het tweede niveau is 'gentle-check' voor lichte signalen waarbij het systeem empathisch doorvraagt. Het derde niveau is 'express-concern' waarbij het systeem expliciet bezorgdheid uit. Het vierde niveau is 'offer-resources' waarbij hulpbronnen worden aangeboden zoals telefoonnummers van hulplijnen. Het vijfde en hoogste niveau is 'stop-conversation' waarbij het gesprek wordt gestopt en directe verwijzing naar professionele hulp plaatsvindt.
+
+Bij het hoogste risico-niveau wordt het gesprek automatisch gestopt en worden de contactgegevens van de Zelfmoordlijn (1813) en Tele-Onthaal (106) getoond. Dit is een ethisch belangrijke functionaliteit die ervoor zorgt dat de applicatie geen schade kan veroorzaken door gesprekken voort te zetten in kritieke situaties.
+
+5.2.6	VoiceUIComponent: Inline Interface Design
+
+Een belangrijke ontwerpuitdaging was het integreren van de VUI in de bestaande conversatie-interface zonder de gebruikerservaring te verstoren. Een eerste implementatie gebruikte een popup-modal, maar dit bleek problematisch omdat gebruikers de antwoordopties niet meer konden zien terwijl zij spraken.
+
+De definitieve oplossing was een inline panel dat horizontaal uitklapt naast de verzendknop. Dit design zorgt ervoor dat de conversatie en antwoordopties zichtbaar blijven terwijl de VUI actief is, wat essentieel is voor de spraakcommando's zoals "selecteer optie 1".
+
+Codefragment 5.18: VoiceUIComponent met inline panel design
+
+<template>
+  <div class="vui-inline">
+    <!-- Compact trigger button -->
+    <button v-if="!vuiModeActive" @click="activateVUIMode" class="vui-btn">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 
+                 5v6c0 1.66 1.34 3 3 3z"/>
+      </svg>
+      <span>Spraak</span>
+    </button>
+
+    <!-- Expanded VUI panel (inline, not popup) -->
+    <div v-else class="vui-expanded">
+      <div class="vui-main-row">
+        <button class="mic-btn" :class="currentStatus" @click="toggleListening">
+          <!-- Mic icon with status indicators -->
+        </button>
+        <div class="status-area">
+          <div v-if="liveTranscript" class="transcript">"{{ liveTranscript }}"</div>
+          <div v-else class="status">{{ statusText }}</div>
+        </div>
+        <div class="controls">
+          <button class="tts-btn" @click="ttsEnabled = !ttsEnabled">
+            {{ ttsEnabled ? '🔊' : '🔇' }}
+          </button>
+          <button class="help-btn" @click="showTips = !showTips">?</button>
+          <button class="close-btn" @click="deactivateVUIMode">✕</button>
+        </div>
+      </div>
+      
+      <div v-if="showTips" class="tips-row">
+        <span class="tip">Zeg <strong>"selecteer 1"</strong> voor opties</span>
+        <span class="divider">•</span>
+        <span class="tip">Zeg <strong>"verstuur"</strong> om te verzenden</span>
+      </div>
+    </div>
+  </div>
+</template>
+
+Het component biedt verschillende functionaliteiten. Ten eerste is er automatische tip-weergave bij activatie, zodat gebruikers direct weten welke commando's beschikbaar zijn. Ten tweede is er een aparte TTS-toggle die gebruikers in staat stelt om de gesproken antwoorden van Goose aan of uit te zetten, onafhankelijk van de spraakherkenning. Ten derde is er een live transcript dat de herkende tekst in real-time toont, wat belangrijk is voor feedback aan de gebruiker.
+
+5.2.7	Audio-opname voor Emotie-analyse
+
+Een specifieke uitdaging was het gelijktijdig uitvoeren van spraakherkenning via de Web Speech API en audio-opname voor de Hume AI emotie-analyse. De Web Speech API geeft geen toegang tot de ruwe audio-data, dus een aparte MediaRecorder moest worden geïmplementeerd.
+
+Codefragment 5.19: Parallelle audio-opname naast spraakherkenning
+
+const startRecording = async () => {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    mediaRecorder = new MediaRecorder(stream);
+    audioChunks = [];
+    mediaRecorder.ondataavailable = (e) => {
+      if (e.data.size > 0) audioChunks.push(e.data);
+    };
+    mediaRecorder.start(100); // Capture in 100ms chunks
+  } catch (err) {
+    console.error('[VUI] Recording error:', err);
+  }
+};
+
+const stopRecording = (): Promise<Blob | null> => {
+  return new Promise((resolve) => {
+    if (!mediaRecorder || mediaRecorder.state === 'inactive') {
+      resolve(null);
+      return;
+    }
+    mediaRecorder.onstop = () => {
+      const blob = new Blob(audioChunks, { type: 'audio/webm' });
+      mediaRecorder?.stream.getTracks().forEach(t => t.stop());
+      resolve(blob);
+    };
+    if (mediaRecorder.state === 'recording') mediaRecorder.stop();
+    else resolve(null);
+  });
+};
+
+De audio wordt opgenomen in WebM formaat met 100ms chunks, wat een goede balans biedt tussen latentie en kwaliteit. Wanneer de spraakherkenning een finaal resultaat geeft, wordt de opname gestopt en de audio-blob naar de Hume API gestuurd voor analyse.
+
+5.2.8	Integratie met ChatGPT voor Empathische Reacties
+
+De emotie-analyse wordt niet alleen gebruikt voor veiligheidscontroles, maar ook om ChatGPT meer context te geven over de emotionele staat van de gebruiker. Dit gebeurt via een dynamisch prompt-augmentatie systeem.
+
+Codefragment 5.20: Dynamische emotie-context voor ChatGPT
+
+const buildEmotionContext = (emotionAnalysis: ExpressionAnalysisResult | null, 
+                            safetyResult: SafetyCheckResult | null): string => {
+  if (!emotionAnalysis?.emotions) return '';
+  
+  const emotions = emotionAnalysis.emotions
+    .map(e => `${e.name} (${(e.score * 100).toFixed(0)}%)`)
+    .join(', ');
+  const trend = humeExpressionService.getEmotionalTrend();
+  const crisis = humeExpressionService.getCrisisIndicators(emotionAnalysis);
+  
+  let ctx = `\n\nEMOTIE CONTEXT:
+Emoties: ${emotions}
+- Dominant: ${emotionAnalysis.topEmotion} (${(emotionAnalysis.topScore * 100).toFixed(0)}%)
+- Sentiment: ${emotionAnalysis.sentiment}
+- Intensiteit: ${emotionAnalysis.arousal}
+- Trend: ${trend === 'improving' ? 'verbeterend' : 
+          trend === 'declining' ? 'verslechterend' : 'stabiel'}`;
+
+  if (crisis.riskScore > 0.3 || safetyResult?.riskLevel === 'moderate') {
+    ctx += `\n\n⚠️ VERHOOGD RISICO:`;
+    if (crisis.hasDespair) ctx += ' wanhoop,';
+    if (crisis.hasSadness) ctx += ' verdriet,';
+    if (crisis.hasFear) ctx += ' angst,';
+    ctx += '\nWees extra empathisch. Verwijs naar hulp indien nodig.';
+  }
+  
+  ctx += '\n\nPas je reactie empathisch aan. Toon begrip, blijf gesprekscoach.';
+  return ctx;
+}
+
+Deze context wordt toegevoegd aan elke request naar de ChatGPT API, waardoor het model kan reageren op de emotionele staat van de gebruiker. Bijvoorbeeld, wanneer verdriet wordt gedetecteerd, kan ChatGPT extra empathisch reageren en doorvragen over de gevoelens van de gebruiker.
+
+5.2.9	Onderzoeksdata Logging
+
+Voor het onderzoek werd een uitgebreid loggingsysteem geïmplementeerd dat alle VUI-interacties en emotie-analyses registreert. Dit systeem is cruciaal voor het verzamelen van kwantitatieve en kwalitatieve data over de effectiviteit van de emotie-bewuste VUI.
+
+Codefragment 5.21: Research data logging met emotie-tekst koppeling
+
+class ResearchDataLogger {
+  private sessionId: string;
+  private logs: Array<VUIInteraction | HUMEAnalysisLog | VUIPerformanceLog> = [];
+
+  logHUMEAnalysis(analysis: HUMEAnalysisLog) {
+    this.logs.push(analysis);
+    
+    console.log('%c[ResearchLogger] HUME Analysis', 'color: #8b5cf6; font-weight: bold;', {
+      type: analysis.type,
+      sourceText: analysis.analysis.sourceText || '(audio only)',
+      topEmotion: analysis.analysis.topEmotion,
+      emotions: analysis.analysis.emotions
+        .map(e => `${e.name}: ${(e.score * 100).toFixed(0)}%`).join(', '),
+      sentiment: analysis.analysis.sentiment,
+      riskLevel: analysis.analysis.riskLevel
+    });
+  }
+
+  private generateSummary() {
+    const humeLogs = this.logs.filter(l => 'analysis' in l) as HUMEAnalysisLog[];
+    
+    return {
+      humeAnalyses: {
+        audio: humeLogs.filter(l => l.type === 'audio').length,
+        text: humeLogs.filter(l => l.type === 'text').length,
+        combined: humeLogs.filter(l => l.type === 'combined').length
+      },
+      // Emotion-text pairs for research analysis
+      emotionTextPairs: humeLogs.map(l => ({
+        text: l.analysis.sourceText || l.input.text || '',
+        topEmotion: l.analysis.topEmotion,
+        emotions: l.analysis.emotions,
+        sentiment: l.analysis.sentiment,
+        type: l.type
+      }))
+    };
+  }
+}
+
+Een belangrijke toevoeging was de sourceText property in de analyse-logs, die het mogelijk maakt om achteraf te analyseren welke emoties werden gedetecteerd bij welke specifieke uitingen. Dit is essentieel voor het valideren van de nauwkeurigheid van de emotie-analyse.
+
+5.2.10	Ondervonden Problemen en Oplossingen
+
+Tijdens de ontwikkeling van de Goose VUI-component werden verschillende significante problemen ondervonden. Het eerste probleem betrof de asynchrone Hume API. De Hume Expression Measurement API werkt via een batch-job systeem waarbij een job wordt aangemaakt en vervolgens gepolled moet worden voor resultaten. Dit introduceerde latentie van enkele seconden. De oplossing was het parallel uitvoeren van de lokale analyse terwijl op de API-resultaten wordt gewacht, en het combineren van beide resultaten wanneer de API klaar is.
+
+Het tweede probleem betrof de coördinatie tussen TTS en spraakherkenning. Net als in VAIA moest worden voorkomen dat de spraakherkenning de TTS-output hoorde. In Goose werd dit opgelost door de spraakherkenning te stoppen tijdens TTS en deze automatisch te herstarten na afloop, maar alleen als de gebruiker TTS niet had uitgeschakeld.
+
+Codefragment 5.22: Automatisch herstarten van spraakherkenning na TTS
+
+// In VoiceUIComponent
+case 'speech-end':
+  isSpeaking.value = false;
+  if (vuiModeActive.value && !isListening.value) {
+    setTimeout(() => {
+      if (vuiModeActive.value && !isListening.value && !isSpeaking.value) {
+        startListeningQuietly();
+      }
+    }, 500);
+  }
+  break;
+
+// Exposed method for when TTS is skipped
+const restartListeningNow = () => {
+  if (vuiModeActive.value && !isListening.value && !isSpeaking.value) {
+    setTimeout(() => startListeningQuietly(), 100);
+  }
+};
+
+Het derde probleem betrof stilte-detectie. De Web Speech API stopt automatisch met luisteren na enkele seconden stilte en genereert een 'no-speech' error. In plaats van dit als een fout te behandelen, werd het systeem aangepast om automatisch opnieuw te starten.
+
+Codefragment 5.23: Graceful handling van stilte-periodes
+
+case 'recognition-error':
+  const errorType = event.data?.error;
+  isListening.value = false;
+  
+  if (errorType === 'no-speech' && vuiModeActive.value) {
+    error.value = ''; // Don't show error for silence
+    setTimeout(() => {
+      if (vuiModeActive.value && !isListening.value && !isSpeaking.value) {
+        startListeningQuietly(); // Silently restart
+      }
+    }, 800);
+  } else if (errorType === 'audio-capture') {
+    error.value = 'Geen microfoon';
+  } else if (errorType === 'not-allowed') {
+    error.value = 'Geef mic toestemming';
+  }
+  break;
+
+Het vierde probleem betrof het voorkomen van dubbele berichten. Gebruikers konden per ongeluk meerdere berichten snel achter elkaar versturen door herhaaldelijk te spreken voordat een antwoord was ontvangen. Dit werd opgelost door een isLoading check toe te voegen die nieuwe berichten blokkeert totdat het huidige antwoord is ontvangen.
+
+Codefragment 5.24: Voorkomen van dubbele berichten
+
+const sendMessage = async () => {
+  // Block if already loading or conversation stopped
+  if (!newMessage.value.trim() || isLoading.value || conversationStopped.value) return;
+  
+  isLoading.value = true;
+  
+  // ... message processing
+  
+  isLoading.value = false;
+}
+
+Het vijfde probleem betrof de TypeScript types voor de Web Speech API. De standaard TypeScript DOM types bevatten niet de volledige Web Speech API definities. Dit werd opgelost door een triple-slash reference directive toe te voegen voor de dom-speech-recognition types.
+
+Het zesde probleem betrof de Vlaamse spraakherkenning. Hoewel de Web Speech API 'nl-BE' (Belgisch Nederlands) ondersteunt, werden sommige Vlaamse uitdrukkingen en accenten niet altijd correct herkend. Dit had geen directe technische oplossing, maar werd geadresseerd door de gebruikersinstructies aan te passen en de VoiceCommandParser flexibeler te maken met meerdere varianten van commando's.
+
+5.3	Dataverzameling voor Onderzoek
+
+Om de effectiviteit van de VUI-implementaties te kunnen evalueren, werd een datalogging systeem geïmplementeerd dat alle gebruikersinteracties registreert. Dit systeem verzamelt zowel kwantitatieve data (zoals taakvoltooiingstijd en foutpercentages) als kwalitatieve data (zoals de specifieke commando's die gebruikers uitspreken).
+
+Codefragment 5.13: DataLogger service voor het registreren van interacties
+
+class DataLogger {
+  logInteraction(
+    type: 'voice' | 'gui' | 'system',
+    action: string,
+    data: Record<string, any>,
+    fieldId?: string,
+    error?: string
+  ): void {
+    const entry = {
+      timestamp: new Date().toISOString(),
+      type,
+      action,
+      data,
+      fieldId,
+      error,
+      sessionId: this.sessionId
+    };
+    
+    this.interactions.push(entry);
+    // Opslaan naar Firebase voor latere analyse
+  }
+}
+
+5.4	Vergelijking tussen VAIA en Goose Implementaties
+
+De twee VUI-implementaties vertonen belangrijke verschillen die voortvloeien uit de verschillende use cases. Deze vergelijking biedt inzichten in hoe VUI-ontwerp moet worden aangepast aan de specifieke context.
+
+5.4.1	Verschillen in VUI-gebruik
+
+Bij VAIA is de VUI primair een efficiëntie-tool: gebruikers kunnen formulieren sneller invullen via spraak dan via typen, vooral voor lange tekstvelden. De commando's zijn vooral navigatie-georiënteerd ("ga naar titel", "volgende veld", "selecteer 3") en de emotionele context is minder relevant.
+
+Bij Goose is de VUI een communicatiekanaal: de manier waarop gebruikers spreken (toon, tempo, emotie) is even belangrijk als wat ze zeggen. De VUI dient niet alleen voor input, maar ook als bron van emotionele data die de kwaliteit van de conversatie verbetert.
+
+5.4.2	Complexiteit van Spraakcommando's
+
+VAIA vereist een uitgebreid commando-systeem voor formuliernavigatie, met specifieke commando's voor het wisselen tussen velden, het invullen van blanks, en het selecteren van dropdown-opties. De VoiceCommandParser in VAIA is daarom complexer, met ondersteuning voor geneste commando's zoals "vul de eerste blanko in met [tekst]".
+
+Goose heeft een eenvoudiger commando-systeem, gericht op het selecteren van antwoordopties ("selecteer 1") en het versturen van berichten ("verstuur"). De focus ligt niet op navigatie maar op natuurlijke conversatie.
+
+| Aspect | VAIA | Goose |
+|--------|------|-------|
+| Primair doel VUI | Efficiëntie formulierinvulling | Emotie-bewuste communicatie |
+| Commando-complexiteit | Hoog (navigatie + input + editing) | Laag (selectie + verstuur) |
+| Emotie-analyse | Niet geïmplementeerd | Multimodaal (audio + tekst) |
+| Veiligheidsfeatures | Niet nodig | Crisisdetectie essentieel |
+| TTS-gebruik | Feedback op commando's | Gesproken antwoorden Goose |
+| Continuous listening | Ja, voor formuliernavigatie | Ja, voor conversatieflow |
+
+5.4.3	Lessen voor VUI-ontwerp
+
+Uit de vergelijking tussen beide implementaties komen belangrijke lessen naar voren. Ten eerste moet het VUI-ontwerp aansluiten bij de taakcontext. Een formulier-VUI vereist precieze navigatiecommando's, terwijl een conversatie-VUI baat heeft bij natuurlijker taalgebruik.
+
+Ten tweede is de keuze voor inline versus modal design contextafhankelijk. In VAIA zou een modal-design kunnen werken omdat de focus op één veld tegelijk ligt. In Goose moesten de antwoordopties zichtbaar blijven, wat een inline design vereiste.
+
+Ten derde is emotie-analyse alleen zinvol wanneer het de gebruikerservaring verbetert. In Goose voegt het significante waarde toe voor empathische reacties, terwijl het in VAIA weinig zou bijdragen aan de formulier-invulervaring.
+
+Ten vierde verschilt error handling per context. In VAIA moet de VUI duidelijke foutmeldingen geven bij ongeldige commando's. In Goose is een meer vergevingsgezinde aanpak passend, waarbij onduidelijke input als gewone conversatie wordt behandeld.
+
+5.5	Samenvatting Technologische Keuzes
+
+De volgende tabel geeft een overzicht van de belangrijkste technologische keuzes die werden gemaakt tijdens de implementatie:
+
+| Component | Gekozen Technologie | Alternatieven Overwogen | Reden voor Keuze |
+|-----------|---------------------|------------------------|------------------|
+| Spraakherkenning | Web Speech API | Google Cloud Speech-to-Text, Amazon Transcribe | Geen API-sleutel nodig, privacy-vriendelijk, directe browser-ondersteuning |
+| Text-to-Speech | Web Speech API | Google TTS, Amazon Polly | Consistentie met ASR, geen extra kosten |
+| AI Tekstbewerking (VAIA) | OpenAI GPT-3.5-turbo | GPT-4, Claude | Goede balans tussen kwaliteit en kosten |
+| Emotie-analyse (Goose) | Hume AI Expression Measurement | AssemblyAI, Amazon Rekognition, Custom ML | Gespecialiseerde API voor zowel prosodische als taalkundige emotie-analyse, Nederlandse ondersteuning |
+| Conversatie AI (Goose) | OpenAI GPT-4 | GPT-3.5, Claude | Betere empathische reacties, complexere prompt-handling |
+| Frontend Framework | Vue.js 3 | React, Angular | Bestaande codebase compatibiliteit |
+| Dataopslag | Firebase Firestore | PostgreSQL, MongoDB | Real-time sync, serverless architectuur |
+| Audio Recording | MediaRecorder API | Third-party libraries | Native browser API, geen dependencies |
+
+[hier figuur met technologie-stack diagram]
+
+6	Resultaten en analyse
+6.1	Kwantitatieve resulaten
+6.2	Kwalitatieve resultaten
+6.3	Vergelijken analyse  
+6.4	Discussie
+
+ 
+7	Conclusie
+7.1	Samenvatting van bevindingen
+7.2	Aanbevelingen
+7.3	Beperkingen van het onderzoek
+7.4	Suggesties voor toekomstig onderzoek
+ 
+8	Nawoord
+. 
+9	Literatuurlijst
+Bittner, D. (z.d.). Designing a voice user interface is easier than you may think. Bentley University User Experience Center. https://www.bentley.edu/centers/user-experience-center/voice-design-blog 
+Dasgupta, R. (2018). Voice User Interface Design: Moving from GUI to Mixed Modal Interaction. Apress. https://doi.org/10.1007/978-1-4842-4125-7
+Deshmukh, A. M., & Chalmeta, R. (2024). User Experience and Usability of Voice User Interfaces: A Systematic Literature Review. Information, 15(9), 579. https://www.mdpi.com/2078-2489/15/9/579 
+H., P. (2024, 27 juni). How Leading Brands Are Using Voice User Interfaces: Insights and Learnings. Raw.Studio. https://raw.studio/blog/how-leading-brands-are-using-voice-user-interfaces-insights-and-learnings/ 
+Pearl, C. (2018, 28 mei). Making the Shift from Designing GUIs to Designing VUIs. UXmatters. https://www.uxmatters.com/mt/archives/2018/05/making-the-shift-from-designing-guis-to-designing-vuis.php
+Smiljkovic, J. (2025, 5 februari). How VUIs and Conversational Design Are Changing User Experience. Wireflow. https://wireflow.co/blog/vui-conversational-design/ 
+Tangivel. (z.d.). Designing Voice User Interface Designs: How to Guide Users Through Words Alone. Tangivel. https://www.tangivel.com/articles/designing-voice-user-interface-designs-how-to-guide-users-through-words-alone 
+TMDesign. (2023, 24 juli). Voice User Interface: Shaping the Future of Interaction. Medium. https://medium.com/theymakedesign/voice-user-interface-a2254208cb4f 
+UX Design Institute. (z.d.). Voice User Interface (VUI): What is it? UX Design Institute. https://www.uxdesigninstitute.com/blog/voice-user-interface-vui-what-is-it/ 
+UXmatters. (2024, november). The Future of Voice User Interfaces. UXmatters. https://www.uxmatters.com/mt/archives/2024/11/the-future-of-voice-user-interfaces.php 
+Vilans, HAN University of Applied Sciences, & Anders Werken in de Zorg (AWIZ). (2025, 21 oktober). Spraakgestuurd rapporteren versnelt zorgadministratie aanzienlijk. ICT&health. https://www.icthealth.nl/nieuws/spraakgestuurd-rapporteren-versnelt-zorgadministratie-aanzienlijk  
+ 
+10	 Gebruik van Generatieve AI
+ 
+11	 Bijlagen

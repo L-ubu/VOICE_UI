@@ -1,0 +1,177 @@
+@font-face {
+	font-family: 'New_Rubrik';
+	src: url('@/assets/fonts/New_Rubrik_ExtraLight.otf');
+	font-weight: lighter;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'New_Rubrik';
+	src: url('@/assets/fonts/New_Rubrik_Light.otf');
+	font-weight: light;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'New_Rubrik';
+	src: url('@/assets/fonts/New_Rubrik_Regular.otf');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'New_Rubrik';
+	src: url('@/assets/fonts/New_Rubrik_Medium.otf');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'New_Rubrik';
+	src: url('@/assets/fonts/New_Rubrik_SemiBold.otf');
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'New_Rubrik';
+	src: url('@/assets/fonts/New_Rubrik_Bold.otf');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'New_Rubrik';
+	src: url('@/assets/fonts/New_Rubrik_ExtraBold.otf');
+	font-weight: 800;
+	font-display: swap;
+}
+
+
+
+$fuchsia: #DB2F5E;
+$orange: #FFCC00;
+$green: #369a51;
+$gray: #F1F4F5;
+$light-gray: #F8F8F8;
+$font-color: #3D3D3D;
+
+$gradient: linear-gradient(to bottom, $fuchsia, $orange);
+
+$padding: 2rem;
+$padding_dt : calc((100vw - 115rem) / 2);
+$breakpoint: 1180px;
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+h1 {
+	font-size: 3.5rem;
+	margin-top: 5rem;
+	hyphens: manual;
+}
+
+h2 {
+	font-size: 3rem;
+}
+
+h3 {
+	font-size: 2.5rem;
+}
+
+h4 {
+	font-size: 2rem;
+}
+
+h5 {
+	font-size: 1.8rem;
+}
+
+h1,
+h2,
+h3 {
+	text-align: center;
+}
+
+@media screen and (min-width: 1170px) {
+	h1 {
+		font-size: 4rem;
+	}
+
+	h2 {
+		font-size: 3.2rem;
+        line-height: 4rem;
+	}
+
+	h1,
+	h2,
+	h3 {
+		text-align: left;
+	}
+}
+
+p {
+	font-size: 1.8rem;
+	line-height: 2.5rem;
+	// max-width: 60rem;
+}
+
+a {
+	font-size: 1.8rem;
+	word-wrap: break-word;
+}
+
+section, .section {
+	padding: 0 $padding 0 $padding;
+
+	@media screen and (min-width: 1170px) {
+		padding: 0 $padding_dt 0 $padding_dt;
+	}
+}
+
+button:not(.tag-remove) {
+	font-size: 1.6rem;
+	font-weight: 700;
+	padding: 1rem 2rem;
+	background-color: $fuchsia;
+	color: #ffffff;
+	border: none;
+	border-radius: 5rem;
+	height: 4rem;
+	box-shadow: 2px 5px 5px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: 100ms;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+    
+    &:active {
+        transform: scale(1);
+    }
+
+	&.secondary {
+		background-color: #ffffff;
+		color: $fuchsia;
+		box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
+	}
+}
+
+.link {
+	font-size: inherit;
+	color: $fuchsia;
+	text-decoration: underline;
+}
+
+.ck-toolbar_grouping {
+	width: 100% !important;
+}
+
+.v-toast {
+    font-family: 'New_Rubrik', sans-serif;
+	.v-toast__item--success{
+		background-color: $green !important;
+	}
+}

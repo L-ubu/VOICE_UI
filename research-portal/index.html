@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUI Research Portal - Odisee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app">
+        <nav class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">📋</span>
+                <span class="logo-text">VUI Research</span>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title">Dashboard</div>
+                <a href="index.html" class="nav-item active">
+                    <span class="nav-icon">🏠</span>
+                    Home
+                </a>
+                <a href="pages/data-overview.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    Data Overzicht
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">🪿 Goose</div>
+                <a href="pages/goose/pre-test.html" class="nav-item">
+                    <span class="nav-icon">📝</span>
+                    Pre-Test Vragenlijst
+                </a>
+                <a href="pages/goose/sus.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    SUS Vragenlijst
+                </a>
+                <a href="pages/goose/post-test.html" class="nav-item">
+                    <span class="nav-icon">✅</span>
+                    Post-Test Vragenlijst
+                </a>
+                <a href="pages/goose/observation.html" class="nav-item researcher">
+                    <span class="nav-icon">👁️</span>
+                    Observatieformulier
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">📚 VAIA</div>
+                <a href="pages/vaia/tasks.html" class="nav-item researcher">
+                    <span class="nav-icon">📋</span>
+                    Taak Instructies
+                </a>
+                <a href="pages/vaia/pre-test.html" class="nav-item">
+                    <span class="nav-icon">📝</span>
+                    Pre-Test Vragenlijst
+                </a>
+                <a href="pages/vaia/sus.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    SUS Vragenlijst
+                </a>
+                <a href="pages/vaia/post-test.html" class="nav-item">
+                    <span class="nav-icon">✅</span>
+                    Post-Test Vragenlijst
+                </a>
+                <a href="pages/vaia/observation.html" class="nav-item researcher">
+                    <span class="nav-icon">👁️</span>
+                    Observatieformulier
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">📄 Documenten</div>
+                <a href="pages/consent.html" class="nav-item">
+                    <span class="nav-icon">✍️</span>
+                    Informed Consent
+                </a>
+                <a href="pages/protocol.html" class="nav-item researcher">
+                    <span class="nav-icon">📋</span>
+                    Testprotocol
+                </a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="header">
+                <h1>VUI Research Portal</h1>
+                <div class="header-actions">
+                    <div class="participant-badge" id="currentParticipant">
+                        Geen deelnemer geselecteerd
+                    </div>
+                    <button class="btn btn-primary" onclick="openNewSession()">
+                        + Nieuwe Sessie
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon goose">🪿</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="gooseCount">0</div>
+                            <div class="stat-label">Goose Sessies</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon vaia">📚</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="vaiaCount">0</div>
+                            <div class="stat-label">VAIA Sessies</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon total">👥</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="totalParticipants">0</div>
+                            <div class="stat-label">Totaal Deelnemers</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon complete">✓</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="completedSessions">0</div>
+                            <div class="stat-label">Voltooid</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="card quick-start">
+                        <h2>🚀 Quick Start - Deelnemer Flow</h2>
+                        <div class="flow-steps">
+                            <div class="flow-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h3>Start Sessie</h3>
+                                    <p>Maak nieuwe deelnemer aan</p>
+                                    <button class="btn btn-secondary" onclick="openNewSession()">Nieuwe Sessie</button>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h3>Informed Consent</h3>
+                                    <p>Laat ondertekenen</p>
+                                    <a href="pages/consent.html" class="btn btn-outline">Open</a>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h3>Pre-Test</h3>
+                                    <p>Vragenlijst invullen</p>
+                                    <div class="btn-group">
+                                        <a href="pages/goose/pre-test.html" class="btn btn-goose">Goose</a>
+                                        <a href="pages/vaia/pre-test.html" class="btn btn-vaia">VAIA</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h3>Test & SUS</h3>
+                                    <p>Uitvoeren + SUS</p>
+                                    <div class="btn-group">
+                                        <a href="pages/goose/sus.html" class="btn btn-goose">Goose</a>
+                                        <a href="pages/vaia/sus.html" class="btn btn-vaia">VAIA</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-step">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h3>Post-Test</h3>
+                                    <p>Afrondende vragen</p>
+                                    <div class="btn-group">
+                                        <a href="pages/goose/post-test.html" class="btn btn-goose">Goose</a>
+                                        <a href="pages/vaia/post-test.html" class="btn btn-vaia">VAIA</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card recent-sessions">
+                        <h2>📋 Recente Sessies</h2>
+                        <div class="sessions-list" id="recentSessions">
+                            <p class="empty-state">Nog geen sessies gestart</p>
+                        </div>
+                    </div>
+
+                    <div class="card export-section">
+                        <h2>📥 Data Export</h2>
+                        <p>Exporteer alle verzamelde data voor analyse</p>
+                        <div class="export-buttons">
+                            <button class="btn btn-primary" onclick="exportAllData('json')">
+                                📄 Export JSON
+                            </button>
+                            <button class="btn btn-secondary" onclick="exportAllData('csv')">
+                                📊 Export CSV
+                            </button>
+                            <button class="btn btn-outline" onclick="clearAllData()">
+                                🗑️ Wis Alle Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- New Session Modal -->
+    <div class="modal" id="newSessionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Nieuwe Test Sessie</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <form id="newSessionForm" onsubmit="createSession(event)">
+                <div class="form-group">
+                    <label>Deelnemer ID *</label>
+                    <input type="text" id="participantId" required placeholder="bijv. P001">
+                    <small>Uniek ID voor deze deelnemer</small>
+                </div>
+                <div class="form-group">
+                    <label>Project *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="project" value="goose" required>
+                            <span class="radio-custom"></span>
+                            🪿 Goose
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="project" value="vaia">
+                            <span class="radio-custom"></span>
+                            📚 VAIA
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Interface Volgorde *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="order" value="gui-first" required>
+                            <span class="radio-custom"></span>
+                            GUI eerst, dan VUI
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="order" value="vui-first">
+                            <span class="radio-custom"></span>
+                            VUI eerst, dan GUI
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Notities (optioneel)</label>
+                    <textarea id="sessionNotes" rows="2" placeholder="Eventuele opmerkingen..."></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeModal()">Annuleren</button>
+                    <button type="submit" class="btn btn-primary">Start Sessie</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+

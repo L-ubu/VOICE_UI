@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goose - Pre-Test Vragenlijst</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="app">
+        <nav class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">📋</span>
+                <span class="logo-text">VUI Research</span>
+            </div>
+            <div class="nav-section">
+                <a href="../../index.html" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    Terug naar Home
+                </a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-title">🪿 Goose Formulieren</div>
+                <a href="pre-test.html" class="nav-item active">📝 Pre-Test</a>
+                <a href="sus.html" class="nav-item">📊 SUS</a>
+                <a href="post-test.html" class="nav-item">✅ Post-Test</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="form-page">
+                <div class="form-header">
+                    <div class="form-icon">🪿</div>
+                    <h1>Pre-Test Vragenlijst</h1>
+                    <p>Goose VUI Onderzoek</p>
+                    <div id="participantInfo" style="margin-top: 15px; padding: 10px; background: var(--bg-hover); border-radius: 8px; font-size: 13px;"></div>
+                </div>
+
+                <form id="researchForm" onsubmit="submitForm(event, 'goose_pretest', 'sus.html')">
+                    
+                    <div class="form-section">
+                        <h2>Sectie A: Demografische Gegevens</h2>
+                        
+                        <div class="question">
+                            <label class="question-label">A1. Wat is uw leeftijd? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="age" value="18-24" required><span class="option-check"></span>18-24 jaar</label>
+                                <label class="option-label"><input type="radio" name="age" value="25-34"><span class="option-check"></span>25-34 jaar</label>
+                                <label class="option-label"><input type="radio" name="age" value="35-44"><span class="option-check"></span>35-44 jaar</label>
+                                <label class="option-label"><input type="radio" name="age" value="45-54"><span class="option-check"></span>45-54 jaar</label>
+                                <label class="option-label"><input type="radio" name="age" value="55-64"><span class="option-check"></span>55-64 jaar</label>
+                                <label class="option-label"><input type="radio" name="age" value="65+"><span class="option-check"></span>65+ jaar</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">A2. Wat is uw geslacht? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="gender" value="man" required><span class="option-check"></span>Man</label>
+                                <label class="option-label"><input type="radio" name="gender" value="vrouw"><span class="option-check"></span>Vrouw</label>
+                                <label class="option-label"><input type="radio" name="gender" value="non-binair"><span class="option-check"></span>Non-binair</label>
+                                <label class="option-label"><input type="radio" name="gender" value="zeg-niet"><span class="option-check"></span>Zeg ik liever niet</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">A3. Wat is uw hoogst behaalde opleidingsniveau? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="education" value="secundair" required><span class="option-check"></span>Secundair onderwijs</label>
+                                <label class="option-label"><input type="radio" name="education" value="bachelor"><span class="option-check"></span>Bachelor (HBO/Universiteit)</label>
+                                <label class="option-label"><input type="radio" name="education" value="master"><span class="option-check"></span>Master</label>
+                                <label class="option-label"><input type="radio" name="education" value="doctoraat"><span class="option-check"></span>Doctoraat</label>
+                                <label class="option-label"><input type="radio" name="education" value="anders"><span class="option-check"></span>Anders</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2>Sectie B: Ervaring met Spraakassistenten</h2>
+
+                        <div class="question">
+                            <label class="question-label">B1. Hoe vaak gebruikt u spraakassistenten (Siri, Alexa, Google Assistant)? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="voice_freq" value="dagelijks" required><span class="option-check"></span>Dagelijks</label>
+                                <label class="option-label"><input type="radio" name="voice_freq" value="wekelijks"><span class="option-check"></span>Wekelijks</label>
+                                <label class="option-label"><input type="radio" name="voice_freq" value="maandelijks"><span class="option-check"></span>Maandelijks</label>
+                                <label class="option-label"><input type="radio" name="voice_freq" value="zelden"><span class="option-check"></span>Zelden</label>
+                                <label class="option-label"><input type="radio" name="voice_freq" value="nooit"><span class="option-check"></span>Nooit</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">B2. Welke spraakassistenten heeft u gebruikt? (meerdere mogelijk)</label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="checkbox" name="voice_used" value="siri"><span class="option-check"></span>Siri (Apple)</label>
+                                <label class="option-label"><input type="checkbox" name="voice_used" value="google"><span class="option-check"></span>Google Assistant</label>
+                                <label class="option-label"><input type="checkbox" name="voice_used" value="alexa"><span class="option-check"></span>Alexa (Amazon)</label>
+                                <label class="option-label"><input type="checkbox" name="voice_used" value="cortana"><span class="option-check"></span>Cortana (Microsoft)</label>
+                                <label class="option-label"><input type="checkbox" name="voice_used" value="geen"><span class="option-check"></span>Geen</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">B3. Hoe comfortabel voelt u zich met hardop praten tegen een apparaat? <span class="required">*</span></label>
+                            <div class="scale-options">
+                                <div class="scale-option">
+                                    <input type="radio" name="comfort_speaking" value="1" id="comfort1" required>
+                                    <label for="comfort1">1</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" name="comfort_speaking" value="2" id="comfort2">
+                                    <label for="comfort2">2</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" name="comfort_speaking" value="3" id="comfort3">
+                                    <label for="comfort3">3</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" name="comfort_speaking" value="4" id="comfort4">
+                                    <label for="comfort4">4</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" name="comfort_speaking" value="5" id="comfort5">
+                                    <label for="comfort5">5</label>
+                                </div>
+                            </div>
+                            <div class="scale-labels">
+                                <span>Helemaal niet comfortabel</span>
+                                <span>Zeer comfortabel</span>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">B4. In welke situaties zou u NIET hardop willen praten tegen een apparaat?</label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="checkbox" name="no_speak_situations" value="openbaar"><span class="option-check"></span>In het openbaar</label>
+                                <label class="option-label"><input type="checkbox" name="no_speak_situations" value="werk"><span class="option-check"></span>Op het werk</label>
+                                <label class="option-label"><input type="checkbox" name="no_speak_situations" value="thuis-anderen"><span class="option-check"></span>Thuis met anderen aanwezig</label>
+                                <label class="option-label"><input type="checkbox" name="no_speak_situations" value="nooit-probleem"><span class="option-check"></span>Nooit een probleem</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2>Sectie C: Ervaring met AI Chatbots</h2>
+
+                        <div class="question">
+                            <label class="question-label">C1. Heeft u ervaring met AI chatbots zoals ChatGPT? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="ai_exp" value="regelmatig" required><span class="option-check"></span>Ja, regelmatig</label>
+                                <label class="option-label"><input type="radio" name="ai_exp" value="soms"><span class="option-check"></span>Ja, soms</label>
+                                <label class="option-label"><input type="radio" name="ai_exp" value="paar-keer"><span class="option-check"></span>Een paar keer geprobeerd</label>
+                                <label class="option-label"><input type="radio" name="ai_exp" value="nooit"><span class="option-check"></span>Nee, nooit</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">C2. Zou u een AI-gebaseerde app gebruiken om emotionele ondersteuning te krijgen? <span class="required">*</span></label>
+                            <div class="scale-options">
+                                <div class="scale-option">
+                                    <input type="radio" name="ai_support" value="1" id="ai1" required>
+                                    <label for="ai1">1</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" name="ai_support" value="2" id="ai2">
+                                    <label for="ai2">2</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" name="ai_support" value="3" id="ai3">
+                                    <label for="ai3">3</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" name="ai_support" value="4" id="ai4">
+                                    <label for="ai4">4</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" name="ai_support" value="5" id="ai5">
+                                    <label for="ai5">5</label>
+                                </div>
+                            </div>
+                            <div class="scale-labels">
+                                <span>Zeer onwaarschijnlijk</span>
+                                <span>Zeer waarschijnlijk</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="goToDashboard()">
+                            ← Terug
+                        </button>
+                        <div class="progress-indicator">
+                            <span>Stap 1 van 3</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 33%"></div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-goose">
+                            Opslaan & Doorgaan →
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initForm('goose_pretest', 'goose');
+        });
+    </script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goose - Observatieformulier (Onderzoeker)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .obs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .obs-item { display: flex; align-items: center; gap: 10px; padding: 10px; background: var(--bg-dark); border-radius: 6px; }
+        .obs-item input { width: 20px; height: 20px; accent-color: var(--goose-color); }
+        .time-input { display: flex; align-items: center; gap: 10px; }
+        .time-input input { width: 80px; padding: 8px; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-primary); text-align: center; }
+        .counter-group { display: flex; gap: 20px; flex-wrap: wrap; }
+        .counter { text-align: center; }
+        .counter input { width: 60px; padding: 10px; font-size: 20px; font-weight: bold; text-align: center; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 6px; color: var(--goose-color); }
+        .counter label { display: block; font-size: 11px; color: var(--text-muted); margin-top: 5px; }
+        .researcher-note { background: rgba(245, 158, 11, 0.1); border: 1px solid var(--accent-orange); border-radius: 8px; padding: 15px; margin-bottom: 20px; }
+        .researcher-note strong { color: var(--accent-orange); }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <nav class="sidebar">
+            <div class="logo"><span class="logo-icon">📋</span><span class="logo-text">VUI Research</span></div>
+            <div class="nav-section"><a href="../../index.html" class="nav-item"><span class="nav-icon">🏠</span>Terug naar Home</a></div>
+            <div class="nav-section">
+                <div class="nav-title">🪿 Goose (Onderzoeker)</div>
+                <a href="observation.html" class="nav-item active">👁️ Observatie</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="form-page">
+                <div class="form-header">
+                    <div class="form-icon">👁️</div>
+                    <h1>Observatieformulier</h1>
+                    <p>Voor onderzoeker - Goose Test Sessie</p>
+                </div>
+
+                <div class="researcher-note">
+                    <strong>⚠️ Dit formulier is alleen voor de onderzoeker</strong><br>
+                    Vul dit in tijdens het observeren van de deelnemer.
+                </div>
+
+                <form id="researchForm" onsubmit="submitForm(event, 'goose_observation', '../../index.html')">
+                    
+                    <div class="form-section">
+                        <h2>Sessie Informatie</h2>
+                        <div class="form-group">
+                            <label>Deelnemer ID</label>
+                            <input type="text" name="participant_id" id="obs_participant" required placeholder="bijv. P001">
+                        </div>
+                        <div class="obs-grid">
+                            <div class="form-group">
+                                <label>Observer</label>
+                                <input type="text" name="observer" placeholder="Naam onderzoeker">
+                            </div>
+                            <div class="form-group">
+                                <label>Locatie</label>
+                                <input type="text" name="location" placeholder="bijv. Labo Odisee">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2>📱 Taak 1: GUI Conversatie</h2>
+                        <div class="time-input" style="margin-bottom: 20px;">
+                            <label>Start:</label>
+                            <input type="time" name="gui_start">
+                            <label>Einde:</label>
+                            <input type="time" name="gui_end">
+                            <label>Duur (min):</label>
+                            <input type="number" name="gui_duration" min="0">
+                        </div>
+                        
+                        <div class="counter-group" style="margin-bottom: 20px;">
+                            <div class="counter">
+                                <input type="number" name="gui_messages" min="0" value="0">
+                                <label>Berichten</label>
+                            </div>
+                            <div class="counter">
+                                <input type="number" name="gui_options" min="0" value="0">
+                                <label>Opties</label>
+                            </div>
+                            <div class="counter">
+                                <input type="number" name="gui_blanks" min="0" value="0">
+                                <label>Blanks</label>
+                            </div>
+                            <div class="counter">
+                                <input type="number" name="gui_errors" min="0" value="0">
+                                <label>Fouten</label>
+                            </div>
+                        </div>
+
+                        <p style="margin-bottom: 10px; font-weight: 500;">Observaties:</p>
+                        <div class="obs-grid">
+                            <div class="obs-item"><input type="checkbox" name="gui_obs" value="hesitates"> Aarzelt voor typen</div>
+                            <div class="obs-item"><input type="checkbox" name="gui_obs" value="fast"> Typt snel</div>
+                            <div class="obs-item"><input type="checkbox" name="gui_obs" value="reads"> Leest opties aandachtig</div>
+                            <div class="obs-item"><input type="checkbox" name="gui_obs" value="scrolls"> Scrolt veel terug</div>
+                            <div class="obs-item"><input type="checkbox" name="gui_obs" value="frustrated"> Lijkt gefrustreerd</div>
+                            <div class="obs-item"><input type="checkbox" name="gui_obs" value="engaged"> Lijkt geëngageerd</div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 15px;">
+                            <label>Notities GUI</label>
+                            <textarea name="gui_notes" rows="3" placeholder="Observaties tijdens GUI gebruik..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2>🎤 Taak 2: VUI Conversatie</h2>
+                        <div class="time-input" style="margin-bottom: 20px;">
+                            <label>Start:</label>
+                            <input type="time" name="vui_start">
+                            <label>Einde:</label>
+                            <input type="time" name="vui_end">
+                            <label>Duur (min):</label>
+                            <input type="number" name="vui_duration" min="0">
+                        </div>
+                        
+                        <div class="counter-group" style="margin-bottom: 20px;">
+                            <div class="counter">
+                                <input type="number" name="vui_commands_total" min="0" value="0">
+                                <label>Commando's</label>
+                            </div>
+                            <div class="counter">
+                                <input type="number" name="vui_commands_success" min="0" value="0">
+                                <label>Succesvol</label>
+                            </div>
+                            <div class="counter">
+                                <input type="number" name="vui_commands_failed" min="0" value="0">
+                                <label>Mislukt</label>
+                            </div>
+                            <div class="counter">
+                                <input type="number" name="vui_select_commands" min="0" value="0">
+                                <label>"Selecteer X"</label>
+                            </div>
+                        </div>
+
+                        <p style="margin-bottom: 10px; font-weight: 500;">Observaties:</p>
+                        <div class="obs-grid">
+                            <div class="obs-item"><input type="checkbox" name="vui_obs" value="clear"> Spreekt duidelijk</div>
+                            <div class="obs-item"><input type="checkbox" name="vui_obs" value="adapts"> Past spraak aan na fouten</div>
+                            <div class="obs-item"><input type="checkbox" name="vui_obs" value="repeats"> Herhaalt commando's vaak</div>
+                            <div class="obs-item"><input type="checkbox" name="vui_obs" value="gestures"> Gebruikt handgebaren</div>
+                            <div class="obs-item"><input type="checkbox" name="vui_obs" value="looks"> Kijkt naar scherm</div>
+                            <div class="obs-item"><input type="checkbox" name="vui_obs" value="waits"> Wacht op feedback</div>
+                            <div class="obs-item"><input type="checkbox" name="vui_obs" value="uncomfortable"> Lijkt ongemakkelijk</div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 15px;">
+                            <label>Notities VUI</label>
+                            <textarea name="vui_notes" rows="3" placeholder="Observaties tijdens VUI gebruik..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2>😊 Emotionele Reacties</h2>
+                        <p style="margin-bottom: 15px; color: var(--text-secondary);">Kruis aan welke reacties u observeerde per interface:</p>
+                        
+                        <table class="data-table" style="margin-top: 0;">
+                            <tr>
+                                <th>Reactie</th>
+                                <th style="text-align: center;">GUI</th>
+                                <th style="text-align: center;">VUI</th>
+                            </tr>
+                            <tr>
+                                <td>Lacht / glimlacht</td>
+                                <td style="text-align: center;"><input type="checkbox" name="emotion_gui" value="smile"></td>
+                                <td style="text-align: center;"><input type="checkbox" name="emotion_vui" value="smile"></td>
+                            </tr>
+                            <tr>
+                                <td>Zucht</td>
+                                <td style="text-align: center;"><input type="checkbox" name="emotion_gui" value="sigh"></td>
+                                <td style="text-align: center;"><input type="checkbox" name="emotion_vui" value="sigh"></td>
+                            </tr>
+                            <tr>
+                                <td>Fronst</td>
+                                <td style="text-align: center;"><input type="checkbox" name="emotion_gui" value="frown"></td>
+                                <td style="text-align: center;"><input type="checkbox" name="emotion_vui" value="frown"></td>
+                            </tr>
+                            <tr>
+                                <td>Lijkt ontspannen</td>
+                                <td style="text-align: center;"><input type="checkbox" name="emotion_gui" value="relaxed"></td>
+                                <td style="text-align: center;"><input type="checkbox" name="emotion_vui" value="relaxed"></td>
+                            </tr>
+                            <tr>
+                                <td>Lijkt gespannen</td>
+                                <td style="text-align: center;"><input type="checkbox" name="emotion_gui" value="tense"></td>
+                                <td style="text-align: center;"><input type="checkbox" name="emotion_vui" value="tense"></td>
+                            </tr>
+                            <tr>
+                                <td>Verrast / verbaasd</td>
+                                <td style="text-align: center;"><input type="checkbox" name="emotion_gui" value="surprised"></td>
+                                <td style="text-align: center;"><input type="checkbox" name="emotion_vui" value="surprised"></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="form-section">
+                        <h2>📝 Quotes & Algemene Observaties</h2>
+                        
+                        <div class="form-group">
+                            <label>Quotes tijdens de test</label>
+                            <textarea name="quotes_during" rows="3" placeholder="Wat zei de deelnemer spontaan tijdens het testen?"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Quotes na de test</label>
+                            <textarea name="quotes_after" rows="3" placeholder="Wat zei de deelnemer na afloop?"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Algemene observaties & indruk</label>
+                            <textarea name="general_notes" rows="4" placeholder="Uw algemene indruk van de sessie..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Vergelijking: Welke interface leek beter te werken voor deze deelnemer?</label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="observer_preference" value="gui"><span class="option-check"></span>GUI leek beter</label>
+                                <label class="option-label"><input type="radio" name="observer_preference" value="vui"><span class="option-check"></span>VUI leek beter</label>
+                                <label class="option-label"><input type="radio" name="observer_preference" value="equal"><span class="option-check"></span>Ongeveer gelijk</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="goToDashboard()">← Terug</button>
+                        <button type="submit" class="btn btn-goose">✓ Observatie Opslaan</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const current = SessionManager.getCurrent();
+            if (current) {
+                document.getElementById('obs_participant').value = current.id;
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+

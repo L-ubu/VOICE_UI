@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goose VUI - Observatieformulier</title>
+    <style>
+        @page { size: A4; margin: 1.5cm; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 10pt; line-height: 1.4; color: #333; max-width: 21cm; margin: 0 auto; padding: 15px; }
+        h1 { font-size: 16pt; color: #2c3e50; border-bottom: 3px solid #8b5cf6; padding-bottom: 8px; margin-bottom: 15px; }
+        h2 { font-size: 12pt; color: #8b5cf6; margin-top: 20px; margin-bottom: 10px; background: #f0f4ff; padding: 8px; border-radius: 4px; }
+        .header-box { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        .header-box div { font-size: 9pt; }
+        .header-box strong { display: block; margin-bottom: 3px; }
+        .header-box input { border: none; border-bottom: 1px solid #333; background: transparent; width: 100%; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
+        th { background: #8b5cf6; color: white; font-size: 9pt; }
+        td { font-size: 9pt; }
+        .checkbox-cell { width: 40px; text-align: center; }
+        .checkbox { width: 16px; height: 16px; border: 2px solid #8b5cf6; display: inline-block; border-radius: 3px; }
+        .time-box { display: inline-block; width: 50px; border-bottom: 1px solid #333; text-align: center; }
+        .notes-area { width: 100%; min-height: 80px; border: 1px solid #ddd; border-radius: 4px; padding: 8px; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 15px; }
+        .metric-box { border: 1px solid #ddd; padding: 10px; border-radius: 4px; text-align: center; }
+        .metric-box label { display: block; font-size: 8pt; color: #666; margin-bottom: 5px; }
+        .metric-box .value { font-size: 14pt; font-weight: bold; color: #8b5cf6; border-bottom: 2px solid #8b5cf6; display: inline-block; min-width: 40px; }
+        .page-break { page-break-before: always; }
+        .footer { margin-top: 20px; padding-top: 10px; border-top: 1px solid #ddd; font-size: 8pt; color: #666; text-align: center; }
+        .logo { font-size: 20pt; margin-bottom: 3px; }
+        .section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    </style>
+</head>
+<body>
+    <div class="logo">🪿</div>
+    <h1>Observatieformulier - Goose VUI Test</h1>
+    
+    <div class="header-box">
+        <div>
+            <strong>Deelnemer ID:</strong>
+            <input type="text">
+        </div>
+        <div>
+            <strong>Datum:</strong>
+            <input type="text">
+        </div>
+        <div>
+            <strong>Observer:</strong>
+            <input type="text">
+        </div>
+        <div>
+            <strong>Interface Volgorde:</strong>
+            <span class="checkbox"></span> GUI eerst &nbsp;
+            <span class="checkbox"></span> VUI eerst
+        </div>
+        <div>
+            <strong>Locatie:</strong>
+            <input type="text">
+        </div>
+        <div>
+            <strong>Tijd Start Sessie:</strong>
+            <input type="text">
+        </div>
+    </div>
+
+    <h2>📱 TAAK 1: GUI CONVERSATIE</h2>
+    
+    <p>
+        <strong>Starttijd:</strong> <span class="time-box"></span> : <span class="time-box"></span>
+        &nbsp;&nbsp;&nbsp;
+        <strong>Eindtijd:</strong> <span class="time-box"></span> : <span class="time-box"></span>
+        &nbsp;&nbsp;&nbsp;
+        <strong>Totale duur:</strong> <span class="time-box" style="width: 60px;"></span> min
+    </p>
+
+    <div class="metrics-grid">
+        <div class="metric-box">
+            <label>Berichten verzonden</label>
+            <span class="value"></span>
+        </div>
+        <div class="metric-box">
+            <label>Opties geselecteerd</label>
+            <span class="value"></span>
+        </div>
+        <div class="metric-box">
+            <label>Blanks ingevuld</label>
+            <span class="value"></span>
+        </div>
+        <div class="metric-box">
+            <label>Fouten/correcties</label>
+            <span class="value"></span>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Observatie</th>
+            <th class="checkbox-cell">Ja</th>
+            <th class="checkbox-cell">Nee</th>
+            <th>Opmerkingen</th>
+        </tr>
+        <tr>
+            <td>Aarzelt voor typen</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Typt snel</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Leest opties aandachtig</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Scrolt veel terug</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Lijkt gefrustreerd</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Lijkt geëngageerd</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <p><strong>Notities GUI:</strong></p>
+    <div class="notes-area"></div>
+
+    <h2>🎤 TAAK 2: VUI CONVERSATIE</h2>
+    
+    <p>
+        <strong>Starttijd:</strong> <span class="time-box"></span> : <span class="time-box"></span>
+        &nbsp;&nbsp;&nbsp;
+        <strong>Eindtijd:</strong> <span class="time-box"></span> : <span class="time-box"></span>
+        &nbsp;&nbsp;&nbsp;
+        <strong>Totale duur:</strong> <span class="time-box" style="width: 60px;"></span> min
+    </p>
+
+    <div class="metrics-grid">
+        <div class="metric-box">
+            <label>Spraakcommando's totaal</label>
+            <span class="value"></span>
+        </div>
+        <div class="metric-box">
+            <label>Succesvolle herkenningen</label>
+            <span class="value"></span>
+        </div>
+        <div class="metric-box">
+            <label>Mislukte herkenningen</label>
+            <span class="value"></span>
+        </div>
+        <div class="metric-box">
+            <label>"Selecteer X" commando's</label>
+            <span class="value"></span>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Observatie</th>
+            <th class="checkbox-cell">Ja</th>
+            <th class="checkbox-cell">Nee</th>
+            <th>Opmerkingen</th>
+        </tr>
+        <tr>
+            <td>Spreekt duidelijk</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Past spraak aan na fouten</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Herhaalt commando's vaak</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Gebruikt handgebaren tijdens spreken</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Kijkt naar scherm tijdens spreken</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Wacht op feedback voor volgende actie</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Lijkt ongemakkelijk met spreken</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h2>😊 EMOTIONELE REACTIES</h2>
+    
+    <table>
+        <tr>
+            <th>Reactie</th>
+            <th class="checkbox-cell">GUI</th>
+            <th class="checkbox-cell">VUI</th>
+            <th>Context / wanneer</th>
+        </tr>
+        <tr>
+            <td>Lacht / glimlacht</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Zucht</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Fronst</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Lijkt ontspannen</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Lijkt gespannen</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Verrast / verbaasd</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <h2>⚠️ SPRAAKPROBLEMEN GENOTEERD</h2>
+    
+    <table>
+        <tr>
+            <th style="width: 50%;">Probleem</th>
+            <th>Frequentie</th>
+            <th>Context</th>
+        </tr>
+        <tr>
+            <td>Spraakherkenning begreep woord niet</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Verkeerd commando begrepen</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Systeem reageerde niet</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>TTS onderbrak gebruiker</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Stilte-timeout te snel</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <h2>📝 QUOTES / OPMERKINGEN VAN DEELNEMER</h2>
+    
+    <p><strong>Tijdens de test:</strong></p>
+    <div class="notes-area"></div>
+    
+    <p><strong>Na de test:</strong></p>
+    <div class="notes-area"></div>
+
+    <h2>📊 VERGELIJKING</h2>
+    
+    <table>
+        <tr>
+            <th>Aspect</th>
+            <th class="checkbox-cell">GUI</th>
+            <th class="checkbox-cell">VUI</th>
+            <th class="checkbox-cell">Gelijk</th>
+        </tr>
+        <tr>
+            <td>Welke interface leek sneller?</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+        </tr>
+        <tr>
+            <td>Welke interface leek makkelijker?</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+        </tr>
+        <tr>
+            <td>Bij welke was gebruiker meer betrokken?</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+        </tr>
+        <tr>
+            <td>Bij welke leek gebruiker emotioneler?</td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+            <td class="checkbox-cell"><span class="checkbox"></span></td>
+        </tr>
+    </table>
+
+    <h2>📋 ALGEMENE OBSERVATIES</h2>
+    <div class="notes-area" style="min-height: 100px;"></div>
+
+    <div class="footer">
+        Goose VUI Onderzoek - Odisee Hogeschool - Observatieformulier v1.0
+    </div>
+</body>
+</html>
+
+
+
+

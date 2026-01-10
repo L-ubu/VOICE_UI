@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAIA VUI - Pre-Test Vragenlijst</title>
+    <style>
+        @page { size: A4; margin: 2cm; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 11pt; line-height: 1.5; color: #333; max-width: 21cm; margin: 0 auto; padding: 20px; }
+        h1 { font-size: 18pt; color: #2c3e50; border-bottom: 3px solid #10b981; padding-bottom: 10px; margin-bottom: 20px; }
+        h2 { font-size: 14pt; color: #10b981; margin-top: 25px; margin-bottom: 15px; border-left: 4px solid #10b981; padding-left: 10px; }
+        .header-info { display: flex; justify-content: space-between; background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 25px; }
+        .question { margin-bottom: 20px; page-break-inside: avoid; }
+        .question-text { font-weight: 600; margin-bottom: 10px; }
+        .options { margin-left: 20px; }
+        .option { display: flex; align-items: center; margin-bottom: 8px; }
+        .checkbox { width: 18px; height: 18px; border: 2px solid #10b981; border-radius: 3px; margin-right: 10px; flex-shrink: 0; }
+        .radio { width: 18px; height: 18px; border: 2px solid #10b981; border-radius: 50%; margin-right: 10px; flex-shrink: 0; }
+        .scale-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .scale-table td { text-align: center; padding: 8px; border: 1px solid #ddd; }
+        .scale-table td:first-child, .scale-table td:last-child { font-size: 10pt; color: #666; width: 100px; }
+        .scale-circle { width: 24px; height: 24px; border: 2px solid #10b981; border-radius: 50%; margin: 0 auto; }
+        .text-area { width: 100%; min-height: 60px; border: 1px solid #ddd; border-radius: 4px; padding: 10px; margin-top: 5px; }
+        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 9pt; color: #666; text-align: center; }
+        .logo { font-size: 18pt; font-weight: bold; color: #10b981; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <div class="logo">📚 VAIA</div>
+    <h1>VAIA VUI Onderzoek - Pre-Test Vragenlijst</h1>
+    
+    <div class="header-info">
+        <div><strong>Deelnemer ID:</strong> _______________</div>
+        <div><strong>Datum:</strong> _______________</div>
+        <div><strong>Conditie:</strong> ☐ GUI eerst  ☐ VUI eerst</div>
+    </div>
+
+    <h2>Sectie A: Demografische Gegevens</h2>
+    
+    <div class="question">
+        <div class="question-text">A1. Wat is uw leeftijd?</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> 18-24 jaar</div>
+            <div class="option"><div class="radio"></div> 25-34 jaar</div>
+            <div class="option"><div class="radio"></div> 35-44 jaar</div>
+            <div class="option"><div class="radio"></div> 45-54 jaar</div>
+            <div class="option"><div class="radio"></div> 55-64 jaar</div>
+            <div class="option"><div class="radio"></div> 65+ jaar</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">A2. Wat is uw geslacht?</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> Man</div>
+            <div class="option"><div class="radio"></div> Vrouw</div>
+            <div class="option"><div class="radio"></div> Anders / Zeg ik liever niet</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">A3. Wat is uw hoogst behaalde opleidingsniveau?</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> Middelbaar onderwijs</div>
+            <div class="option"><div class="radio"></div> MBO</div>
+            <div class="option"><div class="radio"></div> HBO Bachelor</div>
+            <div class="option"><div class="radio"></div> Universiteit Bachelor</div>
+            <div class="option"><div class="radio"></div> Master of hoger</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">A4. Wat is uw beroep of studierichting?</div>
+        <div class="text-area" style="min-height: 30px;"></div>
+    </div>
+
+    <h2>Sectie B: Technologie-ervaring</h2>
+
+    <div class="question">
+        <div class="question-text">B1. Hoe vaak gebruikt u digitale apparaten (computer, smartphone, tablet)?</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> Meerdere uren per dag</div>
+            <div class="option"><div class="radio"></div> Ongeveer 1 uur per dag</div>
+            <div class="option"><div class="radio"></div> Enkele keren per week</div>
+            <div class="option"><div class="radio"></div> Zelden</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">B2. Hoe zou u uw algemene computervaardigheden omschrijven?</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> Beginner</div>
+            <div class="option"><div class="radio"></div> Gemiddeld</div>
+            <div class="option"><div class="radio"></div> Gevorderd</div>
+            <div class="option"><div class="radio"></div> Expert</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">B3. Hoe vaak vult u online formulieren in? (bijv. registraties, aanvragen)</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> Dagelijks</div>
+            <div class="option"><div class="radio"></div> Wekelijks</div>
+            <div class="option"><div class="radio"></div> Maandelijks</div>
+            <div class="option"><div class="radio"></div> Zelden of nooit</div>
+        </div>
+    </div>
+
+    <h2>Sectie C: Voice Assistant Ervaring</h2>
+
+    <div class="question">
+        <div class="question-text">C1. Heeft u ervaring met spraakassistenten? (bijv. Siri, Google Assistant, Alexa)</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> Ja, ik gebruik ze dagelijks</div>
+            <div class="option"><div class="radio"></div> Ja, ik gebruik ze wekelijks</div>
+            <div class="option"><div class="radio"></div> Ja, maar zelden</div>
+            <div class="option"><div class="radio"></div> Nee, nooit gebruikt</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">C2. Indien ja, waarvoor gebruikt u spraakassistenten het meest? (meerdere mogelijk)</div>
+        <div class="options">
+            <div class="option"><div class="checkbox"></div> Vragen stellen / informatie opzoeken</div>
+            <div class="option"><div class="checkbox"></div> Timers/alarmen instellen</div>
+            <div class="option"><div class="checkbox"></div> Muziek afspelen</div>
+            <div class="option"><div class="checkbox"></div> Smart home apparaten bedienen</div>
+            <div class="option"><div class="checkbox"></div> Berichten versturen</div>
+            <div class="option"><div class="checkbox"></div> Navigatie</div>
+            <div class="option"><div class="checkbox"></div> Anders: _______________</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">C3. Hoe comfortabel voelt u zich bij het hardop praten tegen een apparaat?</div>
+        <table class="scale-table">
+            <tr>
+                <td>Zeer oncomfortabel</td>
+                <td><div class="scale-circle"></div><br>1</td>
+                <td><div class="scale-circle"></div><br>2</td>
+                <td><div class="scale-circle"></div><br>3</td>
+                <td><div class="scale-circle"></div><br>4</td>
+                <td><div class="scale-circle"></div><br>5</td>
+                <td>Zeer comfortabel</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="question">
+        <div class="question-text">C4. In welke situaties zou u GEEN spraakassistent gebruiken? (meerdere mogelijk)</div>
+        <div class="options">
+            <div class="option"><div class="checkbox"></div> In het openbaar</div>
+            <div class="option"><div class="checkbox"></div> Op kantoor/werk</div>
+            <div class="option"><div class="checkbox"></div> In aanwezigheid van anderen</div>
+            <div class="option"><div class="checkbox"></div> Voor privé informatie</div>
+            <div class="option"><div class="checkbox"></div> Nooit, ik gebruik het overal</div>
+            <div class="option"><div class="checkbox"></div> Anders: _______________</div>
+        </div>
+    </div>
+
+    <h2>Sectie D: Verwachtingen</h2>
+
+    <div class="question">
+        <div class="question-text">D1. Wat verwacht u dat makkelijker zal zijn met spraak dan met typen bij het invullen van formulieren?</div>
+        <div class="text-area"></div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">D2. Wat verwacht u dat moeilijker zal zijn met spraak dan met typen bij het invullen van formulieren?</div>
+        <div class="text-area"></div>
+    </div>
+
+    <div class="footer">
+        VAIA VUI Onderzoek - Odisee Hogeschool - Pre-Test Vragenlijst v1.0
+    </div>
+</body>
+</html>
+
+
+
+

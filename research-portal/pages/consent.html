@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informed Consent - VUI Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .consent-section { margin-bottom: 25px; }
+        .consent-section h3 { font-size: 16px; margin-bottom: 12px; color: var(--goose-color); }
+        .consent-section ul { margin-left: 20px; }
+        .consent-section li { margin-bottom: 8px; color: var(--text-secondary); }
+        .consent-box { background: var(--bg-hover); border-radius: 8px; padding: 20px; margin: 20px 0; }
+        .consent-checkbox { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+        .consent-checkbox input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--goose-color); }
+        .signature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+        .signature-field label { display: block; font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; }
+        .signature-field input { width: 100%; padding: 15px; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); font-size: 16px; }
+        .print-btn { position: fixed; top: 80px; right: 30px; }
+        @media print {
+            .sidebar, .header, .form-actions, .print-btn { display: none !important; }
+            .main-content { margin-left: 0; }
+            body { background: white; color: black; }
+            .form-section, .consent-box { border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <nav class="sidebar">
+            <div class="logo"><span class="logo-icon">📋</span><span class="logo-text">VUI Research</span></div>
+            <div class="nav-section"><a href="../index.html" class="nav-item"><span class="nav-icon">🏠</span>Terug naar Home</a></div>
+        </nav>
+
+        <main class="main-content">
+            <button class="btn btn-secondary print-btn" onclick="window.print()">🖨️ Print</button>
+            
+            <div class="form-page">
+                <div class="form-header">
+                    <div class="form-icon">✍️</div>
+                    <h1>Informed Consent Formulier</h1>
+                    <p>Onderzoek naar Voice-User Interfaces - Odisee Hogeschool</p>
+                </div>
+
+                <form id="consentForm" onsubmit="submitConsent(event)">
+                    <div class="form-section">
+                        <div class="consent-section">
+                            <h3>Doel van het Onderzoek</h3>
+                            <p>Dit onderzoek vergelijkt voice-user interfaces (VUI) met grafische interfaces (GUI) in twee applicaties: Goose (emotie-bewuste conversatie-app) en VAIA (formulier-invul-app). Het doel is te begrijpen hoe gebruikers beide interfaces ervaren.</p>
+                        </div>
+
+                        <div class="consent-section">
+                            <h3>Wat wordt er van u gevraagd?</h3>
+                            <ul>
+                                <li>Korte taken uitvoeren met de applicatie (zowel via spraak als via typen)</li>
+                                <li>Vragenlijsten invullen voor en na de test</li>
+                                <li>Deelnemen aan een kort interview over uw ervaringen</li>
+                            </ul>
+                            <p><strong>Totale tijdsinvestering:</strong> ongeveer 45-60 minuten</p>
+                        </div>
+
+                        <div class="consent-section">
+                            <h3>Gegevensverzameling</h3>
+                            <p>Tijdens het onderzoek worden de volgende gegevens verzameld:</p>
+                            <ul>
+                                <li>Uw antwoorden op de vragenlijsten</li>
+                                <li>Interactiedata van de applicatie (taken, tijden, fouten)</li>
+                                <li>Voor Goose: emotie-analyse data van uw spraak</li>
+                                <li>Observatienotities van de onderzoeker</li>
+                            </ul>
+                        </div>
+
+                        <div class="consent-section">
+                            <h3>Vertrouwelijkheid en Privacy</h3>
+                            <ul>
+                                <li>Alle data wordt <strong>geanonimiseerd</strong> - uw naam wordt nergens vermeld</li>
+                                <li>Data wordt beveiligd opgeslagen conform AVG/GDPR</li>
+                                <li>Alleen de onderzoeker en begeleiders hebben toegang</li>
+                                <li>Na afronding worden persoonlijke gegevens verwijderd</li>
+                            </ul>
+                        </div>
+
+                        <div class="consent-section">
+                            <h3>Vrijwillige Deelname</h3>
+                            <ul>
+                                <li>Deelname is <strong>volledig vrijwillig</strong></li>
+                                <li>U kunt op <strong>elk moment stoppen</strong> zonder reden</li>
+                                <li>U kunt vragen om data <strong>verwijdering</strong> tot 2 weken na deelname</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2>Toestemmingen</h2>
+                        
+                        <div class="consent-box">
+                            <div class="consent-checkbox">
+                                <input type="checkbox" id="consent_main" required>
+                                <label for="consent_main"><strong>Ik heb dit formulier gelezen en begrepen, en stem vrijwillig in met deelname aan dit onderzoek. *</strong></label>
+                            </div>
+                            
+                            <div class="consent-checkbox">
+                                <input type="checkbox" id="consent_audio">
+                                <label for="consent_audio">Ik geef toestemming voor <strong>audio-opname</strong> van de testsessie (optioneel)</label>
+                            </div>
+                            
+                            <div class="consent-checkbox">
+                                <input type="checkbox" id="consent_screen">
+                                <label for="consent_screen">Ik geef toestemming voor <strong>schermopname</strong> van de testsessie (optioneel)</label>
+                            </div>
+                            
+                            <div class="consent-checkbox">
+                                <input type="checkbox" id="consent_quotes">
+                                <label for="consent_quotes">Ik geef toestemming voor het gebruik van <strong>geanonimiseerde citaten</strong> in publicaties (optioneel)</label>
+                            </div>
+                        </div>
+
+                        <div class="signature-row">
+                            <div class="signature-field">
+                                <label>Naam deelnemer</label>
+                                <input type="text" id="participant_name" required placeholder="Volledige naam">
+                            </div>
+                            <div class="signature-field">
+                                <label>Datum</label>
+                                <input type="date" id="consent_date" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2>Contactgegevens</h2>
+                        <p><strong>Onderzoeker:</strong> Luca Vandenweghe</p>
+                        <p><strong>Begeleider:</strong> Rutger De Wilde</p>
+                        <p><strong>Instelling:</strong> Odisee Hogeschool, Gebroeders De Smetstraat 1, 9000 Gent</p>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="window.location.href='../index.html'">← Terug</button>
+                        <button type="submit" class="btn btn-primary">✓ Ondertekenen & Opslaan</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/storage.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // Set today's date as default
+        document.getElementById('consent_date').valueAsDate = new Date();
+        
+        function submitConsent(event) {
+            event.preventDefault();
+            
+            const current = SessionManager.getCurrent();
+            if (!current) {
+                alert('Geen actieve sessie gevonden. Start eerst een nieuwe sessie.');
+                return;
+            }
+            
+            const consentData = {
+                main: document.getElementById('consent_main').checked,
+                audio: document.getElementById('consent_audio').checked,
+                screen: document.getElementById('consent_screen').checked,
+                quotes: document.getElementById('consent_quotes').checked,
+                name: document.getElementById('participant_name').value,
+                date: document.getElementById('consent_date').value,
+                signedAt: new Date().toISOString()
+            };
+            
+            ResponseManager.save(current.id, 'consent', consentData);
+            showNotification('Consent opgeslagen!', 'success');
+            
+            setTimeout(() => {
+                const project = current.project;
+                window.location.href = project === 'goose' 
+                    ? 'goose/pre-test.html' 
+                    : 'vaia/pre-test.html';
+            }, 500);
+        }
+    </script>
+</body>
+</html>
+
+
+

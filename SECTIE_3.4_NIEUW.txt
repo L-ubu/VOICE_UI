@@ -1,0 +1,57 @@
+3.4	Dataverzameling en Benchmarks
+
+**Kwantitatieve Metingen (per use case):**
+
+1. **Taakvoltooiingstijd (Task Completion Time)**
+   - Benchmark: Tijd in seconden vanaf start tot succesvolle voltooiing
+   - Meting: Gemiddelde, mediaan, minimum en maximum per interface en per taak
+   - Doel: Efficiëntievergelijking tussen VUI en GUI
+
+2. **Foutpercentages en Nauwkeurigheid**
+   - Benchmark: Aantal fouten per taak, percentage correcte voltooiingen
+   - Meting: Totaal aantal fouten, type fouten, correctiepogingen
+   - Doel: Kwaliteitsvergelijking tussen beide interfaces
+
+3. **Succespercentage**
+   - Benchmark: Percentage taken dat succesvol wordt voltooid zonder hulp
+   - Meting: Volledige voltooiing vs. gedeeltelijke voltooiing vs. mislukking
+   - Doel: Effectiviteitsvergelijking
+
+4. **Aantal Interacties**
+   - Benchmark: Aantal stappen/commando's nodig om taak te voltooien
+   - Meting: Klikken (GUI) vs. spraakcommando's (VUI)
+   - Doel: Efficiëntie van interactiepatronen
+
+5. **Leercurve**
+   - Benchmark: Verbetering in prestaties over meerdere pogingen
+   - Meting: Tijd en fouten bij eerste vs. latere pogingen
+   - Doel: Gebruiksvriendelijkheid en leerbaarheid
+
+**Kwalitatieve Metingen (per use case):**
+
+1. **System Usability Scale (SUS)**
+   - Benchmark: Gestandaardiseerde score van 0-100 per interface
+   - Meting: Na voltooiing van alle taken per use case
+   - Doel: Algemene gebruiksvriendelijkheid
+
+2. **Observaties**
+   - Gedragspatronen tijdens taakuitvoering
+   - Frustraties en positieve reacties
+   - Strategieën die gebruikers ontwikkelen
+
+3. **Semi-gestructureerde Interviews**
+   - Na elke use case: directe feedback over ervaring
+   - Eindinterview: algemene voorkeuren en vergelijking
+   - Open vragen over sterke/zwakke punten per interface
+
+4. **Subjectieve Ervaringen**
+   - Voorkeur voor interface per use case
+   - Contextuele factoren die voorkeur beïnvloeden
+   - Aanbevelingen van gebruikers
+
+
+
+
+
+
+

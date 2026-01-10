@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Overzicht - VUI Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .data-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .data-table th, .data-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); }
+        .data-table th { background: var(--bg-hover); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); }
+        .data-table tr:hover { background: var(--bg-hover); }
+        .badge { padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 500; }
+        .badge-goose { background: rgba(139, 92, 246, 0.2); color: var(--goose-light); }
+        .badge-vaia { background: rgba(16, 185, 129, 0.2); color: var(--vaia-light); }
+        .badge-complete { background: rgba(34, 197, 94, 0.2); color: var(--success); }
+        .badge-pending { background: rgba(245, 158, 11, 0.2); color: var(--accent-orange); }
+        .form-check { width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 12px; margin-right: 5px; }
+        .form-check.done { background: var(--success); color: white; }
+        .form-check.pending { background: var(--border-color); color: var(--text-muted); }
+        .action-btn { padding: 6px 12px; font-size: 12px; margin-right: 5px; }
+        .sus-score { font-weight: 700; font-size: 16px; }
+        .sus-score.good { color: var(--success); }
+        .sus-score.ok { color: var(--accent-orange); }
+        .sus-score.bad { color: var(--error); }
+        .filter-bar { display: flex; gap: 15px; margin-bottom: 20px; }
+        .filter-bar select { padding: 8px 15px; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); }
+        .detail-modal { max-width: 700px; }
+        .detail-section { margin-bottom: 20px; }
+        .detail-section h4 { font-size: 14px; color: var(--goose-color); margin-bottom: 10px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .detail-item { background: var(--bg-dark); padding: 10px; border-radius: 6px; }
+        .detail-item label { font-size: 11px; color: var(--text-muted); display: block; margin-bottom: 4px; }
+        .detail-item value { font-size: 14px; }
+        .empty-state { text-align: center; padding: 60px; color: var(--text-muted); }
+        .empty-state .icon { font-size: 48px; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <nav class="sidebar">
+            <div class="logo"><span class="logo-icon">📋</span><span class="logo-text">VUI Research</span></div>
+            <div class="nav-section">
+                <a href="../index.html" class="nav-item"><span class="nav-icon">🏠</span>Home</a>
+                <a href="data-overview.html" class="nav-item active"><span class="nav-icon">📊</span>Data Overzicht</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="header">
+                <h1>📊 Data Overzicht</h1>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" onclick="DataExporter.exportJSON()">📄 Export JSON</button>
+                    <button class="btn btn-secondary" onclick="DataExporter.exportCSV()">📊 Export CSV</button>
+                </div>
+            </header>
+
+            <div class="dashboard">
+                <div class="card">
+                    <h2>Alle Sessies</h2>
+                    
+                    <div class="filter-bar">
+                        <select id="filterProject" onchange="filterSessions()">
+                            <option value="all">Alle projecten</option>
+                            <option value="goose">🪿 Goose</option>
+                            <option value="vaia">📚 VAIA</option>
+                        </select>
+                        <select id="filterStatus" onchange="filterSessions()">
+                            <option value="all">Alle statussen</option>
+                            <option value="complete">Voltooid</option>
+                            <option value="in-progress">In progress</option>
+                        </select>
+                    </div>
+
+                    <div id="sessionsContainer">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Detail Modal -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content detail-modal">
+            <div class="modal-header">
+                <h2 id="detailTitle">Sessie Details</h2>
+                <button class="modal-close" onclick="closeDetailModal()">&times;</button>
+            </div>
+            <div id="detailContent" style="padding: 25px; max-height: 70vh; overflow-y: auto;">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/storage.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', renderSessions);
+        
+        function renderSessions() {
+            const container = document.getElementById('sessionsContainer');
+            const sessions = SessionManager.getAll();
+            
+            if (sessions.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="icon">📭</div>
+                        <h3>Nog geen sessies</h3>
+                        <p>Start een nieuwe test sessie om data te verzamelen</p>
+                        <a href="../index.html" class="btn btn-primary" style="margin-top: 15px;">Naar Dashboard</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            const responses = ResponseManager.getAll();
+            
+            container.innerHTML = `
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Project</th>
+                            <th>Volgorde</th>
+                            <th>Formulieren</th>
+                            <th>SUS VUI</th>
+                            <th>SUS GUI</th>
+                            <th>Status</th>
+                            <th>Datum</th>
+                            <th>Acties</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${sessions.map(session => {
+                            const sessionResponses = responses[session.id] || {};
+                            const susData = sessionResponses[session.project + '_sus']?.data || {};
+                            const susVui = calculateSUSFromForm(susData, 'vui');
+                            const susGui = calculateSUSFromForm(susData, 'gui');
+                            
+                            const forms = ['consent', session.project + '_pretest', session.project + '_sus', session.project + '_posttest'];
+                            const completedCount = forms.filter(f => sessionResponses[f]).length;
+                            
+                            return `
+                                <tr data-project="${session.project}" data-status="${session.status}">
+                                    <td><strong>${session.id}</strong></td>
+                                    <td><span class="badge badge-${session.project}">${session.project === 'goose' ? '🪿 Goose' : '📚 VAIA'}</span></td>
+                                    <td>${session.interfaceOrder === 'vui-first' ? 'VUI → GUI' : 'GUI → VUI'}</td>
+                                    <td>
+                                        <span class="form-check ${sessionResponses.consent ? 'done' : 'pending'}">${sessionResponses.consent ? '✓' : '○'}</span>
+                                        <span class="form-check ${sessionResponses[session.project + '_pretest'] ? 'done' : 'pending'}">${sessionResponses[session.project + '_pretest'] ? '✓' : '○'}</span>
+                                        <span class="form-check ${sessionResponses[session.project + '_sus'] ? 'done' : 'pending'}">${sessionResponses[session.project + '_sus'] ? '✓' : '○'}</span>
+                                        <span class="form-check ${sessionResponses[session.project + '_posttest'] ? 'done' : 'pending'}">${sessionResponses[session.project + '_posttest'] ? '✓' : '○'}</span>
+                                        <small style="color: var(--text-muted); margin-left: 5px;">${completedCount}/4</small>
+                                    </td>
+                                    <td><span class="sus-score ${getSUSClass(susVui)}">${susVui !== null ? susVui : '-'}</span></td>
+                                    <td><span class="sus-score ${getSUSClass(susGui)}">${susGui !== null ? susGui : '-'}</span></td>
+                                    <td><span class="badge ${session.status === 'complete' ? 'badge-complete' : 'badge-pending'}">${session.status === 'complete' ? 'Voltooid' : 'Bezig'}</span></td>
+                                    <td>${new Date(session.createdAt).toLocaleDateString('nl-NL')}</td>
+                                    <td>
+                                        <button class="btn btn-outline action-btn" onclick="viewDetails('${session.id}')" title="Details bekijken">👁️</button>
+                                        <button class="btn btn-outline action-btn" onclick="continueSession('${session.id}')" title="Sessie voortzetten">▶️</button>
+                                        <button class="btn btn-outline action-btn" onclick="toggleComplete('${session.id}')" title="${session.status === 'complete' ? 'Heropenen' : 'Voltooien'}">
+                                            ${session.status === 'complete' ? '🔄' : '✅'}
+                                        </button>
+                                        <button class="btn btn-outline action-btn" onclick="deleteSession('${session.id}')" title="Verwijderen">🗑️</button>
+                                    </td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+        
+        function getSUSClass(score) {
+            if (score === null) return '';
+            if (score >= 70) return 'good';
+            if (score >= 50) return 'ok';
+            return 'bad';
+        }
+        
+        function calculateSUSFromForm(formData, prefix) {
+            let total = 0;
+            let hasData = false;
+            
+            for (let i = 1; i <= 10; i++) {
+                const key = `sus_${prefix}_q${i}`;
+                const score = parseInt(formData[key]);
+                if (isNaN(score)) continue;
+                hasData = true;
+                total += (i % 2 === 1) ? score - 1 : 5 - score;
+            }
+            
+            return hasData ? Math.round(total * 2.5) : null;
+        }
+        
+        function filterSessions() {
+            const projectFilter = document.getElementById('filterProject').value;
+            const statusFilter = document.getElementById('filterStatus').value;
+            
+            document.querySelectorAll('.data-table tbody tr').forEach(row => {
+                const matchProject = projectFilter === 'all' || row.dataset.project === projectFilter;
+                const matchStatus = statusFilter === 'all' || row.dataset.status === statusFilter;
+                row.style.display = matchProject && matchStatus ? '' : 'none';
+            });
+        }
+        
+        function viewDetails(sessionId) {
+            const session = SessionManager.get(sessionId);
+            const responses = ResponseManager.getForSession(sessionId);
+            
+            document.getElementById('detailTitle').textContent = `Sessie: ${sessionId}`;
+            
+            let html = `
+                <div class="detail-section">
+                    <h4>Sessie Info</h4>
+                    <div class="detail-grid">
+                        <div class="detail-item"><label>Project</label><value>${session.project}</value></div>
+                        <div class="detail-item"><label>Volgorde</label><value>${session.interfaceOrder}</value></div>
+                        <div class="detail-item"><label>Aangemaakt</label><value>${new Date(session.createdAt).toLocaleString('nl-NL')}</value></div>
+                        <div class="detail-item"><label>Status</label><value>${session.status}</value></div>
+                    </div>
+                </div>
+            `;
+            
+            Object.entries(responses).forEach(([formType, formData]) => {
+                html += `
+                    <div class="detail-section">
+                        <h4>${formType.replace(/_/g, ' ').toUpperCase()}</h4>
+                        <div class="detail-grid">
+                            ${Object.entries(formData.data || {}).map(([key, value]) => `
+                                <div class="detail-item">
+                                    <label>${key}</label>
+                                    <value>${Array.isArray(value) ? value.join(', ') : value}</value>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <small style="color: var(--text-muted);">Ingediend: ${new Date(formData.submittedAt).toLocaleString('nl-NL')}</small>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('detailContent').innerHTML = html;
+            document.getElementById('detailModal').classList.add('open');
+        }
+        
+        function closeDetailModal() {
+            document.getElementById('detailModal').classList.remove('open');
+        }
+        
+        function continueSession(sessionId) {
+            SessionManager.setCurrent(sessionId);
+            const session = SessionManager.get(sessionId);
+            const responses = ResponseManager.getForSession(sessionId);
+            
+            // Find next incomplete form
+            const forms = [
+                { key: 'consent', url: 'consent.html' },
+                { key: session.project + '_pretest', url: session.project + '/pre-test.html' },
+                { key: session.project + '_sus', url: session.project + '/sus.html' },
+                { key: session.project + '_posttest', url: session.project + '/post-test.html' }
+            ];
+            
+            for (const form of forms) {
+                if (!responses[form.key]) {
+                    window.location.href = form.url;
+                    return;
+                }
+            }
+            
+            alert('Alle formulieren voor deze sessie zijn al ingevuld!');
+        }
+        
+        function deleteSession(sessionId) {
+            if (confirm(`Weet u zeker dat u sessie "${sessionId}" wilt verwijderen? Dit kan niet ongedaan worden gemaakt.`)) {
+                SessionManager.delete(sessionId);
+                renderSessions();
+                showNotification('Sessie verwijderd', 'info');
+            }
+        }
+        
+        function toggleComplete(sessionId) {
+            const session = SessionManager.get(sessionId);
+            if (session.status === 'complete') {
+                SessionManager.markInProgress(sessionId);
+                showNotification(`Sessie "${sessionId}" heropend`, 'info');
+            } else {
+                SessionManager.markComplete(sessionId);
+                showNotification(`Sessie "${sessionId}" gemarkeerd als voltooid`, 'success');
+            }
+            renderSessions();
+        }
+    </script>
+</body>
+</html>
+

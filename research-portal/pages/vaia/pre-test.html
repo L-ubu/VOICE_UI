@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAIA - Pre-Test Vragenlijst</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>.form-section h2 { color: var(--vaia-color); } .btn-project { background: var(--vaia-color); } .btn-project:hover { background: var(--vaia-light); }</style>
+</head>
+<body>
+    <div class="app">
+        <nav class="sidebar">
+            <div class="logo"><span class="logo-icon">📋</span><span class="logo-text">VUI Research</span></div>
+            <div class="nav-section"><a href="../../index.html" class="nav-item"><span class="nav-icon">🏠</span>Terug naar Home</a></div>
+            <div class="nav-section">
+                <div class="nav-title">📚 VAIA Formulieren</div>
+                <a href="tasks.html" class="nav-item">📋 Taak Instructies</a>
+                <a href="pre-test.html" class="nav-item active">📝 Pre-Test</a>
+                <a href="sus.html" class="nav-item">📊 SUS</a>
+                <a href="post-test.html" class="nav-item">✅ Post-Test</a>
+                <a href="observation.html" class="nav-item researcher">👁️ Observatie</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="form-page">
+                <div class="form-header">
+                    <div class="form-icon">📚</div>
+                    <h1>Pre-Test Vragenlijst</h1>
+                    <p>VAIA VUI Onderzoek - Formulier Invullen</p>
+                    <div id="participantInfo" style="margin-top: 15px; padding: 10px; background: var(--bg-hover); border-radius: 8px; font-size: 13px;"></div>
+                </div>
+
+                <form id="researchForm" onsubmit="submitForm(event, 'vaia_pretest', 'sus.html')">
+                    
+                    <div class="form-section vaia">
+                        <h2>Sectie A: Demografische Gegevens</h2>
+                        
+                        <div class="question">
+                            <label class="question-label">A1. Wat is uw leeftijd? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="age" value="18-24" required><span class="option-check"></span>18-24 jaar</label>
+                                <label class="option-label"><input type="radio" name="age" value="25-34"><span class="option-check"></span>25-34 jaar</label>
+                                <label class="option-label"><input type="radio" name="age" value="35-44"><span class="option-check"></span>35-44 jaar</label>
+                                <label class="option-label"><input type="radio" name="age" value="45-54"><span class="option-check"></span>45-54 jaar</label>
+                                <label class="option-label"><input type="radio" name="age" value="55-64"><span class="option-check"></span>55-64 jaar</label>
+                                <label class="option-label"><input type="radio" name="age" value="65+"><span class="option-check"></span>65+ jaar</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">A2. Wat is uw geslacht? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="gender" value="man" required><span class="option-check"></span>Man</label>
+                                <label class="option-label"><input type="radio" name="gender" value="vrouw"><span class="option-check"></span>Vrouw</label>
+                                <label class="option-label"><input type="radio" name="gender" value="anders"><span class="option-check"></span>Anders / Zeg ik liever niet</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">A3. Wat is uw hoogst behaalde opleidingsniveau? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="education" value="middelbaar" required><span class="option-check"></span>Middelbaar onderwijs</label>
+                                <label class="option-label"><input type="radio" name="education" value="mbo"><span class="option-check"></span>MBO</label>
+                                <label class="option-label"><input type="radio" name="education" value="hbo"><span class="option-check"></span>HBO Bachelor</label>
+                                <label class="option-label"><input type="radio" name="education" value="uni"><span class="option-check"></span>Universiteit Bachelor</label>
+                                <label class="option-label"><input type="radio" name="education" value="master"><span class="option-check"></span>Master of hoger</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">A4. Wat is uw beroep of studierichting?</label>
+                            <input type="text" name="profession" placeholder="Bijv. Student Informatica, Marketing Manager, ...">
+                        </div>
+                    </div>
+
+                    <div class="form-section vaia">
+                        <h2>Sectie B: Technologie-ervaring</h2>
+
+                        <div class="question">
+                            <label class="question-label">B1. Hoe vaak gebruikt u digitale apparaten? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="device_freq" value="hours-daily" required><span class="option-check"></span>Meerdere uren per dag</label>
+                                <label class="option-label"><input type="radio" name="device_freq" value="hour-daily"><span class="option-check"></span>Ongeveer 1 uur per dag</label>
+                                <label class="option-label"><input type="radio" name="device_freq" value="weekly"><span class="option-check"></span>Enkele keren per week</label>
+                                <label class="option-label"><input type="radio" name="device_freq" value="rarely"><span class="option-check"></span>Zelden</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">B2. Hoe zou u uw computervaardigheden omschrijven? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="computer_skills" value="beginner" required><span class="option-check"></span>Beginner</label>
+                                <label class="option-label"><input type="radio" name="computer_skills" value="average"><span class="option-check"></span>Gemiddeld</label>
+                                <label class="option-label"><input type="radio" name="computer_skills" value="advanced"><span class="option-check"></span>Gevorderd</label>
+                                <label class="option-label"><input type="radio" name="computer_skills" value="expert"><span class="option-check"></span>Expert</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">B3. Hoe vaak vult u online formulieren in? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="form_freq" value="daily" required><span class="option-check"></span>Dagelijks</label>
+                                <label class="option-label"><input type="radio" name="form_freq" value="weekly"><span class="option-check"></span>Wekelijks</label>
+                                <label class="option-label"><input type="radio" name="form_freq" value="monthly"><span class="option-check"></span>Maandelijks</label>
+                                <label class="option-label"><input type="radio" name="form_freq" value="rarely"><span class="option-check"></span>Zelden of nooit</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section vaia">
+                        <h2>Sectie C: Spraakassistent Ervaring</h2>
+
+                        <div class="question">
+                            <label class="question-label">C1. Heeft u ervaring met spraakassistenten? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="voice_exp" value="daily" required><span class="option-check"></span>Ja, ik gebruik ze dagelijks</label>
+                                <label class="option-label"><input type="radio" name="voice_exp" value="weekly"><span class="option-check"></span>Ja, ik gebruik ze wekelijks</label>
+                                <label class="option-label"><input type="radio" name="voice_exp" value="rarely"><span class="option-check"></span>Ja, maar zelden</label>
+                                <label class="option-label"><input type="radio" name="voice_exp" value="never"><span class="option-check"></span>Nee, nooit gebruikt</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">C2. Waarvoor gebruikt u spraakassistenten? (meerdere mogelijk)</label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="checkbox" name="voice_use" value="questions"><span class="option-check"></span>Vragen stellen / informatie opzoeken</label>
+                                <label class="option-label"><input type="checkbox" name="voice_use" value="timers"><span class="option-check"></span>Timers/alarmen instellen</label>
+                                <label class="option-label"><input type="checkbox" name="voice_use" value="music"><span class="option-check"></span>Muziek afspelen</label>
+                                <label class="option-label"><input type="checkbox" name="voice_use" value="smarthome"><span class="option-check"></span>Smart home apparaten bedienen</label>
+                                <label class="option-label"><input type="checkbox" name="voice_use" value="messages"><span class="option-check"></span>Berichten versturen</label>
+                                <label class="option-label"><input type="checkbox" name="voice_use" value="navigation"><span class="option-check"></span>Navigatie</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">C3. Hoe comfortabel voelt u zich bij het hardop praten tegen een apparaat? <span class="required">*</span></label>
+                            <div class="scale-options">
+                                <div class="scale-option"><input type="radio" name="comfort" value="1" id="c1" required><label for="c1">1</label></div>
+                                <div class="scale-option"><input type="radio" name="comfort" value="2" id="c2"><label for="c2">2</label></div>
+                                <div class="scale-option"><input type="radio" name="comfort" value="3" id="c3"><label for="c3">3</label></div>
+                                <div class="scale-option"><input type="radio" name="comfort" value="4" id="c4"><label for="c4">4</label></div>
+                                <div class="scale-option"><input type="radio" name="comfort" value="5" id="c5"><label for="c5">5</label></div>
+                            </div>
+                            <div class="scale-labels"><span>Zeer oncomfortabel</span><span>Zeer comfortabel</span></div>
+                        </div>
+                    </div>
+
+                    <div class="form-section vaia">
+                        <h2>Sectie D: Verwachtingen</h2>
+
+                        <div class="question">
+                            <label class="question-label">D1. Wat verwacht u dat makkelijker zal zijn met spraak dan met typen?</label>
+                            <textarea name="expect_easier" rows="3" placeholder="Beschrijf uw verwachtingen..."></textarea>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">D2. Wat verwacht u dat moeilijker zal zijn met spraak dan met typen?</label>
+                            <textarea name="expect_harder" rows="3" placeholder="Beschrijf uw verwachtingen..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="goToDashboard()">← Terug</button>
+                        <div class="progress-indicator">
+                            <span>Stap 1 van 3</span>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 33%; background: var(--vaia-color);"></div></div>
+                        </div>
+                        <button type="submit" class="btn btn-vaia">Opslaan & Doorgaan →</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => { initForm('vaia_pretest', 'vaia'); });</script>
+</body>
+</html>
+

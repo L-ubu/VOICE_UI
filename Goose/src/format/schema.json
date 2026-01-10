@@ -1,0 +1,235 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NVC_Assistant_Response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "mode", "user_guidance", "content", "safety"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "language", "timestamp_utc"],
+      "properties": {
+        "schema_version": { "type": "string", "enum": ["1.0"] },
+        "language": { "type": "string", "enum": ["en", "nl"] },
+        "timestamp_utc": { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "mode": {
+      "type": "string",
+      "enum": ["COACH", "ROLEPLAY", "REFRAME", "STOP_AND_REDIRECT"]
+    },
+
+    "user_guidance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tone", "consent_check", "next_step_question"],
+      "properties": {
+        "tone": {
+          "type": "string",
+          "enum": ["calm", "neutral", "supportive", "professional"]
+        },
+        "consent_check": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ask_permission", "text"],
+          "properties": {
+            "ask_permission": { "type": "boolean" }, 
+            "text": { "type": "string", "maxLength": 240 }
+          }
+        },
+        "next_step_question": { "type": "string", "maxLength": 240 }
+      }
+    },
+
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "nvc", "drafts"],
+      "properties": {
+        "summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["what_i_heard", "goal"],
+          "properties": {
+            "what_i_heard": { "type": "string", "maxLength": 400 },
+            "goal": {
+              "type": "string",
+              "enum": [
+                "prepare_conversation",
+                "practice_empathy",
+                "set_boundary",
+                "give_feedback",
+                "repair_conflict",
+                "handle_refusal"
+              ]
+            }
+          }
+        },
+
+        "nvc": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["observation", "feelings", "needs", "request"],
+          "properties": {
+            "observation": {
+              "type": "string",
+              "maxLength": 280,
+              "description": "Concrete, non-evaluative observation"
+            },
+            "feelings": {
+              "type": "array",
+              "minItems": 0,
+              "maxItems": 5,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["label", "intensity"],
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "enum": [
+                      "angry", "frustrated", "sad", "anxious", "hurt",
+                      "overwhelmed", "confused", "disappointed",
+                      "relieved", "hopeful", "grateful", "calm"
+                    ]
+                  },
+                  "intensity": { "type": "integer", "minimum": 1, "maximum": 10 }
+                }
+              }
+            },
+            "needs": {
+              "type": "array",
+              "minItems": 0,
+              "maxItems": 5,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "respect", "safety", "clarity", "trust", "autonomy",
+                  "support", "fairness", "connection", "rest", "competence"
+                ]
+              }
+            },
+            "request": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["text", "is_specific", "is_doable", "timeframe"],
+              "properties": {
+                "text": { "type": "string", "maxLength": 240 },
+                "is_specific": { "type": "boolean" },
+                "is_doable": { "type": "boolean" },
+                "timeframe": {
+                  "type": "string",
+                  "enum": ["now", "today", "this_week", "no_timeframe"]
+                }
+              }
+            }
+          }
+        },
+
+        "drafts": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["audience", "message", "why_this_works"],
+            "properties": {
+              "audience": { "type": "string", "enum": ["to_other_person", "to_self"] },
+              "message": { "type": "string", "maxLength": 400 },
+              "why_this_works": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 3,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "uses_observation_not_judgment",
+                    "names_feelings_without_blame",
+                    "states_need_clearly",
+                    "makes_actionable_request",
+                    "invites_dialogue"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "privacy",
+        "mental_health",
+        "allowed_actions",
+        "explanations_for_user"
+      ],
+      "properties": {
+        "privacy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["pii_detected", "pii_categories", "user_prompt"],
+          "properties": {
+            "pii_detected": { "type": "boolean" },
+            "pii_categories": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "full_name", "email", "phone", "address",
+                  "government_id", "payment_data",
+                  "employer_or_school", "health_data", "other"
+                ]
+              }
+            },
+            "user_prompt": {
+              "type": "string",
+              "maxLength": 240,
+              "description": "Awareness-raising suggestion, not forced redaction"
+            }
+          }
+        },
+
+        "mental_health": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["risk_flag", "risk_level", "action"],
+          "properties": {
+            "risk_flag": { "type": "boolean" },
+            "risk_level": { "type": "string", "enum": ["none", "low", "medium", "high"] },
+            "action": {
+              "type": "string",
+              "enum": ["proceed", "proceed_with_care", "stop_and_redirect"]
+            }
+          }
+        },
+
+        "allowed_actions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["can_generate_coaching", "can_roleplay", "can_redirect_only"],
+          "properties": {
+            "can_generate_coaching": { "type": "boolean" },
+            "can_roleplay": { "type": "boolean" },
+            "can_redirect_only": { "type": "boolean" }
+          }
+        },
+
+        "explanations_for_user": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["privacy_reason", "safety_reason"],
+          "properties": {
+            "privacy_reason": { "type": "string", "maxLength": 240 },
+            "safety_reason": { "type": "string", "maxLength": 240 }
+          }
+        }
+      }
+    }
+  }
+}

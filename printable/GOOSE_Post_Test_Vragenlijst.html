@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goose VUI - Post-Test Vragenlijst</title>
+    <style>
+        @page { size: A4; margin: 1.5cm; }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 10pt;
+            line-height: 1.4;
+            color: #333;
+            max-width: 21cm;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        h1 { font-size: 16pt; color: #2c3e50; border-bottom: 3px solid #8b5cf6; padding-bottom: 8px; margin-bottom: 15px; }
+        h2 { font-size: 12pt; color: #8b5cf6; margin-top: 20px; margin-bottom: 12px; border-left: 4px solid #8b5cf6; padding-left: 8px; }
+        .header-info { display: flex; gap: 20px; background: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 20px; }
+        .header-info label { font-weight: bold; font-size: 9pt; }
+        .question { margin-bottom: 15px; page-break-inside: avoid; }
+        .question-text { font-weight: 600; margin-bottom: 8px; }
+        .options { margin-left: 15px; }
+        .option { display: flex; align-items: center; margin-bottom: 5px; }
+        .checkbox, .radio { width: 14px; height: 14px; border: 2px solid #8b5cf6; margin-right: 8px; flex-shrink: 0; }
+        .radio { border-radius: 50%; }
+        .checkbox { border-radius: 2px; }
+        .scale-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+        .scale-table td { text-align: center; padding: 6px; border: 1px solid #ddd; font-size: 9pt; }
+        .scale-table td:first-child, .scale-table td:last-child { width: 80px; color: #666; }
+        .scale-circle { width: 20px; height: 20px; border: 2px solid #8b5cf6; border-radius: 50%; margin: 0 auto; }
+        .text-area { width: 100%; min-height: 50px; border: 1px solid #ddd; border-radius: 4px; padding: 8px; margin-top: 5px; }
+        .footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd; font-size: 8pt; color: #666; text-align: center; }
+        .page-break { page-break-before: always; }
+        .logo { font-size: 20pt; margin-bottom: 3px; }
+        .inline-options { display: flex; flex-wrap: wrap; gap: 15px; margin-left: 15px; }
+        .inline-options .option { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <div class="logo">🪿</div>
+    <h1>Goose VUI Onderzoek - Post-Test Vragenlijst</h1>
+    
+    <div class="header-info">
+        <div><label>Deelnemer ID:</label> _______________</div>
+        <div><label>Datum:</label> _______________</div>
+    </div>
+
+    <h2>Sectie A: Vergelijking VUI vs GUI</h2>
+    
+    <div class="question">
+        <div class="question-text">A1. Welke interface vond u MAKKELIJKER in gebruik?</div>
+        <div class="inline-options">
+            <div class="option"><div class="radio"></div> Typen (GUI)</div>
+            <div class="option"><div class="radio"></div> Spreken (VUI)</div>
+            <div class="option"><div class="radio"></div> Geen verschil</div>
+        </div>
+        <div style="margin-top: 8px;"><strong>Waarom?</strong></div>
+        <div class="text-area"></div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">A2. Welke interface vond u SNELLER?</div>
+        <div class="inline-options">
+            <div class="option"><div class="radio"></div> Typen (GUI)</div>
+            <div class="option"><div class="radio"></div> Spreken (VUI)</div>
+            <div class="option"><div class="radio"></div> Geen verschil</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">A3. Welke interface vond u PRETTIGER?</div>
+        <div class="inline-options">
+            <div class="option"><div class="radio"></div> Typen (GUI)</div>
+            <div class="option"><div class="radio"></div> Spreken (VUI)</div>
+            <div class="option"><div class="radio"></div> Geen verschil</div>
+        </div>
+        <div style="margin-top: 8px;"><strong>Waarom?</strong></div>
+        <div class="text-area"></div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">A4. Bij welke interface voelde u zich meer verbonden met Goose?</div>
+        <div class="inline-options">
+            <div class="option"><div class="radio"></div> Typen (GUI)</div>
+            <div class="option"><div class="radio"></div> Spreken (VUI)</div>
+            <div class="option"><div class="radio"></div> Geen verschil</div>
+        </div>
+    </div>
+
+    <h2>Sectie B: VUI-Specifieke Vragen</h2>
+
+    <div class="question">
+        <div class="question-text">B1. Hoe goed begreep de spraakherkenning wat u zei?</div>
+        <table class="scale-table">
+            <tr>
+                <td>Zeer slecht</td>
+                <td><div class="scale-circle"></div><br>1</td>
+                <td><div class="scale-circle"></div><br>2</td>
+                <td><div class="scale-circle"></div><br>3</td>
+                <td><div class="scale-circle"></div><br>4</td>
+                <td><div class="scale-circle"></div><br>5</td>
+                <td>Zeer goed</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="question">
+        <div class="question-text">B2. Hoe natuurlijk voelde het om tegen Goose te praten?</div>
+        <table class="scale-table">
+            <tr>
+                <td>Zeer onnatuurlijk</td>
+                <td><div class="scale-circle"></div><br>1</td>
+                <td><div class="scale-circle"></div><br>2</td>
+                <td><div class="scale-circle"></div><br>3</td>
+                <td><div class="scale-circle"></div><br>4</td>
+                <td><div class="scale-circle"></div><br>5</td>
+                <td>Zeer natuurlijk</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="question">
+        <div class="question-text">B3. Hoe duidelijk waren de spraakcommando's (zoals "selecteer 1")?</div>
+        <table class="scale-table">
+            <tr>
+                <td>Zeer onduidelijk</td>
+                <td><div class="scale-circle"></div><br>1</td>
+                <td><div class="scale-circle"></div><br>2</td>
+                <td><div class="scale-circle"></div><br>3</td>
+                <td><div class="scale-circle"></div><br>4</td>
+                <td><div class="scale-circle"></div><br>5</td>
+                <td>Zeer duidelijk</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="question">
+        <div class="question-text">B4. Hoeveel fouten maakte de spraakherkenning?</div>
+        <div class="inline-options">
+            <div class="option"><div class="radio"></div> Geen fouten</div>
+            <div class="option"><div class="radio"></div> 1-2 fouten</div>
+            <div class="option"><div class="radio"></div> 3-5 fouten</div>
+            <div class="option"><div class="radio"></div> Meer dan 5 fouten</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">B5. Wat deed u wanneer de spraakherkenning u niet begreep?</div>
+        <div class="options">
+            <div class="option"><div class="checkbox"></div> Dezelfde zin herhalen</div>
+            <div class="option"><div class="checkbox"></div> Langzamer/duidelijker praten</div>
+            <div class="option"><div class="checkbox"></div> Andere woorden gebruiken</div>
+            <div class="option"><div class="checkbox"></div> Overschakelen naar typen</div>
+            <div class="option"><div class="checkbox"></div> Anders: _______________</div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+    <h2>Sectie C: Emotie-Analyse Perceptie</h2>
+
+    <div class="question">
+        <div class="question-text">C1. Merkte u dat Goose reageerde op uw emoties/stemming?</div>
+        <div class="inline-options">
+            <div class="option"><div class="radio"></div> Ja, duidelijk</div>
+            <div class="option"><div class="radio"></div> Ja, een beetje</div>
+            <div class="option"><div class="radio"></div> Nee, niet echt</div>
+            <div class="option"><div class="radio"></div> Nee, helemaal niet</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">C2. Als ja, hoe voelde dat?</div>
+        <div class="options">
+            <div class="option"><div class="checkbox"></div> Prettig/ondersteunend</div>
+            <div class="option"><div class="checkbox"></div> Ongemakkelijk</div>
+            <div class="option"><div class="checkbox"></div> Indrukwekkend</div>
+            <div class="option"><div class="checkbox"></div> Griezelig</div>
+            <div class="option"><div class="checkbox"></div> Neutraal</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">C3. Vond u dat Goose empathisch reageerde?</div>
+        <table class="scale-table">
+            <tr>
+                <td>Helemaal niet</td>
+                <td><div class="scale-circle"></div><br>1</td>
+                <td><div class="scale-circle"></div><br>2</td>
+                <td><div class="scale-circle"></div><br>3</td>
+                <td><div class="scale-circle"></div><br>4</td>
+                <td><div class="scale-circle"></div><br>5</td>
+                <td>Zeer empathisch</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="question">
+        <div class="question-text">C4. Hoe voelt u over het feit dat de app uw emoties analyseert via uw stem?</div>
+        <div class="options">
+            <div class="option"><div class="checkbox"></div> Vind ik prima, als het helpt</div>
+            <div class="option"><div class="checkbox"></div> Vind ik interessant</div>
+            <div class="option"><div class="checkbox"></div> Maakt me niet uit</div>
+            <div class="option"><div class="checkbox"></div> Vind ik ongemakkelijk</div>
+            <div class="option"><div class="checkbox"></div> Vind ik een inbreuk op privacy</div>
+        </div>
+    </div>
+
+    <h2>Sectie D: Algemene Ervaring</h2>
+
+    <div class="question">
+        <div class="question-text">D1. Zou u Goose met VUI opnieuw gebruiken?</div>
+        <table class="scale-table">
+            <tr>
+                <td>Zeer onwaarschijnlijk</td>
+                <td><div class="scale-circle"></div><br>1</td>
+                <td><div class="scale-circle"></div><br>2</td>
+                <td><div class="scale-circle"></div><br>3</td>
+                <td><div class="scale-circle"></div><br>4</td>
+                <td><div class="scale-circle"></div><br>5</td>
+                <td>Zeer waarschijnlijk</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="question">
+        <div class="question-text">D2. Zou u Goose aanbevelen aan anderen?</div>
+        <table class="scale-table">
+            <tr>
+                <td>Zeer onwaarschijnlijk</td>
+                <td><div class="scale-circle"></div><br>1</td>
+                <td><div class="scale-circle"></div><br>2</td>
+                <td><div class="scale-circle"></div><br>3</td>
+                <td><div class="scale-circle"></div><br>4</td>
+                <td><div class="scale-circle"></div><br>5</td>
+                <td>Zeer waarschijnlijk</td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>Sectie E: Open Vragen</h2>
+
+    <div class="question">
+        <div class="question-text">E1. Wat vond u het BESTE aan de VUI (spraakinterface)?</div>
+        <div class="text-area" style="min-height: 60px;"></div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">E2. Wat vond u het SLECHTSTE aan de VUI (spraakinterface)?</div>
+        <div class="text-area" style="min-height: 60px;"></div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">E3. Welke verbeteringen zou u suggereren?</div>
+        <div class="text-area" style="min-height: 60px;"></div>
+    </div>
+
+    <div class="footer">
+        Goose VUI Onderzoek - Odisee Hogeschool - Post-Test Vragenlijst v1.0
+    </div>
+</body>
+</html>
+
+
+
+

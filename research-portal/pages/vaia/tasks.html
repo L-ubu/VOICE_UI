@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAIA - Taak Instructies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .task-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .task-card.active {
+            border-color: var(--vaia-color);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+        }
+        .task-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .task-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--vaia-color), var(--vaia-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .task-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .task-type {
+            font-size: 11px;
+            padding: 4px 10px;
+            background: var(--bg-hover);
+            border-radius: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .task-instructions {
+            background: var(--bg-dark);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        .task-instructions h4 {
+            color: var(--vaia-color);
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+        .task-instructions ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .task-instructions li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+        .task-instructions li strong {
+            color: var(--text-primary);
+        }
+        .success-criteria {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .criteria-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 6px;
+            font-size: 12px;
+        }
+        .criteria-item::before {
+            content: "✓";
+            color: #22c55e;
+            font-weight: bold;
+        }
+        .voice-commands {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid var(--vaia-color);
+        }
+        .voice-commands h5 {
+            color: var(--vaia-color);
+            margin-bottom: 10px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .voice-commands code {
+            display: inline-block;
+            background: var(--bg-dark);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin: 3px;
+            color: var(--accent-cyan);
+        }
+        .scenario-box {
+            background: linear-gradient(135deg, var(--bg-hover), var(--bg-card));
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+        .scenario-box h3 {
+            color: var(--vaia-color);
+            margin-bottom: 12px;
+        }
+        .scenario-box p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .mode-toggle {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .mode-btn {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--bg-card);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .mode-btn:hover {
+            border-color: var(--vaia-color);
+        }
+        .mode-btn.active {
+            border-color: var(--vaia-color);
+            background: rgba(139, 92, 246, 0.1);
+        }
+        .mode-btn .icon {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .mode-btn .label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .mode-btn .desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .print-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--vaia-color);
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+        @media print {
+            .sidebar, .header, .mode-toggle, .print-btn, .voice-commands { display: none !important; }
+            .main-content { margin: 0; padding: 20px; }
+            .task-card { break-inside: avoid; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <nav class="sidebar">
+            <div class="logo"><span class="logo-icon">📋</span><span class="logo-text">VUI Research</span></div>
+            <div class="nav-section"><a href="../../index.html" class="nav-item"><span class="nav-icon">🏠</span>Terug naar Home</a></div>
+            <div class="nav-section">
+                <div class="nav-title">📚 VAIA</div>
+                <a href="tasks.html" class="nav-item active">📋 Taak Instructies</a>
+                <a href="pre-test.html" class="nav-item">📝 Pre-Test</a>
+                <a href="sus.html" class="nav-item">📊 SUS</a>
+                <a href="post-test.html" class="nav-item">✅ Post-Test</a>
+                <a href="observation.html" class="nav-item researcher">👁️ Observatie</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="header">
+                <h1>📋 VAIA Taak Instructies</h1>
+                <p style="color: var(--text-muted);">Lees deze taken voor aan de deelnemer of toon ze op het scherm</p>
+            </header>
+
+            <div class="scenario-box">
+                <h3>📖 Scenario</h3>
+                <p>
+                    U bent een opleidingsaanbieder en wilt een nieuwe cursus toevoegen aan de VAIA-website. 
+                    U heeft de volgende cursusinformatie en gaat deze invoeren in het formulier.
+                    <strong>U gaat dezelfde taken uitvoeren met twee verschillende methodes:</strong> 
+                    één keer met spraak (VUI) en één keer door te typen (GUI).
+                </p>
+            </div>
+
+            <div class="mode-toggle">
+                <div class="mode-btn" id="vuiMode" onclick="setMode('vui')">
+                    <span class="icon">🎤</span>
+                    <span class="label">Spraak (VUI)</span>
+                    <span class="desc">Praten tegen de computer</span>
+                </div>
+                <div class="mode-btn" id="guiMode" onclick="setMode('gui')">
+                    <span class="icon">⌨️</span>
+                    <span class="label">Typen (GUI)</span>
+                    <span class="desc">Typen en klikken</span>
+                </div>
+            </div>
+
+            <!-- TASK 1 -->
+            <div class="task-card">
+                <div class="task-header">
+                    <div class="task-number">1</div>
+                    <div>
+                        <div class="task-title">Basisinformatie invullen</div>
+                        <span class="task-type">Form Input</span>
+                    </div>
+                </div>
+                
+                <div class="task-instructions">
+                    <h4>📝 Vul de volgende gegevens in:</h4>
+                    <ul>
+                        <li><strong>Titel:</strong> "Introductie tot Machine Learning"</li>
+                        <li><strong>Ondertitel:</strong> "Van theorie naar praktijk"</li>
+                        <li><strong>Link:</strong> eventbrite.com</li>
+                    </ul>
+                </div>
+
+                <div class="success-criteria">
+                    <div class="criteria-item">Titel correct ingevuld</div>
+                    <div class="criteria-item">Ondertitel correct ingevuld</div>
+                    <div class="criteria-item">Link correct ingevuld</div>
+                </div>
+
+                <div class="voice-commands" id="voice1">
+                    <h5>🎤 Voorbeeld spraakcommando's:</h5>
+                    <code>Ga naar titel</code>
+                    <code>Schrijf Introductie tot Machine Learning</code>
+                    <code>Volgende veld</code>
+                    <code>Schrijf Van theorie naar praktijk</code>
+                    <code>Ga naar link</code>
+                    <code>Link eventbrite</code>
+                </div>
+            </div>
+
+            <!-- TASK 2 -->
+            <div class="task-card">
+                <div class="task-header">
+                    <div class="task-number">2</div>
+                    <div>
+                        <div class="task-title">Datum en tijd instellen</div>
+                        <span class="task-type">Date/Time Parsing</span>
+                    </div>
+                </div>
+                
+                <div class="task-instructions">
+                    <h4>📅 Stel de volgende cursusdata in:</h4>
+                    <ul>
+                        <li><strong>Startdatum:</strong> 15 maart 2025</li>
+                        <li><strong>Einddatum:</strong> 20 maart 2025</li>
+                        <li><strong>Starttijd:</strong> 14:00</li>
+                    </ul>
+                </div>
+
+                <div class="success-criteria">
+                    <div class="criteria-item">Startdatum correct</div>
+                    <div class="criteria-item">Einddatum correct</div>
+                    <div class="criteria-item">Starttijd correct</div>
+                </div>
+
+                <div class="voice-commands" id="voice2">
+                    <h5>🎤 Voorbeeld spraakcommando's:</h5>
+                    <code>Ga naar startdatum</code>
+                    <code>Vijftien maart tweeduizend vijfentwintig</code>
+                    <code>Volgende veld</code>
+                    <code>Twintig maart tweeduizend vijfentwintig</code>
+                    <code>Ga naar starttijd</code>
+                    <code>Veertien uur</code>
+                </div>
+            </div>
+
+            <!-- TASK 3 -->
+            <div class="task-card">
+                <div class="task-header">
+                    <div class="task-number">3</div>
+                    <div>
+                        <div class="task-title">Dropdown selecties</div>
+                        <span class="task-type">Selection</span>
+                    </div>
+                </div>
+                
+                <div class="task-instructions">
+                    <h4>📋 Selecteer de volgende opties:</h4>
+                    <ul>
+                        <li><strong>Kennisniveau:</strong> Beginner</li>
+                        <li><strong>Taal:</strong> Nederlands</li>
+                        <li><strong>Certificaat:</strong> Selecteer optie nummer 2</li>
+                    </ul>
+                </div>
+
+                <div class="success-criteria">
+                    <div class="criteria-item">Kennisniveau geselecteerd</div>
+                    <div class="criteria-item">Taal geselecteerd</div>
+                    <div class="criteria-item">Certificaat geselecteerd</div>
+                </div>
+
+                <div class="voice-commands" id="voice3">
+                    <h5>🎤 Voorbeeld spraakcommando's:</h5>
+                    <code>Ga naar kennisniveau</code>
+                    <code>Selecteer Beginner</code>
+                    <code>Ga naar taal</code>
+                    <code>Selecteer Nederlands</code>
+                    <code>Ga naar certificaat</code>
+                    <code>Selecteer optie twee</code>
+                </div>
+            </div>
+
+            <!-- TASK 4 -->
+            <div class="task-card">
+                <div class="task-header">
+                    <div class="task-number">4</div>
+                    <div>
+                        <div class="task-title">Navigatie en correctie</div>
+                        <span class="task-type">Navigation + Edit</span>
+                    </div>
+                </div>
+                
+                <div class="task-instructions">
+                    <h4>🔄 Voer de volgende acties uit:</h4>
+                    <ul>
+                        <li>Navigeer terug naar het <strong>titelveld</strong></li>
+                        <li>Pas de titel aan naar: <strong>"Machine Learning voor Beginners"</strong></li>
+                        <li>Navigeer vervolgens naar het <strong>volgende veld</strong></li>
+                    </ul>
+                </div>
+
+                <div class="success-criteria">
+                    <div class="criteria-item">Navigatie naar titel</div>
+                    <div class="criteria-item">Titel aangepast</div>
+                    <div class="criteria-item">Naar volgende veld genavigeerd</div>
+                </div>
+
+                <div class="voice-commands" id="voice4">
+                    <h5>🎤 Voorbeeld spraakcommando's:</h5>
+                    <code>Ga naar titel</code>
+                    <code>Wis veld</code>
+                    <code>Schrijf Machine Learning voor Beginners</code>
+                    <code>Volgende veld</code>
+                </div>
+            </div>
+
+            <!-- TASK 5 -->
+            <div class="task-card">
+                <div class="task-header">
+                    <div class="task-number">5</div>
+                    <div>
+                        <div class="task-title">AI-functie gebruiken</div>
+                        <span class="task-type">AI-Assisted</span>
+                    </div>
+                </div>
+                
+                <div class="task-instructions">
+                    <h4>🤖 Gebruik de AI-functionaliteit:</h4>
+                    <ul>
+                        <li><strong>Optie A:</strong> Accepteer de AI-suggestie voor het doelgroep veld</li>
+                        <li><strong>OF Optie B:</strong> Gebruik het "verbeter" commando om de beschrijving korter te maken</li>
+                    </ul>
+                    <p style="margin-top: 12px; color: var(--text-muted); font-size: 13px;">
+                        💡 Kies één van beide opties om te laten zien dat u de AI-functie begrijpt.
+                    </p>
+                </div>
+
+                <div class="success-criteria">
+                    <div class="criteria-item">AI-commando gebruikt</div>
+                    <div class="criteria-item">Suggestie verwerkt</div>
+                </div>
+
+                <div class="voice-commands" id="voice5">
+                    <h5>🎤 Voorbeeld spraakcommando's:</h5>
+                    <code>Accepteer suggestie</code>
+                    <code>Selecteer suggestie één</code>
+                    <br><br>
+                    <em style="font-size: 12px; color: var(--text-muted);">Of voor bewerking:</em><br>
+                    <code>Ga naar beschrijving</code>
+                    <code>Verbeter maak korter</code>
+                    <code>Verbeter formeler maken</code>
+                </div>
+            </div>
+
+            <button class="print-btn" onclick="window.print()">🖨️ Print taken</button>
+        </main>
+    </div>
+
+    <script>
+        function setMode(mode) {
+            document.getElementById('vuiMode').classList.toggle('active', mode === 'vui');
+            document.getElementById('guiMode').classList.toggle('active', mode === 'gui');
+            
+            // Show/hide voice command sections
+            const voiceSections = document.querySelectorAll('.voice-commands');
+            voiceSections.forEach(section => {
+                section.style.display = mode === 'vui' ? 'block' : 'none';
+            });
+        }
+
+        // Initialize with VUI mode
+        setMode('vui');
+    </script>
+</body>
+</html>
+
+
+

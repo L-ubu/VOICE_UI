@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goose VUI - Pre-Test Vragenlijst</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 11pt;
+            line-height: 1.5;
+            color: #333;
+            max-width: 21cm;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 18pt;
+            color: #2c3e50;
+            border-bottom: 3px solid #8b5cf6;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 14pt;
+            color: #8b5cf6;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-left: 4px solid #8b5cf6;
+            padding-left: 10px;
+        }
+        .header-info {
+            display: flex;
+            justify-content: space-between;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        .header-info div {
+            flex: 1;
+        }
+        .header-info label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .header-info input {
+            border: none;
+            border-bottom: 1px solid #333;
+            background: transparent;
+            width: 150px;
+            padding: 5px 0;
+        }
+        .question {
+            margin-bottom: 20px;
+            page-break-inside: avoid;
+        }
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #8b5cf6;
+            border-radius: 3px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .radio {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #8b5cf6;
+            border-radius: 50%;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .scale-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .scale-table td {
+            text-align: center;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        .scale-table td:first-child,
+        .scale-table td:last-child {
+            font-size: 10pt;
+            color: #666;
+            width: 100px;
+        }
+        .scale-circle {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #8b5cf6;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+        .text-input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #999;
+            padding: 8px 0;
+            margin-top: 5px;
+        }
+        .text-area {
+            width: 100%;
+            height: 60px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 9pt;
+            color: #666;
+            text-align: center;
+        }
+        .logo {
+            font-size: 24pt;
+            margin-bottom: 5px;
+        }
+        @media print {
+            body {
+                padding: 0;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">🪿</div>
+    <h1>Goose VUI Onderzoek - Pre-Test Vragenlijst</h1>
+    
+    <div class="header-info">
+        <div>
+            <label>Deelnemer ID:</label>
+            <input type="text" placeholder="_____________">
+        </div>
+        <div>
+            <label>Datum:</label>
+            <input type="text" placeholder="_____________">
+        </div>
+        <div>
+            <label>Conditie:</label>
+            <input type="text" placeholder="☐ GUI eerst  ☐ VUI eerst">
+        </div>
+    </div>
+
+    <h2>Sectie A: Demografische Gegevens</h2>
+    
+    <div class="question">
+        <div class="question-text">A1. Wat is uw leeftijd?</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> 18-24 jaar</div>
+            <div class="option"><div class="radio"></div> 25-34 jaar</div>
+            <div class="option"><div class="radio"></div> 35-44 jaar</div>
+            <div class="option"><div class="radio"></div> 45-54 jaar</div>
+            <div class="option"><div class="radio"></div> 55-64 jaar</div>
+            <div class="option"><div class="radio"></div> 65+ jaar</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">A2. Wat is uw geslacht?</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> Man</div>
+            <div class="option"><div class="radio"></div> Vrouw</div>
+            <div class="option"><div class="radio"></div> Non-binair</div>
+            <div class="option"><div class="radio"></div> Zeg ik liever niet</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">A3. Wat is uw hoogst behaalde opleidingsniveau?</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> Secundair onderwijs</div>
+            <div class="option"><div class="radio"></div> Bachelor (HBO/Universiteit)</div>
+            <div class="option"><div class="radio"></div> Master</div>
+            <div class="option"><div class="radio"></div> Doctoraat</div>
+            <div class="option"><div class="radio"></div> Anders</div>
+        </div>
+    </div>
+
+    <h2>Sectie B: Ervaring met Spraakassistenten</h2>
+
+    <div class="question">
+        <div class="question-text">B1. Hoe vaak gebruikt u spraakassistenten (Siri, Alexa, Google Assistant)?</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> Dagelijks</div>
+            <div class="option"><div class="radio"></div> Wekelijks</div>
+            <div class="option"><div class="radio"></div> Maandelijks</div>
+            <div class="option"><div class="radio"></div> Zelden</div>
+            <div class="option"><div class="radio"></div> Nooit</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">B2. Welke spraakassistenten heeft u gebruikt? (meerdere mogelijk)</div>
+        <div class="options">
+            <div class="option"><div class="checkbox"></div> Siri (Apple)</div>
+            <div class="option"><div class="checkbox"></div> Google Assistant</div>
+            <div class="option"><div class="checkbox"></div> Alexa (Amazon)</div>
+            <div class="option"><div class="checkbox"></div> Cortana (Microsoft)</div>
+            <div class="option"><div class="checkbox"></div> Bixby (Samsung)</div>
+            <div class="option"><div class="checkbox"></div> Geen</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">B3. Waarvoor gebruikt u spraakassistenten meestal? (meerdere mogelijk)</div>
+        <div class="options">
+            <div class="option"><div class="checkbox"></div> Muziek afspelen</div>
+            <div class="option"><div class="checkbox"></div> Weer opvragen</div>
+            <div class="option"><div class="checkbox"></div> Timers/alarmen zetten</div>
+            <div class="option"><div class="checkbox"></div> Berichten versturen</div>
+            <div class="option"><div class="checkbox"></div> Zoekopdrachten</div>
+            <div class="option"><div class="checkbox"></div> Smart home bediening</div>
+            <div class="option"><div class="checkbox"></div> Anders: _______________</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">B4. Hoe comfortabel voelt u zich met hardop praten tegen een apparaat?</div>
+        <table class="scale-table">
+            <tr>
+                <td>Helemaal niet comfortabel</td>
+                <td><div class="scale-circle"></div><br>1</td>
+                <td><div class="scale-circle"></div><br>2</td>
+                <td><div class="scale-circle"></div><br>3</td>
+                <td><div class="scale-circle"></div><br>4</td>
+                <td><div class="scale-circle"></div><br>5</td>
+                <td>Zeer comfortabel</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="question">
+        <div class="question-text">B5. In welke situaties zou u NIET hardop willen praten tegen een apparaat? (meerdere mogelijk)</div>
+        <div class="options">
+            <div class="option"><div class="checkbox"></div> In het openbaar</div>
+            <div class="option"><div class="checkbox"></div> Op het werk</div>
+            <div class="option"><div class="checkbox"></div> Thuis met anderen aanwezig</div>
+            <div class="option"><div class="checkbox"></div> Nooit een probleem</div>
+            <div class="option"><div class="checkbox"></div> Anders: _______________</div>
+        </div>
+    </div>
+
+    <h2>Sectie C: Ervaring met AI Chatbots</h2>
+
+    <div class="question">
+        <div class="question-text">C1. Heeft u ervaring met AI chatbots zoals ChatGPT?</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> Ja, regelmatig</div>
+            <div class="option"><div class="radio"></div> Ja, soms</div>
+            <div class="option"><div class="radio"></div> Een paar keer geprobeerd</div>
+            <div class="option"><div class="radio"></div> Nee, nooit</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">C2. Zou u een AI-gebaseerde app gebruiken om emotionele ondersteuning te krijgen?</div>
+        <table class="scale-table">
+            <tr>
+                <td>Zeer onwaarschijnlijk</td>
+                <td><div class="scale-circle"></div><br>1</td>
+                <td><div class="scale-circle"></div><br>2</td>
+                <td><div class="scale-circle"></div><br>3</td>
+                <td><div class="scale-circle"></div><br>4</td>
+                <td><div class="scale-circle"></div><br>5</td>
+                <td>Zeer waarschijnlijk</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer">
+        Goose VUI Onderzoek - Odisee Hogeschool - Pre-Test Vragenlijst v1.0
+    </div>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goose - Post-Test Vragenlijst</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="app">
+        <nav class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">📋</span>
+                <span class="logo-text">VUI Research</span>
+            </div>
+            <div class="nav-section">
+                <a href="../../index.html" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    Terug naar Home
+                </a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-title">🪿 Goose Formulieren</div>
+                <a href="pre-test.html" class="nav-item">📝 Pre-Test</a>
+                <a href="sus.html" class="nav-item">📊 SUS</a>
+                <a href="post-test.html" class="nav-item active">✅ Post-Test</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="form-page">
+                <div class="form-header">
+                    <div class="form-icon">🪿</div>
+                    <h1>Post-Test Vragenlijst</h1>
+                    <p>Laatste vragen over uw ervaring</p>
+                    <div id="participantInfo" style="margin-top: 15px; padding: 10px; background: var(--bg-hover); border-radius: 8px; font-size: 13px;"></div>
+                </div>
+
+                <form id="researchForm" onsubmit="submitForm(event, 'goose_posttest', '../../index.html')">
+                    
+                    <div class="form-section">
+                        <h2>Sectie A: Vergelijking VUI vs GUI</h2>
+
+                        <div class="question">
+                            <label class="question-label">A1. Welke interface vond u MAKKELIJKER in gebruik? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="easier_interface" value="gui" required><span class="option-check"></span>Typen (GUI)</label>
+                                <label class="option-label"><input type="radio" name="easier_interface" value="vui"><span class="option-check"></span>Spreken (VUI)</label>
+                                <label class="option-label"><input type="radio" name="easier_interface" value="same"><span class="option-check"></span>Geen verschil</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">A1b. Waarom?</label>
+                            <textarea name="easier_why" rows="3" placeholder="Leg uit waarom u deze interface makkelijker vond..."></textarea>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">A2. Welke interface vond u SNELLER? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="faster_interface" value="gui" required><span class="option-check"></span>Typen (GUI)</label>
+                                <label class="option-label"><input type="radio" name="faster_interface" value="vui"><span class="option-check"></span>Spreken (VUI)</label>
+                                <label class="option-label"><input type="radio" name="faster_interface" value="same"><span class="option-check"></span>Geen verschil</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">A3. Welke interface vond u PRETTIGER? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="nicer_interface" value="gui" required><span class="option-check"></span>Typen (GUI)</label>
+                                <label class="option-label"><input type="radio" name="nicer_interface" value="vui"><span class="option-check"></span>Spreken (VUI)</label>
+                                <label class="option-label"><input type="radio" name="nicer_interface" value="same"><span class="option-check"></span>Geen verschil</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">A4. Bij welke interface voelde u zich meer verbonden met Goose? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="connected_interface" value="gui" required><span class="option-check"></span>Typen (GUI)</label>
+                                <label class="option-label"><input type="radio" name="connected_interface" value="vui"><span class="option-check"></span>Spreken (VUI)</label>
+                                <label class="option-label"><input type="radio" name="connected_interface" value="same"><span class="option-check"></span>Geen verschil</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2>Sectie B: VUI-Specifieke Vragen</h2>
+
+                        <div class="question">
+                            <label class="question-label">B1. Hoe goed begreep de spraakherkenning wat u zei? <span class="required">*</span></label>
+                            <div class="scale-options">
+                                <div class="scale-option"><input type="radio" name="recognition_quality" value="1" id="rq1" required><label for="rq1">1</label></div>
+                                <div class="scale-option"><input type="radio" name="recognition_quality" value="2" id="rq2"><label for="rq2">2</label></div>
+                                <div class="scale-option"><input type="radio" name="recognition_quality" value="3" id="rq3"><label for="rq3">3</label></div>
+                                <div class="scale-option"><input type="radio" name="recognition_quality" value="4" id="rq4"><label for="rq4">4</label></div>
+                                <div class="scale-option"><input type="radio" name="recognition_quality" value="5" id="rq5"><label for="rq5">5</label></div>
+                            </div>
+                            <div class="scale-labels"><span>Zeer slecht</span><span>Zeer goed</span></div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">B2. Hoe natuurlijk voelde het om tegen Goose te praten? <span class="required">*</span></label>
+                            <div class="scale-options">
+                                <div class="scale-option"><input type="radio" name="natural_feeling" value="1" id="nf1" required><label for="nf1">1</label></div>
+                                <div class="scale-option"><input type="radio" name="natural_feeling" value="2" id="nf2"><label for="nf2">2</label></div>
+                                <div class="scale-option"><input type="radio" name="natural_feeling" value="3" id="nf3"><label for="nf3">3</label></div>
+                                <div class="scale-option"><input type="radio" name="natural_feeling" value="4" id="nf4"><label for="nf4">4</label></div>
+                                <div class="scale-option"><input type="radio" name="natural_feeling" value="5" id="nf5"><label for="nf5">5</label></div>
+                            </div>
+                            <div class="scale-labels"><span>Zeer onnatuurlijk</span><span>Zeer natuurlijk</span></div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">B3. Hoeveel fouten maakte de spraakherkenning?</label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="recognition_errors" value="none"><span class="option-check"></span>Geen fouten</label>
+                                <label class="option-label"><input type="radio" name="recognition_errors" value="1-2"><span class="option-check"></span>1-2 fouten</label>
+                                <label class="option-label"><input type="radio" name="recognition_errors" value="3-5"><span class="option-check"></span>3-5 fouten</label>
+                                <label class="option-label"><input type="radio" name="recognition_errors" value="more"><span class="option-check"></span>Meer dan 5 fouten</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">B4. Wat deed u wanneer de spraakherkenning u niet begreep?</label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="checkbox" name="error_action" value="repeat"><span class="option-check"></span>Dezelfde zin herhalen</label>
+                                <label class="option-label"><input type="checkbox" name="error_action" value="slower"><span class="option-check"></span>Langzamer/duidelijker praten</label>
+                                <label class="option-label"><input type="checkbox" name="error_action" value="rephrase"><span class="option-check"></span>Andere woorden gebruiken</label>
+                                <label class="option-label"><input type="checkbox" name="error_action" value="switch"><span class="option-check"></span>Overschakelen naar typen</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2>Sectie C: Emotie-Analyse Perceptie</h2>
+
+                        <div class="question">
+                            <label class="question-label">C1. Merkte u dat Goose reageerde op uw emoties/stemming? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="emotion_noticed" value="yes-clearly" required><span class="option-check"></span>Ja, duidelijk</label>
+                                <label class="option-label"><input type="radio" name="emotion_noticed" value="yes-little"><span class="option-check"></span>Ja, een beetje</label>
+                                <label class="option-label"><input type="radio" name="emotion_noticed" value="no-really"><span class="option-check"></span>Nee, niet echt</label>
+                                <label class="option-label"><input type="radio" name="emotion_noticed" value="no"><span class="option-check"></span>Nee, helemaal niet</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">C2. Hoe voelde het dat Goose op uw emoties reageerde?</label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="checkbox" name="emotion_feeling" value="pleasant"><span class="option-check"></span>Prettig/ondersteunend</label>
+                                <label class="option-label"><input type="checkbox" name="emotion_feeling" value="uncomfortable"><span class="option-check"></span>Ongemakkelijk</label>
+                                <label class="option-label"><input type="checkbox" name="emotion_feeling" value="impressive"><span class="option-check"></span>Indrukwekkend</label>
+                                <label class="option-label"><input type="checkbox" name="emotion_feeling" value="creepy"><span class="option-check"></span>Griezelig</label>
+                                <label class="option-label"><input type="checkbox" name="emotion_feeling" value="neutral"><span class="option-check"></span>Neutraal</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">C3. Vond u dat Goose empathisch reageerde? <span class="required">*</span></label>
+                            <div class="scale-options">
+                                <div class="scale-option"><input type="radio" name="empathy_level" value="1" id="em1" required><label for="em1">1</label></div>
+                                <div class="scale-option"><input type="radio" name="empathy_level" value="2" id="em2"><label for="em2">2</label></div>
+                                <div class="scale-option"><input type="radio" name="empathy_level" value="3" id="em3"><label for="em3">3</label></div>
+                                <div class="scale-option"><input type="radio" name="empathy_level" value="4" id="em4"><label for="em4">4</label></div>
+                                <div class="scale-option"><input type="radio" name="empathy_level" value="5" id="em5"><label for="em5">5</label></div>
+                            </div>
+                            <div class="scale-labels"><span>Helemaal niet</span><span>Zeer empathisch</span></div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">C4. Hoe voelt u over het feit dat de app uw emoties analyseert via uw stem?</label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="checkbox" name="emotion_analysis_feeling" value="ok-helpful"><span class="option-check"></span>Vind ik prima, als het helpt</label>
+                                <label class="option-label"><input type="checkbox" name="emotion_analysis_feeling" value="interesting"><span class="option-check"></span>Vind ik interessant</label>
+                                <label class="option-label"><input type="checkbox" name="emotion_analysis_feeling" value="indifferent"><span class="option-check"></span>Maakt me niet uit</label>
+                                <label class="option-label"><input type="checkbox" name="emotion_analysis_feeling" value="uncomfortable"><span class="option-check"></span>Vind ik ongemakkelijk</label>
+                                <label class="option-label"><input type="checkbox" name="emotion_analysis_feeling" value="privacy"><span class="option-check"></span>Vind ik een inbreuk op privacy</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2>Sectie D: Algemene Ervaring</h2>
+
+                        <div class="question">
+                            <label class="question-label">D1. Zou u Goose met VUI opnieuw gebruiken? <span class="required">*</span></label>
+                            <div class="scale-options">
+                                <div class="scale-option"><input type="radio" name="reuse_vui" value="1" id="ru1" required><label for="ru1">1</label></div>
+                                <div class="scale-option"><input type="radio" name="reuse_vui" value="2" id="ru2"><label for="ru2">2</label></div>
+                                <div class="scale-option"><input type="radio" name="reuse_vui" value="3" id="ru3"><label for="ru3">3</label></div>
+                                <div class="scale-option"><input type="radio" name="reuse_vui" value="4" id="ru4"><label for="ru4">4</label></div>
+                                <div class="scale-option"><input type="radio" name="reuse_vui" value="5" id="ru5"><label for="ru5">5</label></div>
+                            </div>
+                            <div class="scale-labels"><span>Zeer onwaarschijnlijk</span><span>Zeer waarschijnlijk</span></div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">D2. Zou u Goose aanbevelen aan anderen? <span class="required">*</span></label>
+                            <div class="scale-options">
+                                <div class="scale-option"><input type="radio" name="recommend" value="1" id="rec1" required><label for="rec1">1</label></div>
+                                <div class="scale-option"><input type="radio" name="recommend" value="2" id="rec2"><label for="rec2">2</label></div>
+                                <div class="scale-option"><input type="radio" name="recommend" value="3" id="rec3"><label for="rec3">3</label></div>
+                                <div class="scale-option"><input type="radio" name="recommend" value="4" id="rec4"><label for="rec4">4</label></div>
+                                <div class="scale-option"><input type="radio" name="recommend" value="5" id="rec5"><label for="rec5">5</label></div>
+                            </div>
+                            <div class="scale-labels"><span>Zeer onwaarschijnlijk</span><span>Zeer waarschijnlijk</span></div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2>Sectie E: Open Vragen</h2>
+
+                        <div class="question">
+                            <label class="question-label">E1. Wat vond u het BESTE aan de VUI (spraakinterface)?</label>
+                            <textarea name="best_vui" rows="3" placeholder="Beschrijf wat u het beste vond..."></textarea>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">E2. Wat vond u het SLECHTSTE aan de VUI (spraakinterface)?</label>
+                            <textarea name="worst_vui" rows="3" placeholder="Beschrijf wat u het slechtste vond..."></textarea>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">E3. Welke verbeteringen zou u suggereren?</label>
+                            <textarea name="suggestions" rows="3" placeholder="Uw suggesties..."></textarea>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">E4. Heeft u nog andere opmerkingen?</label>
+                            <textarea name="other_comments" rows="3" placeholder="Eventuele andere opmerkingen..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="window.location.href='sus.html'">
+                            ← Terug
+                        </button>
+                        <div class="progress-indicator">
+                            <span>Stap 3 van 3</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-goose">
+                            ✓ Voltooien
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initForm('goose_posttest', 'goose');
+        });
+    </script>
+</body>
+</html>
+
+
+

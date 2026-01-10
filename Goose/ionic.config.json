@@ -1,0 +1,7 @@
+{
+  "name": "Goose",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}

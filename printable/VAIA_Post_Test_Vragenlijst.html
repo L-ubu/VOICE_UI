@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAIA VUI - Post-Test Vragenlijst</title>
+    <style>
+        @page { size: A4; margin: 1.5cm; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 10pt; line-height: 1.4; color: #333; max-width: 21cm; margin: 0 auto; padding: 15px; }
+        h1 { font-size: 16pt; color: #2c3e50; border-bottom: 3px solid #10b981; padding-bottom: 8px; margin-bottom: 15px; }
+        h2 { font-size: 12pt; color: #10b981; margin-top: 20px; margin-bottom: 12px; border-left: 4px solid #10b981; padding-left: 8px; }
+        .header-info { display: flex; gap: 20px; background: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 20px; }
+        .question { margin-bottom: 15px; page-break-inside: avoid; }
+        .question-text { font-weight: 600; margin-bottom: 8px; }
+        .options { margin-left: 15px; }
+        .option { display: flex; align-items: center; margin-bottom: 5px; }
+        .checkbox, .radio { width: 14px; height: 14px; border: 2px solid #10b981; margin-right: 8px; flex-shrink: 0; }
+        .radio { border-radius: 50%; }
+        .scale-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+        .scale-table td { text-align: center; padding: 6px; border: 1px solid #ddd; font-size: 9pt; }
+        .scale-table td:first-child, .scale-table td:last-child { width: 80px; color: #666; }
+        .scale-circle { width: 20px; height: 20px; border: 2px solid #10b981; border-radius: 50%; margin: 0 auto; }
+        .text-area { width: 100%; min-height: 50px; border: 1px solid #ddd; border-radius: 4px; padding: 8px; margin-top: 5px; }
+        .footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd; font-size: 8pt; color: #666; text-align: center; }
+        .logo { font-size: 18pt; font-weight: bold; color: #10b981; margin-bottom: 3px; }
+        .page-break { page-break-before: always; }
+    </style>
+</head>
+<body>
+    <div class="logo">📚 VAIA</div>
+    <h1>VAIA VUI Onderzoek - Post-Test Vragenlijst</h1>
+    
+    <div class="header-info">
+        <div><strong>Deelnemer ID:</strong> _______________</div>
+        <div><strong>Datum:</strong> _______________</div>
+    </div>
+
+    <h2>Sectie A: Vergelijkende Vragen</h2>
+
+    <div class="question">
+        <div class="question-text">A1. Welke interface had uw voorkeur voor het invullen van formulieren?</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> Sterk voorkeur voor spraak (VUI)</div>
+            <div class="option"><div class="radio"></div> Lichte voorkeur voor spraak (VUI)</div>
+            <div class="option"><div class="radio"></div> Geen voorkeur / gelijk</div>
+            <div class="option"><div class="radio"></div> Lichte voorkeur voor typen (GUI)</div>
+            <div class="option"><div class="radio"></div> Sterk voorkeur voor typen (GUI)</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">A2. Welke interface was SNELLER volgens u?</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> Spraak was veel sneller</div>
+            <div class="option"><div class="radio"></div> Spraak was iets sneller</div>
+            <div class="option"><div class="radio"></div> Ongeveer gelijk</div>
+            <div class="option"><div class="radio"></div> Typen was iets sneller</div>
+            <div class="option"><div class="radio"></div> Typen was veel sneller</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">A3. Welke interface was NAUWKEURIGER volgens u?</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> Spraak was veel nauwkeuriger</div>
+            <div class="option"><div class="radio"></div> Spraak was iets nauwkeuriger</div>
+            <div class="option"><div class="radio"></div> Ongeveer gelijk</div>
+            <div class="option"><div class="radio"></div> Typen was iets nauwkeuriger</div>
+            <div class="option"><div class="radio"></div> Typen was veel nauwkeuriger</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">A4. Welke interface was VERMOEIENDER?</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> Spraak was veel vermoeiender</div>
+            <div class="option"><div class="radio"></div> Spraak was iets vermoeiender</div>
+            <div class="option"><div class="radio"></div> Ongeveer gelijk</div>
+            <div class="option"><div class="radio"></div> Typen was iets vermoeiender</div>
+            <div class="option"><div class="radio"></div> Typen was veel vermoeiender</div>
+        </div>
+    </div>
+
+    <h2>Sectie B: VUI-Specifieke Vragen</h2>
+
+    <div class="question">
+        <div class="question-text">B1. Hoe goed begreep het systeem wat u zei?</div>
+        <table class="scale-table">
+            <tr>
+                <td>Zeer slecht</td>
+                <td><div class="scale-circle"></div><br>1</td>
+                <td><div class="scale-circle"></div><br>2</td>
+                <td><div class="scale-circle"></div><br>3</td>
+                <td><div class="scale-circle"></div><br>4</td>
+                <td><div class="scale-circle"></div><br>5</td>
+                <td>Zeer goed</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="question">
+        <div class="question-text">B2. Hoe natuurlijk voelden de spraakcommando's aan?</div>
+        <table class="scale-table">
+            <tr>
+                <td>Zeer onnatuurlijk</td>
+                <td><div class="scale-circle"></div><br>1</td>
+                <td><div class="scale-circle"></div><br>2</td>
+                <td><div class="scale-circle"></div><br>3</td>
+                <td><div class="scale-circle"></div><br>4</td>
+                <td><div class="scale-circle"></div><br>5</td>
+                <td>Zeer natuurlijk</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="question">
+        <div class="question-text">B3. Welke spraakcommando's werkten het BESTE? (meerdere mogelijk)</div>
+        <div class="options">
+            <div class="option"><div class="checkbox"></div> Navigatie (ga naar, volgende veld)</div>
+            <div class="option"><div class="checkbox"></div> Tekst invoeren (schrijf, vul in)</div>
+            <div class="option"><div class="checkbox"></div> Selectie (selecteer nummer)</div>
+            <div class="option"><div class="checkbox"></div> AI bewerking (verbeter, maak korter)</div>
+            <div class="option"><div class="checkbox"></div> Datum/tijd invoeren</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">B4. Welke spraakcommando's werkten het SLECHTSTE? (meerdere mogelijk)</div>
+        <div class="options">
+            <div class="option"><div class="checkbox"></div> Navigatie</div>
+            <div class="option"><div class="checkbox"></div> Tekst invoeren</div>
+            <div class="option"><div class="checkbox"></div> Selectie</div>
+            <div class="option"><div class="checkbox"></div> AI bewerking</div>
+            <div class="option"><div class="checkbox"></div> Datum/tijd invoeren</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">B5. Zou u deze spraakinterface in het echt gebruiken?</div>
+        <div class="options">
+            <div class="option"><div class="radio"></div> Ja, zeker</div>
+            <div class="option"><div class="radio"></div> Ja, waarschijnlijk</div>
+            <div class="option"><div class="radio"></div> Misschien</div>
+            <div class="option"><div class="radio"></div> Waarschijnlijk niet</div>
+            <div class="option"><div class="radio"></div> Zeker niet</div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Sectie C: Situationele Vragen</h2>
+
+    <div class="question">
+        <div class="question-text">C1. In welke situatie zou u spraak verkiezen boven typen?</div>
+        <div class="text-area"></div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">C2. In welke situatie zou u typen verkiezen boven spraak?</div>
+        <div class="text-area"></div>
+    </div>
+
+    <h2>Sectie D: Open Vragen</h2>
+
+    <div class="question">
+        <div class="question-text">D1. Wat vond u het meest POSITIEF aan de spraakinterface?</div>
+        <div class="text-area" style="min-height: 60px;"></div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">D2. Wat vond u het meest FRUSTREREND aan de spraakinterface?</div>
+        <div class="text-area" style="min-height: 60px;"></div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">D3. Welke verbeteringen zou u voorstellen voor de spraakinterface?</div>
+        <div class="text-area" style="min-height: 60px;"></div>
+    </div>
+
+    <div class="question">
+        <div class="question-text">D4. Heeft u nog andere opmerkingen?</div>
+        <div class="text-area" style="min-height: 60px;"></div>
+    </div>
+
+    <div class="footer">
+        VAIA VUI Onderzoek - Odisee Hogeschool - Post-Test Vragenlijst v1.0
+    </div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAIA - Observatieformulier (Onderzoeker)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .form-section h2 { color: var(--vaia-color); }
+        .obs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .obs-item { display: flex; align-items: center; gap: 10px; padding: 10px; background: var(--bg-dark); border-radius: 6px; }
+        .obs-item input { width: 20px; height: 20px; accent-color: var(--vaia-color); }
+        .time-input { display: flex; align-items: center; gap: 10px; }
+        .time-input input { width: 80px; padding: 8px; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-primary); text-align: center; }
+        .counter-group { display: flex; gap: 20px; flex-wrap: wrap; }
+        .counter { text-align: center; }
+        .counter input { width: 60px; padding: 10px; font-size: 20px; font-weight: bold; text-align: center; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 6px; color: var(--vaia-color); }
+        .counter label { display: block; font-size: 11px; color: var(--text-muted); margin-top: 5px; }
+        .researcher-note { background: rgba(245, 158, 11, 0.1); border: 1px solid var(--accent-orange); border-radius: 8px; padding: 15px; margin-bottom: 20px; }
+        .researcher-note strong { color: var(--accent-orange); }
+        .task-box { background: var(--bg-hover); border-radius: 8px; padding: 15px; margin-bottom: 15px; }
+        .task-box h4 { margin-bottom: 10px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <nav class="sidebar">
+            <div class="logo"><span class="logo-icon">📋</span><span class="logo-text">VUI Research</span></div>
+            <div class="nav-section"><a href="../../index.html" class="nav-item"><span class="nav-icon">🏠</span>Terug naar Home</a></div>
+            <div class="nav-section">
+                <div class="nav-title">📚 VAIA Formulieren</div>
+                <a href="tasks.html" class="nav-item">📋 Taak Instructies</a>
+                <a href="pre-test.html" class="nav-item">📝 Pre-Test</a>
+                <a href="sus.html" class="nav-item">📊 SUS</a>
+                <a href="post-test.html" class="nav-item">✅ Post-Test</a>
+                <a href="observation.html" class="nav-item active researcher">👁️ Observatie</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="form-page">
+                <div class="form-header">
+                    <div class="form-icon">👁️</div>
+                    <h1>Observatieformulier</h1>
+                    <p>Voor onderzoeker - VAIA Formulier Test</p>
+                </div>
+
+                <div class="researcher-note">
+                    <strong>⚠️ Dit formulier is alleen voor de onderzoeker</strong><br>
+                    Vul dit in tijdens het observeren van de deelnemer bij de VAIA formulier taken.
+                </div>
+
+                <form id="researchForm" onsubmit="submitForm(event, 'vaia_observation', '../../index.html')">
+                    
+                    <div class="form-section vaia">
+                        <h2>Sessie Informatie</h2>
+                        <div class="form-group">
+                            <label>Deelnemer ID</label>
+                            <input type="text" name="participant_id" id="obs_participant" required placeholder="bijv. P001">
+                        </div>
+                        <div class="obs-grid">
+                            <div class="form-group">
+                                <label>Observer</label>
+                                <input type="text" name="observer" placeholder="Naam onderzoeker">
+                            </div>
+                            <div class="form-group">
+                                <label>Interface Volgorde</label>
+                                <select name="interface_order">
+                                    <option value="gui-first">GUI eerst</option>
+                                    <option value="vui-first">VUI eerst</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section vaia">
+                        <h2>⌨️ GUI Taken (Typen/Klikken)</h2>
+                        <div class="time-input" style="margin-bottom: 20px;">
+                            <label>Start:</label><input type="time" name="gui_start">
+                            <label>Einde:</label><input type="time" name="gui_end">
+                            <label>Duur (min):</label><input type="number" name="gui_duration" min="0">
+                        </div>
+
+                        <div class="task-box">
+                            <h4>Taak 1: Basisinformatie (Titel, Ondertitel, Link)</h4>
+                            <div style="display: flex; gap: 15px;">
+                                <div class="counter"><input type="number" name="gui_t1_time" min="0"><label>Seconden</label></div>
+                                <div class="counter"><input type="number" name="gui_t1_errors" min="0" value="0"><label>Fouten</label></div>
+                                <div><label class="option-label" style="margin-top: 10px;"><input type="checkbox" name="gui_t1_success" value="yes"><span class="option-check"></span>Succesvol</label></div>
+                            </div>
+                        </div>
+
+                        <div class="task-box">
+                            <h4>Taak 2: Datum en Tijd instellen</h4>
+                            <div style="display: flex; gap: 15px;">
+                                <div class="counter"><input type="number" name="gui_t2_time" min="0"><label>Seconden</label></div>
+                                <div class="counter"><input type="number" name="gui_t2_errors" min="0" value="0"><label>Fouten</label></div>
+                                <div><label class="option-label" style="margin-top: 10px;"><input type="checkbox" name="gui_t2_success" value="yes"><span class="option-check"></span>Succesvol</label></div>
+                            </div>
+                        </div>
+
+                        <div class="task-box">
+                            <h4>Taak 3: Dropdown selecties</h4>
+                            <div style="display: flex; gap: 15px;">
+                                <div class="counter"><input type="number" name="gui_t3_time" min="0"><label>Seconden</label></div>
+                                <div class="counter"><input type="number" name="gui_t3_errors" min="0" value="0"><label>Fouten</label></div>
+                                <div><label class="option-label" style="margin-top: 10px;"><input type="checkbox" name="gui_t3_success" value="yes"><span class="option-check"></span>Succesvol</label></div>
+                            </div>
+                        </div>
+
+                        <div class="task-box">
+                            <h4>Taak 4: Navigatie en Correctie</h4>
+                            <div style="display: flex; gap: 15px;">
+                                <div class="counter"><input type="number" name="gui_t4_time" min="0"><label>Seconden</label></div>
+                                <div class="counter"><input type="number" name="gui_t4_errors" min="0" value="0"><label>Fouten</label></div>
+                                <div><label class="option-label" style="margin-top: 10px;"><input type="checkbox" name="gui_t4_success" value="yes"><span class="option-check"></span>Succesvol</label></div>
+                            </div>
+                        </div>
+
+                        <div class="task-box">
+                            <h4>Taak 5: AI-suggestie gebruiken</h4>
+                            <div style="display: flex; gap: 15px;">
+                                <div class="counter"><input type="number" name="gui_t5_time" min="0"><label>Seconden</label></div>
+                                <div class="counter"><input type="number" name="gui_t5_errors" min="0" value="0"><label>Fouten</label></div>
+                                <div><label class="option-label" style="margin-top: 10px;"><input type="checkbox" name="gui_t5_success" value="yes"><span class="option-check"></span>Succesvol</label></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Notities GUI</label>
+                            <textarea name="gui_notes" rows="2" placeholder="Observaties..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section vaia">
+                        <h2>🎤 VUI Taken (Spraak)</h2>
+                        <div class="time-input" style="margin-bottom: 20px;">
+                            <label>Start:</label><input type="time" name="vui_start">
+                            <label>Einde:</label><input type="time" name="vui_end">
+                            <label>Duur (min):</label><input type="number" name="vui_duration" min="0">
+                        </div>
+
+                        <div class="task-box">
+                            <h4>Taak 1: Basisinformatie (Titel, Ondertitel, Link)</h4>
+                            <div style="display: flex; gap: 15px;">
+                                <div class="counter"><input type="number" name="vui_t1_time" min="0"><label>Seconden</label></div>
+                                <div class="counter"><input type="number" name="vui_t1_errors" min="0" value="0"><label>Fouten</label></div>
+                                <div class="counter"><input type="number" name="vui_t1_retries" min="0" value="0"><label>Herhalingen</label></div>
+                                <div><label class="option-label" style="margin-top: 10px;"><input type="checkbox" name="vui_t1_success" value="yes"><span class="option-check"></span>Succesvol</label></div>
+                            </div>
+                        </div>
+
+                        <div class="task-box">
+                            <h4>Taak 2: Datum en Tijd instellen</h4>
+                            <div style="display: flex; gap: 15px;">
+                                <div class="counter"><input type="number" name="vui_t2_time" min="0"><label>Seconden</label></div>
+                                <div class="counter"><input type="number" name="vui_t2_errors" min="0" value="0"><label>Fouten</label></div>
+                                <div class="counter"><input type="number" name="vui_t2_retries" min="0" value="0"><label>Herhalingen</label></div>
+                                <div><label class="option-label" style="margin-top: 10px;"><input type="checkbox" name="vui_t2_success" value="yes"><span class="option-check"></span>Succesvol</label></div>
+                            </div>
+                        </div>
+
+                        <div class="task-box">
+                            <h4>Taak 3: Dropdown selecties</h4>
+                            <div style="display: flex; gap: 15px;">
+                                <div class="counter"><input type="number" name="vui_t3_time" min="0"><label>Seconden</label></div>
+                                <div class="counter"><input type="number" name="vui_t3_errors" min="0" value="0"><label>Fouten</label></div>
+                                <div class="counter"><input type="number" name="vui_t3_retries" min="0" value="0"><label>Herhalingen</label></div>
+                                <div><label class="option-label" style="margin-top: 10px;"><input type="checkbox" name="vui_t3_success" value="yes"><span class="option-check"></span>Succesvol</label></div>
+                            </div>
+                        </div>
+
+                        <div class="task-box">
+                            <h4>Taak 4: Navigatie en Correctie</h4>
+                            <div style="display: flex; gap: 15px;">
+                                <div class="counter"><input type="number" name="vui_t4_time" min="0"><label>Seconden</label></div>
+                                <div class="counter"><input type="number" name="vui_t4_errors" min="0" value="0"><label>Fouten</label></div>
+                                <div class="counter"><input type="number" name="vui_t4_retries" min="0" value="0"><label>Herhalingen</label></div>
+                                <div><label class="option-label" style="margin-top: 10px;"><input type="checkbox" name="vui_t4_success" value="yes"><span class="option-check"></span>Succesvol</label></div>
+                            </div>
+                        </div>
+
+                        <div class="task-box">
+                            <h4>Taak 5: AI-suggestie gebruiken</h4>
+                            <div style="display: flex; gap: 15px;">
+                                <div class="counter"><input type="number" name="vui_t5_time" min="0"><label>Seconden</label></div>
+                                <div class="counter"><input type="number" name="vui_t5_errors" min="0" value="0"><label>Fouten</label></div>
+                                <div class="counter"><input type="number" name="vui_t5_retries" min="0" value="0"><label>Herhalingen</label></div>
+                                <div><label class="option-label" style="margin-top: 10px;"><input type="checkbox" name="vui_t5_success" value="yes"><span class="option-check"></span>Succesvol</label></div>
+                            </div>
+                        </div>
+
+                        <p style="margin: 15px 0 10px; font-weight: 500;">Spraakproblemen:</p>
+                        <div class="obs-grid">
+                            <div class="obs-item"><input type="checkbox" name="vui_problems" value="not_understood"> Niet begrepen</div>
+                            <div class="obs-item"><input type="checkbox" name="vui_problems" value="wrong_command"> Verkeerd commando</div>
+                            <div class="obs-item"><input type="checkbox" name="vui_problems" value="no_response"> Geen reactie</div>
+                            <div class="obs-item"><input type="checkbox" name="vui_problems" value="tts_interrupt"> TTS onderbrak</div>
+                            <div class="obs-item"><input type="checkbox" name="vui_problems" value="timeout"> Timeout te snel</div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 15px;">
+                            <label>Notities VUI</label>
+                            <textarea name="vui_notes" rows="2" placeholder="Observaties..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section vaia">
+                        <h2>📝 Algemene Observaties</h2>
+                        
+                        <div class="form-group">
+                            <label>Quotes / Opmerkingen van deelnemer</label>
+                            <textarea name="quotes" rows="3" placeholder="Wat zei de deelnemer spontaan?"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Algemene indruk</label>
+                            <textarea name="general" rows="3" placeholder="Uw observaties en indruk..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Welke interface leek beter voor deze deelnemer?</label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="observer_preference" value="gui"><span class="option-check"></span>GUI was duidelijk beter</label>
+                                <label class="option-label"><input type="radio" name="observer_preference" value="gui-slight"><span class="option-check"></span>GUI was iets beter</label>
+                                <label class="option-label"><input type="radio" name="observer_preference" value="equal"><span class="option-check"></span>Ongeveer gelijk</label>
+                                <label class="option-label"><input type="radio" name="observer_preference" value="vui-slight"><span class="option-check"></span>VUI was iets beter</label>
+                                <label class="option-label"><input type="radio" name="observer_preference" value="vui"><span class="option-check"></span>VUI was duidelijk beter</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="goToDashboard()">← Terug</button>
+                        <button type="submit" class="btn btn-vaia">✓ Observatie Opslaan</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const current = SessionManager.getCurrent();
+            if (current) {
+                document.getElementById('obs_participant').value = current.id;
+            }
+        });
+    </script>
+</body>
+</html>
+

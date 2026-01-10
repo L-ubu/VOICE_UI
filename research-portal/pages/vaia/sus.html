@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAIA - SUS Vragenlijst</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .form-section h2 { color: var(--vaia-color); }
+        .sus-radio:checked { border-color: var(--vaia-color); background: var(--vaia-color); }
+        .scale-option input:checked + label { border-color: var(--vaia-color); background: var(--vaia-color); }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <nav class="sidebar">
+            <div class="logo"><span class="logo-icon">📋</span><span class="logo-text">VUI Research</span></div>
+            <div class="nav-section"><a href="../../index.html" class="nav-item"><span class="nav-icon">🏠</span>Terug naar Home</a></div>
+            <div class="nav-section">
+                <div class="nav-title">📚 VAIA Formulieren</div>
+                <a href="tasks.html" class="nav-item">📋 Taak Instructies</a>
+                <a href="pre-test.html" class="nav-item">📝 Pre-Test</a>
+                <a href="sus.html" class="nav-item active">📊 SUS</a>
+                <a href="post-test.html" class="nav-item">✅ Post-Test</a>
+                <a href="observation.html" class="nav-item researcher">👁️ Observatie</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="form-page">
+                <div class="form-header">
+                    <div class="form-icon">📚</div>
+                    <h1>System Usability Scale (SUS)</h1>
+                    <p>Beoordeel beide interfaces na het uitvoeren van de taken</p>
+                    <div id="participantInfo" style="margin-top: 15px; padding: 10px; background: var(--bg-hover); border-radius: 8px; font-size: 13px;"></div>
+                </div>
+
+                <form id="researchForm" onsubmit="submitForm(event, 'vaia_sus', 'post-test.html')">
+                    
+                    <div class="form-section vaia">
+                        <h2>🎤 VUI - Spraakinterface</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 13px;">
+                            Beoordeel de SPRAAKINTERFACE voor het invullen van formulieren.
+                        </p>
+                        
+                        <table class="sus-table">
+                            <thead>
+                                <tr>
+                                    <th>Stelling</th>
+                                    <th>Helemaal oneens</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>Helemaal eens</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1. Ik zou dit systeem regelmatig willen gebruiken</td>
+                                    <td><input type="radio" name="sus_vui_q1" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_vui_q1" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q1" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q1" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q1" value="5" class="sus-radio"></td></tr>
+                                <tr><td>2. Ik vond het systeem onnodig complex</td>
+                                    <td><input type="radio" name="sus_vui_q2" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_vui_q2" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q2" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q2" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q2" value="5" class="sus-radio"></td></tr>
+                                <tr><td>3. Ik vond het systeem gemakkelijk te gebruiken</td>
+                                    <td><input type="radio" name="sus_vui_q3" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_vui_q3" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q3" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q3" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q3" value="5" class="sus-radio"></td></tr>
+                                <tr><td>4. Ik zou technische ondersteuning nodig hebben</td>
+                                    <td><input type="radio" name="sus_vui_q4" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_vui_q4" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q4" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q4" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q4" value="5" class="sus-radio"></td></tr>
+                                <tr><td>5. De functies waren goed geïntegreerd</td>
+                                    <td><input type="radio" name="sus_vui_q5" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_vui_q5" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q5" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q5" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q5" value="5" class="sus-radio"></td></tr>
+                                <tr><td>6. Er zaten te veel inconsistenties in</td>
+                                    <td><input type="radio" name="sus_vui_q6" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_vui_q6" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q6" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q6" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q6" value="5" class="sus-radio"></td></tr>
+                                <tr><td>7. De meeste mensen zouden dit snel leren</td>
+                                    <td><input type="radio" name="sus_vui_q7" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_vui_q7" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q7" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q7" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q7" value="5" class="sus-radio"></td></tr>
+                                <tr><td>8. Ik vond het systeem omslachtig</td>
+                                    <td><input type="radio" name="sus_vui_q8" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_vui_q8" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q8" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q8" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q8" value="5" class="sus-radio"></td></tr>
+                                <tr><td>9. Ik voelde me zelfverzekerd bij gebruik</td>
+                                    <td><input type="radio" name="sus_vui_q9" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_vui_q9" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q9" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q9" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q9" value="5" class="sus-radio"></td></tr>
+                                <tr><td>10. Ik moest veel leren voordat ik kon starten</td>
+                                    <td><input type="radio" name="sus_vui_q10" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_vui_q10" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q10" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q10" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_vui_q10" value="5" class="sus-radio"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="form-section vaia">
+                        <h2>⌨️ GUI - Typinterface</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 13px;">
+                            Beoordeel nu de TYPINTERFACE (typen/klikken) voor het invullen van formulieren.
+                        </p>
+                        
+                        <table class="sus-table">
+                            <thead>
+                                <tr>
+                                    <th>Stelling</th>
+                                    <th>Helemaal oneens</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>Helemaal eens</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1. Ik zou dit systeem regelmatig willen gebruiken</td>
+                                    <td><input type="radio" name="sus_gui_q1" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_gui_q1" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q1" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q1" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q1" value="5" class="sus-radio"></td></tr>
+                                <tr><td>2. Ik vond het systeem onnodig complex</td>
+                                    <td><input type="radio" name="sus_gui_q2" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_gui_q2" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q2" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q2" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q2" value="5" class="sus-radio"></td></tr>
+                                <tr><td>3. Ik vond het systeem gemakkelijk te gebruiken</td>
+                                    <td><input type="radio" name="sus_gui_q3" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_gui_q3" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q3" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q3" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q3" value="5" class="sus-radio"></td></tr>
+                                <tr><td>4. Ik zou technische ondersteuning nodig hebben</td>
+                                    <td><input type="radio" name="sus_gui_q4" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_gui_q4" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q4" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q4" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q4" value="5" class="sus-radio"></td></tr>
+                                <tr><td>5. De functies waren goed geïntegreerd</td>
+                                    <td><input type="radio" name="sus_gui_q5" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_gui_q5" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q5" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q5" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q5" value="5" class="sus-radio"></td></tr>
+                                <tr><td>6. Er zaten te veel inconsistenties in</td>
+                                    <td><input type="radio" name="sus_gui_q6" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_gui_q6" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q6" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q6" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q6" value="5" class="sus-radio"></td></tr>
+                                <tr><td>7. De meeste mensen zouden dit snel leren</td>
+                                    <td><input type="radio" name="sus_gui_q7" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_gui_q7" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q7" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q7" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q7" value="5" class="sus-radio"></td></tr>
+                                <tr><td>8. Ik vond het systeem omslachtig</td>
+                                    <td><input type="radio" name="sus_gui_q8" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_gui_q8" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q8" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q8" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q8" value="5" class="sus-radio"></td></tr>
+                                <tr><td>9. Ik voelde me zelfverzekerd bij gebruik</td>
+                                    <td><input type="radio" name="sus_gui_q9" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_gui_q9" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q9" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q9" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q9" value="5" class="sus-radio"></td></tr>
+                                <tr><td>10. Ik moest veel leren voordat ik kon starten</td>
+                                    <td><input type="radio" name="sus_gui_q10" value="1" class="sus-radio" required></td>
+                                    <td><input type="radio" name="sus_gui_q10" value="2" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q10" value="3" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q10" value="4" class="sus-radio"></td>
+                                    <td><input type="radio" name="sus_gui_q10" value="5" class="sus-radio"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="window.location.href='pre-test.html'">← Terug</button>
+                        <div class="progress-indicator">
+                            <span>Stap 2 van 3</span>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 66%; background: var(--vaia-color);"></div></div>
+                        </div>
+                        <button type="submit" class="btn btn-vaia">Opslaan & Doorgaan →</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => { initForm('vaia_sus', 'vaia'); });</script>
+</body>
+</html>
+

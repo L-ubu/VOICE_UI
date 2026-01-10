@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAIA - Post-Test Vragenlijst</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>.form-section h2 { color: var(--vaia-color); } .scale-option input:checked + label { border-color: var(--vaia-color); background: var(--vaia-color); }</style>
+</head>
+<body>
+    <div class="app">
+        <nav class="sidebar">
+            <div class="logo"><span class="logo-icon">📋</span><span class="logo-text">VUI Research</span></div>
+            <div class="nav-section"><a href="../../index.html" class="nav-item"><span class="nav-icon">🏠</span>Terug naar Home</a></div>
+            <div class="nav-section">
+                <div class="nav-title">📚 VAIA Formulieren</div>
+                <a href="tasks.html" class="nav-item">📋 Taak Instructies</a>
+                <a href="pre-test.html" class="nav-item">📝 Pre-Test</a>
+                <a href="sus.html" class="nav-item">📊 SUS</a>
+                <a href="post-test.html" class="nav-item active">✅ Post-Test</a>
+                <a href="observation.html" class="nav-item researcher">👁️ Observatie</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="form-page">
+                <div class="form-header">
+                    <div class="form-icon">📚</div>
+                    <h1>Post-Test Vragenlijst</h1>
+                    <p>Laatste vragen over uw ervaring met VAIA</p>
+                    <div id="participantInfo" style="margin-top: 15px; padding: 10px; background: var(--bg-hover); border-radius: 8px; font-size: 13px;"></div>
+                </div>
+
+                <form id="researchForm" onsubmit="submitForm(event, 'vaia_posttest', '../../index.html')">
+                    
+                    <div class="form-section vaia">
+                        <h2>Sectie A: Vergelijkende Vragen</h2>
+
+                        <div class="question">
+                            <label class="question-label">A1. Welke interface had uw voorkeur voor het invullen van formulieren? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="preference" value="strong-vui" required><span class="option-check"></span>Sterk voorkeur voor spraak (VUI)</label>
+                                <label class="option-label"><input type="radio" name="preference" value="slight-vui"><span class="option-check"></span>Lichte voorkeur voor spraak (VUI)</label>
+                                <label class="option-label"><input type="radio" name="preference" value="none"><span class="option-check"></span>Geen voorkeur / gelijk</label>
+                                <label class="option-label"><input type="radio" name="preference" value="slight-gui"><span class="option-check"></span>Lichte voorkeur voor typen (GUI)</label>
+                                <label class="option-label"><input type="radio" name="preference" value="strong-gui"><span class="option-check"></span>Sterk voorkeur voor typen (GUI)</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">A2. Welke interface was SNELLER volgens u? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="faster" value="vui-much" required><span class="option-check"></span>Spraak was veel sneller</label>
+                                <label class="option-label"><input type="radio" name="faster" value="vui-little"><span class="option-check"></span>Spraak was iets sneller</label>
+                                <label class="option-label"><input type="radio" name="faster" value="same"><span class="option-check"></span>Ongeveer gelijk</label>
+                                <label class="option-label"><input type="radio" name="faster" value="gui-little"><span class="option-check"></span>Typen was iets sneller</label>
+                                <label class="option-label"><input type="radio" name="faster" value="gui-much"><span class="option-check"></span>Typen was veel sneller</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">A3. Welke interface was NAUWKEURIGER volgens u? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="accurate" value="vui-much" required><span class="option-check"></span>Spraak was veel nauwkeuriger</label>
+                                <label class="option-label"><input type="radio" name="accurate" value="vui-little"><span class="option-check"></span>Spraak was iets nauwkeuriger</label>
+                                <label class="option-label"><input type="radio" name="accurate" value="same"><span class="option-check"></span>Ongeveer gelijk</label>
+                                <label class="option-label"><input type="radio" name="accurate" value="gui-little"><span class="option-check"></span>Typen was iets nauwkeuriger</label>
+                                <label class="option-label"><input type="radio" name="accurate" value="gui-much"><span class="option-check"></span>Typen was veel nauwkeuriger</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">A4. Welke interface was VERMOEIENDER? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="tiring" value="vui-much" required><span class="option-check"></span>Spraak was veel vermoeiender</label>
+                                <label class="option-label"><input type="radio" name="tiring" value="vui-little"><span class="option-check"></span>Spraak was iets vermoeiender</label>
+                                <label class="option-label"><input type="radio" name="tiring" value="same"><span class="option-check"></span>Ongeveer gelijk</label>
+                                <label class="option-label"><input type="radio" name="tiring" value="gui-little"><span class="option-check"></span>Typen was iets vermoeiender</label>
+                                <label class="option-label"><input type="radio" name="tiring" value="gui-much"><span class="option-check"></span>Typen was veel vermoeiender</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section vaia">
+                        <h2>Sectie B: VUI-Specifieke Vragen</h2>
+
+                        <div class="question">
+                            <label class="question-label">B1. Hoe goed begreep het systeem wat u zei? <span class="required">*</span></label>
+                            <div class="scale-options">
+                                <div class="scale-option"><input type="radio" name="recognition" value="1" id="r1" required><label for="r1">1</label></div>
+                                <div class="scale-option"><input type="radio" name="recognition" value="2" id="r2"><label for="r2">2</label></div>
+                                <div class="scale-option"><input type="radio" name="recognition" value="3" id="r3"><label for="r3">3</label></div>
+                                <div class="scale-option"><input type="radio" name="recognition" value="4" id="r4"><label for="r4">4</label></div>
+                                <div class="scale-option"><input type="radio" name="recognition" value="5" id="r5"><label for="r5">5</label></div>
+                            </div>
+                            <div class="scale-labels"><span>Zeer slecht</span><span>Zeer goed</span></div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">B2. Hoe natuurlijk voelden de spraakcommando's aan? <span class="required">*</span></label>
+                            <div class="scale-options">
+                                <div class="scale-option"><input type="radio" name="natural" value="1" id="n1" required><label for="n1">1</label></div>
+                                <div class="scale-option"><input type="radio" name="natural" value="2" id="n2"><label for="n2">2</label></div>
+                                <div class="scale-option"><input type="radio" name="natural" value="3" id="n3"><label for="n3">3</label></div>
+                                <div class="scale-option"><input type="radio" name="natural" value="4" id="n4"><label for="n4">4</label></div>
+                                <div class="scale-option"><input type="radio" name="natural" value="5" id="n5"><label for="n5">5</label></div>
+                            </div>
+                            <div class="scale-labels"><span>Zeer onnatuurlijk</span><span>Zeer natuurlijk</span></div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">B3. Welke spraakcommando's werkten het BESTE? (meerdere mogelijk)</label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="checkbox" name="best_commands" value="navigation"><span class="option-check"></span>Navigatie (ga naar, volgende veld)</label>
+                                <label class="option-label"><input type="checkbox" name="best_commands" value="text"><span class="option-check"></span>Tekst invoeren (schrijf, vul in)</label>
+                                <label class="option-label"><input type="checkbox" name="best_commands" value="selection"><span class="option-check"></span>Selectie (selecteer nummer)</label>
+                                <label class="option-label"><input type="checkbox" name="best_commands" value="ai"><span class="option-check"></span>AI bewerking (verbeter, maak korter)</label>
+                                <label class="option-label"><input type="checkbox" name="best_commands" value="datetime"><span class="option-check"></span>Datum/tijd invoeren</label>
+                                <label class="option-label"><input type="checkbox" name="best_commands" value="link"><span class="option-check"></span>Link invoeren (link eventbrite)</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">B4. Welke spraakcommando's werkten het SLECHTSTE? (meerdere mogelijk)</label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="checkbox" name="worst_commands" value="navigation"><span class="option-check"></span>Navigatie</label>
+                                <label class="option-label"><input type="checkbox" name="worst_commands" value="text"><span class="option-check"></span>Tekst invoeren</label>
+                                <label class="option-label"><input type="checkbox" name="worst_commands" value="selection"><span class="option-check"></span>Selectie</label>
+                                <label class="option-label"><input type="checkbox" name="worst_commands" value="ai"><span class="option-check"></span>AI bewerking</label>
+                                <label class="option-label"><input type="checkbox" name="worst_commands" value="datetime"><span class="option-check"></span>Datum/tijd invoeren</label>
+                                <label class="option-label"><input type="checkbox" name="worst_commands" value="link"><span class="option-check"></span>Link invoeren</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">B5. Zou u deze spraakinterface in het echt gebruiken? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="would_use" value="yes-sure" required><span class="option-check"></span>Ja, zeker</label>
+                                <label class="option-label"><input type="radio" name="would_use" value="yes-probably"><span class="option-check"></span>Ja, waarschijnlijk</label>
+                                <label class="option-label"><input type="radio" name="would_use" value="maybe"><span class="option-check"></span>Misschien</label>
+                                <label class="option-label"><input type="radio" name="would_use" value="probably-not"><span class="option-check"></span>Waarschijnlijk niet</label>
+                                <label class="option-label"><input type="radio" name="would_use" value="no"><span class="option-check"></span>Zeker niet</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section vaia">
+                        <h2>Sectie B2: AI-Functionaliteit (VAIA-specifiek)</h2>
+
+                        <div class="question">
+                            <label class="question-label">B6. Hoe nuttig vond u de AI-suggesties voor het invullen van formuliervelden? <span class="required">*</span></label>
+                            <div class="scale-options">
+                                <div class="scale-option"><input type="radio" name="ai_usefulness" value="1" id="ai1" required><label for="ai1">1</label></div>
+                                <div class="scale-option"><input type="radio" name="ai_usefulness" value="2" id="ai2"><label for="ai2">2</label></div>
+                                <div class="scale-option"><input type="radio" name="ai_usefulness" value="3" id="ai3"><label for="ai3">3</label></div>
+                                <div class="scale-option"><input type="radio" name="ai_usefulness" value="4" id="ai4"><label for="ai4">4</label></div>
+                                <div class="scale-option"><input type="radio" name="ai_usefulness" value="5" id="ai5"><label for="ai5">5</label></div>
+                            </div>
+                            <div class="scale-labels"><span>Niet nuttig</span><span>Zeer nuttig</span></div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">B7. Hoe goed werkten de AI-bewerkingscommando's (bijv. "verbeter maak korter")? <span class="required">*</span></label>
+                            <div class="scale-options">
+                                <div class="scale-option"><input type="radio" name="ai_edit_quality" value="1" id="ae1" required><label for="ae1">1</label></div>
+                                <div class="scale-option"><input type="radio" name="ai_edit_quality" value="2" id="ae2"><label for="ae2">2</label></div>
+                                <div class="scale-option"><input type="radio" name="ai_edit_quality" value="3" id="ae3"><label for="ae3">3</label></div>
+                                <div class="scale-option"><input type="radio" name="ai_edit_quality" value="4" id="ae4"><label for="ae4">4</label></div>
+                                <div class="scale-option"><input type="radio" name="ai_edit_quality" value="5" id="ae5"><label for="ae5">5</label></div>
+                            </div>
+                            <div class="scale-labels"><span>Zeer slecht</span><span>Zeer goed</span></div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">B8. Welke AI-functies gebruikte u? (meerdere mogelijk)</label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="checkbox" name="ai_used" value="accept_suggestion"><span class="option-check"></span>AI-suggestie accepteren</label>
+                                <label class="option-label"><input type="checkbox" name="ai_used" value="reject_suggestion"><span class="option-check"></span>AI-suggestie afwijzen</label>
+                                <label class="option-label"><input type="checkbox" name="ai_used" value="edit_shorter"><span class="option-check"></span>Tekst korter maken</label>
+                                <label class="option-label"><input type="checkbox" name="ai_used" value="edit_formal"><span class="option-check"></span>Tekst formeler maken</label>
+                                <label class="option-label"><input type="checkbox" name="ai_used" value="link_parse"><span class="option-check"></span>Link genereren uit beschrijving</label>
+                                <label class="option-label"><input type="checkbox" name="ai_used" value="none"><span class="option-check"></span>Geen AI-functies gebruikt</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">B9. Vertrouwde u de AI-suggesties? <span class="required">*</span></label>
+                            <div class="options-list">
+                                <label class="option-label"><input type="radio" name="ai_trust" value="always" required><span class="option-check"></span>Ja, ik accepteerde ze meestal zonder te controleren</label>
+                                <label class="option-label"><input type="radio" name="ai_trust" value="after_check"><span class="option-check"></span>Ja, maar ik controleerde ze altijd eerst</label>
+                                <label class="option-label"><input type="radio" name="ai_trust" value="sometimes"><span class="option-check"></span>Soms wel, soms niet</label>
+                                <label class="option-label"><input type="radio" name="ai_trust" value="rarely"><span class="option-check"></span>Ik vertrouwde ze zelden</label>
+                                <label class="option-label"><input type="radio" name="ai_trust" value="na"><span class="option-check"></span>Niet van toepassing / niet gebruikt</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section vaia">
+                        <h2>Sectie C: Situationele Vragen</h2>
+
+                        <div class="question">
+                            <label class="question-label">C1. In welke situatie zou u spraak verkiezen boven typen?</label>
+                            <textarea name="prefer_speech" rows="3" placeholder="Beschrijf de situaties..."></textarea>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">C2. In welke situatie zou u typen verkiezen boven spraak?</label>
+                            <textarea name="prefer_typing" rows="3" placeholder="Beschrijf de situaties..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section vaia">
+                        <h2>Sectie D: Open Vragen</h2>
+
+                        <div class="question">
+                            <label class="question-label">D1. Wat vond u het meest POSITIEF aan de spraakinterface?</label>
+                            <textarea name="positive" rows="3" placeholder="Beschrijf de positieve aspecten..."></textarea>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">D2. Wat vond u het meest FRUSTREREND aan de spraakinterface?</label>
+                            <textarea name="frustrating" rows="3" placeholder="Beschrijf de frustrerende aspecten..."></textarea>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">D3. Welke verbeteringen zou u voorstellen voor de spraakinterface?</label>
+                            <textarea name="improvements" rows="3" placeholder="Uw suggesties..."></textarea>
+                        </div>
+
+                        <div class="question">
+                            <label class="question-label">D4. Heeft u nog andere opmerkingen?</label>
+                            <textarea name="other" rows="3" placeholder="Eventuele andere opmerkingen..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="window.location.href='sus.html'">← Terug</button>
+                        <div class="progress-indicator">
+                            <span>Stap 3 van 3</span>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 100%; background: var(--vaia-color);"></div></div>
+                        </div>
+                        <button type="submit" class="btn btn-vaia">✓ Voltooien</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => { initForm('vaia_posttest', 'vaia'); });</script>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+Om de vraagsteller beter te ondersteunen in verbindende communicatie met haar dochter, zijn er een aantal contextparameters die belangrijk zijn om te verzamelen. Deze parameters kunnen helpen om een diepgaander inzicht te krijgen in de situatie, de gevoelens van de dochter en wat de vraagsteller hoopt te bereiken. De volgende parameters zijn relevant:
+
+1. **Hoe voel jij je als je dochter zegt dat ze denkt dat je meer van haar zus houdt?**
+   - **Omschrijving:** Deze vraag helpt je te begrijpen welke emoties de uitspraak van je dochter bij jou oproept. 
+   - **Datatype:** string
+
+2. **Wat zijn de specifieke situaties waarin je dochter deze gevoelens van minderwaardigheid ervaart?**
+   - **Omschrijving:** Dit geeft meer context over wanneer en waar deze gevoelens van je dochter het sterkst zijn.
+   - **Datatype:** string
+
+3. **Wat zou je willen bereiken in de communicatie met je dochter over dit onderwerp?**
+   - **Omschrijving:** Dit helpt je te focussen op je doelen en wat je wilt dat je dochter begrijpt.
+   - **Datatype:** string
+
+4. **Welke stappen heb je al ondernomen om deze gevoelens bij je dochter te adresseren?**
+   - **Omschrijving:** Dit kan inzicht geven in eerdere pogingen en helpt om te bepalen wat nog kan worden geprobeerd.
+   - **Datatype:** string
+
+5. **Hoe ziet een goede eindsituatie eruit voor jou en je dochter?**
+   - **Omschrijving:** Dit helpt je te definiëren wat je hoopt te bereiken in de overeenkomst met je dochter.
+   - **Datatype:** string
+
+Hieronder vind je de contextparameters in JSON-formaat:
+
+```json
+[
+    {
+        "naam": "gevoel_van_de_vraagsteller",
+        "omschrijving": "Hoe voel jij je als je dochter zegt dat ze denkt dat je meer van haar zus houdt?",
+        "datatype": "string"
+    },
+    {
+        "naam": "situaties_van_gevoelens",
+        "omschrijving": "Wat zijn de specifieke situaties waarin je dochter deze gevoelens van minderwaardigheid ervaart?",
+        "datatype": "string"
+    },
+    {
+        "naam": "communicatie_doelen",
+        "omschrijving": "Wat zou je willen bereiken in de communicatie met je dochter over dit onderwerp?",
+        "datatype": "string"
+    },
+    {
+        "naam": "ondernomen_stappen",
+        "omschrijving": "Welke stappen heb je al ondernomen om deze gevoelens bij je dochter te adresseren?",
+        "datatype": "string"
+    },
+    {
+        "naam": "goede_eindsituatie",
+        "omschrijving": "Hoe ziet een goede eindsituatie eruit voor jou en je dochter?",
+        "datatype": "string"
+    }
+]
+```
